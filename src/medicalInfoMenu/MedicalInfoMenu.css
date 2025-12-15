@@ -12,10 +12,12 @@
 
 .blue_bar {
     border-left: solid 4px #2563eb;
+    background: #ecf2ff;
 }
 
 .pink_bar {
     border-left: solid 4px #ec4899;
+    background: #ffecf6;
 }
 
 .item_footer {
@@ -45,48 +47,74 @@
 
 .MedicalInfo_Container_box {
     width: 30%;
-    /* 카드 하나 크기 */
-    padding: 16px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 14px;
+    /* background: #fff; */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 
     display: flex;
     flex-direction: column;
-    /* 세로 배치 */
-    justify-content: center;
-    /* 세로 중앙 */
-    align-items: center;
-    /* 가로 중앙 */
+    align-items: flex-start;
+    gap: 6px;
+
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.MedicalInfo_Container_box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 .bd_blue {
     border: solid 2px #2563eb;
+    background: #f2f6ff;
 }
 
 .bd_pink {
     border: solid 2px #ec4899;
+    background: #fff1f8;
 }
 
 .bd_violet {
     border: solid 2px #8f21c2;
+    background: #faf0ff;
 }
 
 .MedicalInfo_box_icon {
     width: 40px;
     height: 40px;
-    /* 신뢰감 있는 블루 */
     margin-right: 8px;
 }
 
 .MedicalInfo_dashboard {
     display: flex;
+    gap: 24px;
+    /* margin: 24px 0; */
+    align-items: stretch;
+}
+
+.dashboard-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    /* 추가 */
+    flex-direction: column;
+    /* 추가 */
 }
 
 .MedicalInfo_dashboard_layout {
-    width: 50%;
+    /* width: 100%; */
     display: flex;
     /* ⭐ 추가 */
     flex-direction: column;
     /* ⭐ 추가 */
+    flex: 1;
+
+    min-height: 0;
 }
 
 .MedicalInfo_dashboard_icon {
@@ -96,6 +124,7 @@
 }
 
 .MedicalInfo_dashboard_layout_box {
+    /* background: #f9fafb; */
     border-radius: 8px;
     /* 둥근 테두리 */
     margin: 9px;
@@ -133,6 +162,12 @@
 
 .dashboard_layout_font {
     padding: 2px;
+}
+
+.dashboard_layout_font:last-child {
+    color: #2563eb;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .medical_records_view_all_btn {
@@ -177,6 +212,22 @@
     padding: 7px;
 }
 
+.section {
+    margin-top: 32px;
+    padding: 24px;
+    background-color: #fcfcfc;
+    border-radius: 20px;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .reservation_header {
     padding: 7px;
     font-size: 1.2rem;
@@ -189,9 +240,23 @@
 
 .reservation_line {
     border-left: 4px solid #8f21c2;
-    padding: 7px;
     display: flex;
     justify-content: space-between;
+
+    background: #f8ebff;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+    transition: box-shadow .2s ease;
+}
+
+.reservation_line:hover {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+.Ritem button {
+    margin-left: 8px;
 }
 
 .reservation_item {

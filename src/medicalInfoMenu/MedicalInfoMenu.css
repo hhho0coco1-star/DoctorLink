@@ -1,7 +1,285 @@
-.MedicalInfo_box_icon {
-    width: 24px;
-    height: 24px;
+.pink {
+    color: #ec4899;
+}
+
+.blue {
     color: #2563eb;
+}
+
+.violet {
+    color: #8f21c2;
+}
+
+.blue_bar {
+    border-left: solid 4px #2563eb;
+}
+
+.pink_bar {
+    border-left: solid 4px #ec4899;
+}
+
+.item_footer {
+    margin-top: auto;
+}
+
+.MedicalInfo_top {
+    padding: 15px;
+    border: solid 1px rgb(233, 233, 233);
+    margin: 10px;
+    border-radius: 8px;
+    /* 둥근 테두리 */
+
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.MedicalInfo_Container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px;
+}
+
+.MedicalInfo_Container_box {
+    width: 30%;
+    /* 카드 하나 크기 */
+    padding: 16px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    /* 세로 배치 */
+    justify-content: center;
+    /* 세로 중앙 */
+    align-items: center;
+    /* 가로 중앙 */
+}
+
+.bd_blue {
+    border: solid 2px #2563eb;
+}
+
+.bd_pink {
+    border: solid 2px #ec4899;
+}
+
+.bd_violet {
+    border: solid 2px #8f21c2;
+}
+
+.MedicalInfo_box_icon {
+    width: 40px;
+    height: 40px;
     /* 신뢰감 있는 블루 */
     margin-right: 8px;
+}
+
+.MedicalInfo_dashboard {
+    display: flex;
+}
+
+.MedicalInfo_dashboard_layout {
+    width: 50%;
+    display: flex;
+    /* ⭐ 추가 */
+    flex-direction: column;
+    /* ⭐ 추가 */
+}
+
+.MedicalInfo_dashboard_icon {
+    width: 20px;
+    height: 20px;
+    /* 신뢰감 있는 블루 */
+}
+
+.MedicalInfo_dashboard_layout_box {
+    border-radius: 8px;
+    /* 둥근 테두리 */
+    margin: 9px;
+    padding: 6px;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress__bar {
+    width: 80%;
+    height: 8px;
+    background-color: #e5e7eb;
+    /* 연한 회색 */
+    border-radius: 9999px;
+    overflow: hidden;
+    /* ⭐ 중요 */
+}
+
+.progress__fill {
+    height: 100%;
+    background-color: #ec4899;
+    /* 핑크 */
+    border-radius: 9999px;
+}
+
+.layout_between {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.dashboard_layout_font {
+    padding: 2px;
+}
+
+.medical_records_view_all_btn {
+    /* 중앙정렬 */
+    display: block;
+    margin: 0 auto;
+
+    width: 90%;
+    padding: 12px;
+    /* 버튼 크기 */
+    border-radius: 8px;
+    /* 둥근 테두리 */
+
+    color: #ffffff;
+    /* 글자 흰색 */
+
+    border: none;
+    /* 기본 테두리 제거 */
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+.bg_blue {
+    background-color: #2563eb;
+    /* 파란색 */
+}
+
+.bg_pink {
+    background-color: #ec4899;
+    /* 파란색 */
+}
+
+.medical_records_view_all {
+    width: 100%;
+    padding: 5px;
+}
+
+.reservation {
+    padding: 7px;
+}
+
+.reservation_header {
+    padding: 7px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.reservation_list {
+    padding: 10px;
+}
+
+.reservation_line {
+    border-left: 4px solid #8f21c2;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservation_item {
+    padding: 6px;
+}
+
+.reservation_item .item_padding {
+    padding: 5px;
+}
+
+.item_padding+.box {
+    padding: 5px;
+    /* 버튼 크기 */
+    border-radius: 4px;
+    /* 둥근 테두리 */
+
+    background-color: #8f21c2;
+    /* 파란색 */
+    color: #ffffff;
+    /* 글자 흰색 */
+
+    border: none;
+    /* 기본 테두리 제거 */
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.reservation_item .Ritem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reservation_item .btn_sty_edit {
+    width: 100px;
+    padding: 12px;
+    /* 버튼 크기 */
+    border-radius: 8px;
+    /* 둥근 테두리 */
+
+    background-color: #8f21c2;
+    /* 파란색 */
+    color: #ffffff;
+    /* 글자 흰색 */
+
+    border: none;
+    /* 기본 테두리 제거 */
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.MedicalInfo_dashboard_layout_box .completed {
+    width: 60px;
+    padding: 6px;
+    /* 버튼 크기 */
+    border-radius: 8px;
+    /* 둥근 테두리 */
+
+    background-color: #2563eb;
+    /* 파란색 */
+    color: #ffffff;
+    /* 글자 흰색 */
+
+    border: none;
+    /* 기본 테두리 제거 */
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    /* 세로 중앙 */
+    justify-content: center;
+}
+
+.reservation_item .btn_sty_cancel {
+    width: 100px;
+    padding: 12px;
+    /* 버튼 크기 */
+    border-radius: 8px;
+    /* 둥근 테두리 */
+
+    background-color: #cccccc;
+    /* 파란색 */
+    /* color: #ffffff; */
+    /* 글자 흰색 */
+
+    border: none;
+    /* 기본 테두리 제거 */
+    font-size: 14px;
+    font-weight: 600;
 }

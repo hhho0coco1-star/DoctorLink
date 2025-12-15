@@ -12,12 +12,15 @@ export default function MainHeader() {
             </header>
 
             {/* aside */}
-            <aside>
+            <div className="main-layout">
+                <aside>
 
-            </aside>
-            <div className="MedicalInfoMenu">
-                <MedicalInfoMenu/>
+                </aside>
+                <div className="MedicalInfoMenu">
+                    <MedicalInfoMenu />
+                </div>
             </div>
+
         </div>
     )
 }

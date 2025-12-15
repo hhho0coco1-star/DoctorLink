@@ -1,5 +1,6 @@
 import React from "react"
 import "./MainHeader.css";
+import MedicalInfoMenu from "../medicalInfoMenu/MedicalInfoMenu"
 
 export default function MainHeader() {
 
@@ -14,6 +15,9 @@ export default function MainHeader() {
             <aside>
 
             </aside>
+            <div className="MedicalInfoMenu">
+                <MedicalInfoMenu/>
+            </div>
         </div>
     )
 }

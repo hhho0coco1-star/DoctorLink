@@ -1,0 +1,182 @@
+.mypage-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7fa;
+}
+
+/* Sidebar */
+.mypage-sidebar {
+    width: 260px;
+    background: white;
+    padding: 30px 20px;
+    border-right: 1px solid #eee;
+}
+
+.profile-box {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    background: #e0ecff;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.patient-id {
+    font-size: 12px;
+    color: #666;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-item {
+    padding: 10px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.menu-item.active {
+    background: #eef4ff;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.menu-item.logout {
+    color: red;
+}
+
+/* Content */
+.mypage-content {
+    flex: 1;
+    padding: 40px;
+    background: white;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-grid .full {
+    grid-column: span 2;
+}
+
+label {
+    font-size: 13px;
+    color: #666;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.primary-btn {
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.health-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.health-card {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.health-card span {
+    font-size: 13px;
+    color: #666;
+}
+
+.health-card strong {
+    display: block;
+    margin-top: 5px;
+}
+
+/* 프로필 이미지 업로드 */
+
+.profile-image-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+.profile-image,
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e0ecff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    transition: opacity 0.2s ease;
+}
+
+
+
+.profile-image-wrapper::after {
+    content: "프로필 변경";
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: black;
+    font-size: 13px;
+    font-weight: 600;
+    
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.profile-image-wrapper:hover::after {
+    opacity: 1;
+}
+
+.profile-image-wrapper:hover .profile-image,
+.profile-image-wrapper:hover .profile-placeholder {
+    opacity: 0.6;
+}

@@ -1,4 +1,5 @@
 import "./MainHeader.css";
+import "./DL01_Header.css";
 import MainHeader from "./MainHeader";
 
 import React, { useState, useEffect } from "react"
@@ -38,8 +39,8 @@ export default function DL01_Header() {
 
                 <div className="header_3">
                     <Link to="/mypage" className="header__profile-link">
-                        홍길동<br></br>
-                        <span>환자번호:P-2025-1111</span>
+                        <span className="header_3_name">홍길동</span><br></br>
+                        <span className="header_3_info">환자번호:P-2025-1111</span>
                     </Link>
                 </div>
             </header>

@@ -1,4 +1,5 @@
-import "./MainHeader.css";
+// import "./MainHeader.css";
+import "./DL02_SideBar.css";
 import MainHeader from "./MainHeader";
 
 import React, { useState, useEffect } from "react"
@@ -40,8 +41,8 @@ export default function DL02_SideBar() {
 
         <aside>
             <div className="aside1">
-                <p style={{ fontSize: "0.9rem", margin: "1vh" }}>빠른 작업</p>
-                <div className="aside_box1" onClick={handlePillCheck} style={{ cursor: "pointer" }}>
+                <p style={{ fontSize: "0.9rem", margin: "1vh", color: "white", height:"900"}}>빠른 작업</p>
+                <div className="aside_box1" onClick={handlePillCheck}>
                     <FaPills style={{ marginRight: '10px' }} />
                     <div className="text-wrapper">
                         <div>약 복용체크</div>

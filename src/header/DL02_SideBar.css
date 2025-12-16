@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =================== aside =================== */
+aside {
+    width: 20%;
+    height: 85vh;
+    flex-shrink: 0;
+}
+
+/* 빠른 작업 영역 (aside1) */
+.aside1 {
+    padding: 1vh;
+    height: 23vh;
+    background-color: rgb(216, 240, 255);
+    border: 1px solid black;
+    border-top: 0;
+    border-bottom: 0px;
+}
+
+.aside_box1:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+
+    transform: scale(1.05);
+    filter: brightness(110%) saturate(100%);
+}
+
+.aside_box1:active {
+    transform: scale(0.98);
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    filter: brightness(90%) saturate(100%);
+}
+
+/* 빠른 작업 내부 박스 */
+.aside_box1 {
+    border: 1px solid black;
+    width: 90%;
+    height: 6vh;
+    margin: 1vh auto;
+    /* 가운데 정렬 및 상하 간격 */
+    margin-bottom: 3vh;
+    padding-left: 1vh;
+
+    display: flex;
+    align-items: center;
+    border-radius: 1vh;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    cursor: pointer;
+}
+
+/* 메뉴 영역 (aside2) */
+.aside2 {
+    height: 65vh;
+    /* display: block; (기본값이므로 제거 가능) */
+    padding: 1vh;
+    border: 1px solid grey;
+}
+
+/* aside2 내부 모든 요소 (의료정보, 건강기록 등) */
+.aside2>* {
+    width: 90%;
+    height: 6vh;
+
+    margin: 1vh auto;
+    margin-bottom: 2vh;
+    padding-left: 1vh;
+
+    display: flex;
+    align-items: center;
+    background: white;
+    border-bottom: 1px solid black;
+}
+
+/* 빠른작업 메뉴 2번 */
+.calender_css {
+    text-decoration: none;
+    color: inherit;
+}

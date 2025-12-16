@@ -1,5 +1,5 @@
 import "./MainHeader.css";
-
+import "./DL03_LeftDashBoard.css";
 
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom";
@@ -32,13 +32,13 @@ export default function DL03_BloodBox({ userName, bpReading, graph }) {
     };
 
     const barStyle = {
-        width: animatedWidth // graph는 '75%'와 같은 문자열 형식이어야 함
+        width: animatedWidth
     };
 
     // ========================== return ==========================
 
     return ( // 👈 BloodBox 함수 안에서 return
-        <div className="dashBoard_Box02" style={{ width: "80vh" }}>
+        <div className="dashBoard_Box02" style={{ width: "90vh" }}>
             {/* 이름 + 상세조회 버튼 (유지) */}
             <div className="bp-header">
                 <span className="bp-name">{userName || "홍길동"}</span>
@@ -56,13 +56,11 @@ export default function DL03_BloodBox({ userName, bpReading, graph }) {
                         <span className="bp-title">혈압</span>
                         <div className="bp-reading">
                             {bpReading || "120 / 80"}
-                            {/* 🌟 클래스 이름 통일: bp-status01 -> bp-status */}
-                            <span className="bp-status"> ★ 고혈압 주의</span> 
+                            <span className="bp-status"> ★ 고혈압 주의</span>
                         </div>
                     </div>
                     {/* 그래프 */}
                     <div className="bp-graph-container">
-                        {/* 🌟 문법 오류 수정: 스프레드 문법 사용 */}
                         <div className="bp-graph-bar" style={{ ...barStyle, backgroundColor: "darkorange" }}></div>
                     </div>
                 </div>
@@ -83,5 +81,6 @@ export default function DL03_BloodBox({ userName, bpReading, graph }) {
                 </div>
             </div>
         </div>
+
     );
 }

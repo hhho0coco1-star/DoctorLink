@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import MyPage from "./pages/Mypage";
 import FindId from "./pages/FindId";
 import FindPassword from "./pages/FindPassword";
+import Settings from "./pages/Settings";
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
+        <Route path="/settings" element={<Settings />} />
+
       </Routes>
       {/* {<MyPage></MyPage>} */}
     </BrowserRouter>

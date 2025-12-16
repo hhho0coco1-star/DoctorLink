@@ -5,7 +5,6 @@ import MyPage from "./pages/MyPage";
 import FindId from "./pages/FindId";
 import FindPassword from "./pages/FindPassword";
 import './App.css';
-import MainHeader from './header/MainHeader';
 import MainPage from './header/MainPage';
 import Calendar from './header/Calendar';
 

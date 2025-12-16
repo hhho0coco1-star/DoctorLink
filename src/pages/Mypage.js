@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MainHeader from "../pages/MainHeader";
+import MainHeader from "../header/MainHeader";
 import "./MyPage.css";
 
 export default function MyPage() {

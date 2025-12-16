@@ -7,6 +7,8 @@ import FindPassword from "./pages/FindPassword";
 import './App.css';
 import MainPage from './header/MainPage';
 import Calendar from './header/Calendar';
+import Settings from "./pages/Settings";
+
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
+        <Route path="/settings" element={<Settings />} />
+
       </Routes>
       
     </BrowserRouter>

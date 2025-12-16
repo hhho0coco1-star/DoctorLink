@@ -1,0 +1,186 @@
+.event-calendar {
+    padding: 20px;
+    background: #f8fafc;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e5e7eb;
+}
+
+
+.day-name {
+    background: #f1f5f9;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.calendar-cell {
+    background: #ffffff;
+    min-height: 110px;
+    padding: 6px;
+    position: relative;
+}
+
+
+.date-number {
+    font-size: 12px;
+    color: #64748b;
+}
+
+
+.event-list {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+.event {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.calendar-cell.active {
+    outline: 2px solid #2563eb;
+}
+
+
+.event--reservation {
+    background: #2563eb;
+}
+
+
+.reservation-form {
+    margin-top: 16px;
+    padding: 12px;
+    background: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+.reservation-form input {
+    padding: 6px 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+
+.reservation-form button {
+    padding: 6px 12px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 320px;
+}
+
+.modal input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.cancel {
+    background: #e5e7eb;
+}
+
+.btn.confirm {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+
+/* 이벤트 타입별 색상 */
+.event--medical {
+    background: #ef4444;
+}
+
+.event--pill {
+    background: #f59e0b;
+}
+
+.event--visit {
+    background: #2563eb;
+}
+
+.event--study {
+    background: #22c55e;
+}
+
+.event--holiday {
+    background: #10b981;
+}
+
+.event--travel {
+    background: #8b5cf6;
+}

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import MainHeader from "../header/MainHeader";
-import "./MyPage.css";
+import "./Mypage.css";
 
-export default function MyPage() {
+export default function Mypage() {
     const [profileImage, setProfileImage] = useState(null);
 
     const handleImageChange = (e) => {

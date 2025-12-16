@@ -154,7 +154,171 @@ aside {
     width: 25vh;
     height: 20vh;
     margin: 1.5vh;
-    
+
     border: 1px solid black;
     border-radius: 10px;
+}
+
+.dashBoard02 {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.dashBoard_Box02 {
+    /* width: 30vh; */
+    height: 50vh;
+    margin: 1.5vh;
+    padding: 20px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.bp-header {
+    display: flex;
+    justify-content: space-between;
+    /* 이름과 버튼을 양 끝으로 분리 */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bp-name {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+.bp-detail-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    /* 파란색 계열의 링크 색상 */
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+/* 수치와 그래프를 수평으로 배치하는 본문 영역 */
+.bp-body {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* 수치와 그래프 사이의 간격 */
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; /* 부모 너비를 차지하도록 설정 */
+}
+
+.bp-data {
+    /* 수치 영역이 고정된 공간을 가지도록 최소 너비 설정 */
+    min-width: 140px;
+    width: 100%;
+}
+
+.bp-reading {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #444;
+    text-align: left;
+}
+
+.bp-status {
+    font-size: 0.9em;
+    color: green;
+    margin-top: 5px;
+}
+
+.bp-status01 {
+    font-size: 0.9em;
+    color: darkorange;
+    margin-top: 5px;
+}
+
+.bp-graph-container {
+    flex-grow: 1; 
+    
+    /* ⭐ 추가/수정: 너비를 100%로 설정하여 가로 공간을 확보합니다. */
+    width: 100%; 
+    
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.bp-graph-bar {
+    height: 20px;
+    background-color: #28a745;
+    border-radius: 10px;
+
+    transition: width 1s ease-out;
+}
+
+
+/* ---------------------------------- */
+/* 1. 기본 Link 스타일 재정의 (버튼화) */
+/* ---------------------------------- */
+.bp-detail-button {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    display: inline-block;
+
+    /* 부드러운 전환 효과 (선택 사항) */
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* ---------------------------------- */
+/* 2. 마우스 오버(Hover) 효과 추가 */
+/* ---------------------------------- */
+.bp-detail-button:hover {
+    background-color: #0056b3;
+    /* 마우스를 올리면 더 진한 파란색으로 변경 */
+    cursor: pointer;
+}
+
+/* ---------------------------------- */
+/* 3. 클릭(Active) 효과 추가 */
+/* ---------------------------------- */
+.bp-detail-button:active {
+    transform: scale(0.98);
+    /* 클릭 시 살짝 작아지는 효과 */
+}
+
+/* ---------------------------------- */
+/* 4. 부모 컨테이너 배치 확인 (이전 답변에서 사용된 스타일) */
+/* ---------------------------------- */
+/* 이름과 버튼이 양 끝에 배치되도록 합니다. */
+.bp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bp-metric-item {
+    width: 100%; /* 부모 bp-body의 전체 너비 사용 */
+    background-color: #ffffff;
+    border: 1px solid #e0e7ff; 
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
 }

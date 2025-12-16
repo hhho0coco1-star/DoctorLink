@@ -15,7 +15,7 @@ function App() {
             {/* 5. Routes로 경로-컴포넌트 매핑을 정의합니다. */}
             <Routes>  
                 <Route path="/" element={<MainPage />} /> {/* 메인 페이지 (경로: /) */}
-                <Route path="/myPage" element={<MyPage />} /> {/* 마이 페이지 (경로: /myPage) */}
+                <Route path="/mypage" element={<MyPage />} /> {/* 마이 페이지 (경로: /myPage) */}
                 <Route path="/calendar" element={<Calendar />} />
                 
                 {/* 필요한 경우 다른 Route를 추가합니다. */}

@@ -51,7 +51,7 @@ export default function MainHeader() {
 
             </header>
 
-            <main>
+            <main className="mainBody">
 
                 {/* aside */}
                 <aside>
@@ -90,7 +90,14 @@ export default function MainHeader() {
 
                 {/* article */}
                 <article>
-                    {/* @@@ */}
+
+                    <div className="dashBoard">
+                        <div className="dashBoard_Box">대시보드</div>
+                        <div className="dashBoard_Box">대시보드</div>
+                        <div className="dashBoard_Box">대시보드</div>
+                        <div className="dashBoard_Box">대시보드</div>
+                    </div>
+
                 </article>
 
             </main>

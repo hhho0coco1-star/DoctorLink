@@ -7,6 +7,12 @@
 
 /* =================== Main =================== */
 
+.main {
+    /* 이 컨테이너가 header와 aside를 감싸고 있습니다. */
+    border-radius: 1%;
+    padding: 1vh;
+
+}
 
 /* 로고 (h1.header__logo) 스타일: 아이콘 미표시 문제 해결 */
 .header__logo .logo-icon {
@@ -29,14 +35,7 @@
     cursor: pointer;
 }
 
-.main {
-    /* 이 컨테이너가 header와 aside를 감싸고 있습니다. */
-    border-radius: 1%;
-    padding: 1vh;
 
-    /* 💡 전체 레이아웃 설정을 위해 이 부분에 Grid 또는 Flexbox 추가가 필요합니다. */
-    /* 예를 들어: display: grid; grid-template-columns: 15% 1fr; 등 */
-}
 
 /* Header 컨테이너 스타일 */
 header {
@@ -55,13 +54,12 @@ header {
 /* 로고 영역 (header_1) */
 .header_1,
 .header_3 {
-    width: 15%;
     padding: 1vh;
 }
 
 /* 환영 메시지 영역 (header_2) */
 .header_2 {
-    width: 70%;
+    width: 60%;
     padding: 1vh;
 }
 
@@ -139,4 +137,24 @@ aside {
 .calender_css {
     text-decoration: none;
     color: inherit;
+}
+
+/* MainBody */
+.mainBody {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashBoard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.dashBoard_Box {
+    width: 25vh;
+    height: 20vh;
+    margin: 1.5vh;
+    
+    border: 1px solid black;
+    border-radius: 10px;
 }

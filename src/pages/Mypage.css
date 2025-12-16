@@ -1,32 +1,212 @@
-.mypage-container {
+/* =================== Reset =================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =================== Layout (Header + Sidebar) =================== */
+
+.main {
+    padding: 1vh;
+}
+
+/* Header */
+header {
+    height: 12vh;
     display: flex;
-    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px dotted black;
+}
+
+.header__logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.header__logo .logo-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.header_1,
+.header_3 {
+    padding: 1vh;
+}
+
+.header_2 {
+    width: 60%;
+    padding: 1vh;
+}
+
+.header__profile-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =================== Main Body =================== */
+
+.mainBody {
+    display: flex;
+    min-height: calc(100vh - 12vh);
+}
+
+/* Sidebar (팀원) */
+.mainBody>aside {
+    width: 20%;
+    background: #fff;
+}
+
+/* 빠른 작업 */
+.aside1 {
+    padding: 1vh;
+    height: 23vh;
+    background-color: rgb(216, 240, 255);
+    border: 1px solid grey;
+    border-bottom: none;
+}
+
+.aside_box1 {
+    width: 90%;
+    height: 6vh;
+    margin: 1vh auto 3vh;
+    padding-left: 1vh;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 1vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.calender_css {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 메뉴 */
+.aside2 {
+    height: calc(100vh - 35vh);
+    padding: 1vh;
+    border: 1px solid grey;
+}
+
+.aside2>* {
+    width: 90%;
+    height: 6vh;
+    margin: 1vh auto 2vh;
+    padding-left: 1vh;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-bottom: 1px solid black;
+}
+
+/* =================== Main Content Area =================== */
+
+.main-content {
+    flex: 1;
+    padding: 40px;
     background: #f5f7fa;
 }
 
-/* Sidebar */
-.mypage-sidebar {
-    width: 260px;
+/* =================== MyPage =================== */
+
+.mypage-content {
     background: white;
-    padding: 30px 20px;
-    border-right: 1px solid #eee;
+    border-radius: 10px;
+    padding: 40px;
 }
 
+/* Profile */
 .profile-box {
+    position: relative;
     text-align: center;
     margin-bottom: 30px;
+    padding-top: 20px;
+
+    /* ⭐ 중앙 정렬 기준 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.profile-image {
-    width: 80px;
-    height: 80px;
-    background: #e0ecff;
+/* 배경 원 */
+.profile-box::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    margin: 0 auto 10px;
-    font-size: 40px;
+    background: #e8f0fe;
+
+    z-index: 0;
+}
+
+/* 프로필 이미지 wrapper */
+.profile-image-wrapper {
+    position: relative;
+    z-index: 1;
+
+    width: 120px;
+    height: 120px;
+}
+
+/* 프로필 이미지 */
+.profile-image,
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e0ecff;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-size: 42px;
+    transition: opacity 0.2s ease;
+}
+
+/* hover 시 어둡게 */
+.profile-image-wrapper:hover .profile-image,
+.profile-image-wrapper:hover .profile-placeholder {
+    opacity: 0.6;
+}
+
+/* 프로필 변경 텍스트 (정중앙) */
+.profile-image-wrapper::after {
+    content: "프로필 변경";
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.profile-image-wrapper:hover::after {
+    opacity: 1;
 }
 
 .patient-id {
@@ -34,40 +214,7 @@
     color: #666;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.menu-item {
-    padding: 10px;
-    border: none;
-    background: none;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.menu-item.active {
-    background: #eef4ff;
-    color: #2563eb;
-    font-weight: 600;
-}
-
-.menu-item.logout {
-    color: red;
-}
-
-/* Content */
-.mypage-content {
-    flex: 1;
-    padding: 40px;
-    background: white;
-    margin: 20px;
-    border-radius: 10px;
-}
-
+/* Form */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -90,6 +237,7 @@ input {
     border-radius: 6px;
 }
 
+/* Button */
 .primary-btn {
     margin-top: 20px;
     padding: 10px 16px;
@@ -100,6 +248,7 @@ input {
     cursor: pointer;
 }
 
+/* Health Info */
 .health-grid {
     margin-top: 20px;
     display: grid;
@@ -121,62 +270,4 @@ input {
 .health-card strong {
     display: block;
     margin-top: 5px;
-}
-
-/* 프로필 이미지 업로드 */
-
-.profile-image-wrapper {
-    position: relative;
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 8px;
-    cursor: pointer;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-
-
-.profile-image,
-.profile-placeholder {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #e0ecff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 42px;
-    transition: opacity 0.2s ease;
-}
-
-
-
-.profile-image-wrapper::after {
-    content: "프로필 변경";
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: black;
-    font-size: 13px;
-    font-weight: 600;
-    
-
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none;
-}
-
-.profile-image-wrapper:hover::after {
-    opacity: 1;
-}
-
-.profile-image-wrapper:hover .profile-image,
-.profile-image-wrapper:hover .profile-placeholder {
-    opacity: 0.6;
 }

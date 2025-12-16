@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Mypage.css";
+import MainHeader from "../pages/MainHeader";
+import "./MyPage.css";
 
 export default function MyPage() {
     const [profileImage, setProfileImage] = useState(null);
@@ -12,8 +13,9 @@ export default function MyPage() {
     };
 
     return (
-        <div className="mypage-container">
-            <aside className="mypage-sidebar">
+        <MainHeader>
+            {/* ⬇️ 여기부터가 오른쪽 콘텐츠 */}
+            <div className="mypage-content">
                 <div className="profile-box">
                     <label className="profile-image-wrapper">
                         {profileImage ? (
@@ -25,8 +27,6 @@ export default function MyPage() {
                         ) : (
                             <div className="profile-placeholder">👤</div>
                         )}
-
-                        {/* 숨겨진 파일 input */}
                         <input
                             type="file"
                             accept="image/*"
@@ -39,16 +39,6 @@ export default function MyPage() {
                     <p className="patient-id">환자번호: P-2024-1234</p>
                 </div>
 
-                <nav className="menu">
-                    <button className="menu-item active">개인정보</button>
-                    <button className="menu-item">비밀번호 변경</button>
-                    <button className="menu-item">알림 설정</button>
-                    <button className="menu-item logout">로그아웃</button>
-                </nav>
-            </aside >
-
-            {/* Content */}
-            < main className="mypage-content" >
                 <h2>개인정보</h2>
 
                 <div className="form-grid">
@@ -79,7 +69,6 @@ export default function MyPage() {
                 </div>
 
                 <button className="primary-btn">정보 수정</button>
-
                 <hr />
 
                 <h3>건강 정보</h3>
@@ -101,7 +90,7 @@ export default function MyPage() {
                         <strong>고혈압</strong>
                     </div>
                 </div>
-            </main>
-        </div >
+            </div>
+        </MainHeader>
     );
 }

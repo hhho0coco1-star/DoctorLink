@@ -8,6 +8,7 @@ import './App.css';
 import MainPage from './header/MainPage';
 import Calendar from './header/Calendar';
 import Settings from "./pages/Settings";
+import Community from "./pages/Community";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/community" element={<Community />} />
 
       </Routes>
       

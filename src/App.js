@@ -7,6 +7,8 @@ import FindPassword from "./pages/FindPassword";
 import './App.css';
 import MainPage from './header/MainPage';
 import Calendar from './header/Calendar';
+import DashBoard from "./pages/DashBoard";
+import PatientDetail from "./pages/PatientDetail";
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
+        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/patient/:id" element={<PatientDetail />} />
+
       </Routes>
       
     </BrowserRouter>

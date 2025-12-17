@@ -1,0 +1,161 @@
+/* 공통 섹션 스타일 */
+.table-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* 제목 스타일 */
+.table-section h2 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* 테이블 기본 스타일 */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.data-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #555;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.data-table tr:hover {
+  background-color: #f1f7ff;
+}
+
+/* 체크박스 컬럼 */
+.data-table input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* 판정 뱃지 스타일 */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.badge:contains("정상") {
+  background-color: #4caf50; /* 초록색 */
+}
+
+.badge:contains("주의") {
+  background-color: #ff9800; /* 주황색 */
+}
+
+.badge:contains("위험") {
+  background-color: #f44336; /* 빨강색 */
+}
+
+/* 대시보드 레이아웃 */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 상단 좌우 배치 */
+.top-section {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+/* 가운데 배치 */
+.center-section {
+  display: flex;
+  justify-content: center;
+}
+
+/* 하단 좌우 배치 */
+.bottom-section {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: stretch; /* flex-start 대신 stretch로 높이 맞추기 */
+}
+
+/* 왼쪽 박스: 진료 상담 내용 */
+.consultation-box {
+  flex: 1.2; /* 더 넓게 설정 */
+  min-width: 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+/* 오른쪽 박스: 처방 약 조회 */
+.prescription-box {
+  flex: 0.8; /* 상대적으로 좁게 설정 */
+  min-width: 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+
+
+/* 공통 테이블 박스 스타일 */
+.table-section {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.prescription-box {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.scroll-box {
+  max-height: 160px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.selected-list {
+  margin-top: 20px;
+  font-size: 0.95rem;
+}

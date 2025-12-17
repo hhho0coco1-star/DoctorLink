@@ -12,19 +12,20 @@ function PrescriptionSelector() {
   };
 
   return (
-    <div className="consultation-box">
+    <div className="prescription-box">
       <h2>💊 처방 약 조회</h2>
       <label className="section-label">약품 선택</label>
+
       <div className="scroll-box">
         {drugsData.map((drug) => (
-          <label key={drug.id} className="checkbox-row">
+          <div key={drug.id} className="checkbox-row">
             <input
               type="checkbox"
               checked={selectedDrugs.includes(drug.id)}
               onChange={() => handleCheckboxChange(drug.id)}
             />
-            <span>{drug.name}</span>
-          </label>
+            <span className="drug-name">{drug.name}</span>
+          </div>
         ))}
       </div>
 

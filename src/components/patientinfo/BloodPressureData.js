@@ -1,14 +1,13 @@
-function BloodPressureData() {
-  // 더미 데이터 예시
-  const bloodPressure = [
-    { date: '2025-12-10', systolic: 120, diastolic: 80 },
-    { date: '2025-12-11', systolic: 118, diastolic: 78 },
-    { date: '2025-12-12', systolic: 122, diastolic: 82 },
-  ];
+function BloodPressureData({ patient }) {
+  const bpList = patient?.bloodPressureData || [];
+
+  if (bpList.length === 0) {
+    return <p>혈압 데이터가 없습니다.</p>;
+  }
 
   return (
     <div>
-      <h3>혈압 기록</h3>
+      <h3>{patient.name} 혈압 기록</h3>
       <table className="data-table">
         <thead>
           <tr>
@@ -18,7 +17,7 @@ function BloodPressureData() {
           </tr>
         </thead>
         <tbody>
-          {bloodPressure.map((bp, idx) => (
+          {bpList.map((bp, idx) => (
             <tr key={idx}>
               <td>{bp.date}</td>
               <td>{bp.systolic}</td>
@@ -30,5 +29,4 @@ function BloodPressureData() {
     </div>
   );
 }
-
 export default BloodPressureData;

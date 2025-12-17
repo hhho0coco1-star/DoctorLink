@@ -1,8 +1,8 @@
-import { dummyData } from '../../data/dummyData'
+function BloodSugarTable({ data }) {
+  if (!Array.isArray(data) || data.length === 0) {
+    return <p>혈당 데이터가 없습니다.</p>;
+  }
 
-
-
-function BloodSugarTable() {
   return (
     <div>
       <h3>혈당 기록</h3>
@@ -21,17 +21,17 @@ function BloodSugarTable() {
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((row, idx) => (
+          {data.map((d, idx) => (
             <tr key={idx}>
-              <td>{row.date}</td>
-              <td>{row.fasting}</td>
-              <td>{row.beforeBreakfast}</td>
-              <td>{row.afterBreakfast}</td>
-              <td>{row.beforeLunch}</td>
-              <td>{row.afterLunch}</td>
-              <td>{row.beforeDinner}</td>
-              <td>{row.afterDinner}</td>
-              <td>{row.beforeSleep}</td>
+              <td>{d.date}</td>
+              <td>{d.fasting}</td>
+              <td>{d.beforeBreakfast}</td>
+              <td>{d.afterBreakfast}</td>
+              <td>{d.beforeLunch}</td>
+              <td>{d.afterLunch}</td>
+              <td>{d.beforeDinner}</td>
+              <td>{d.afterDinner}</td>
+              <td>{d.beforeSleep}</td>
             </tr>
           ))}
         </tbody>
@@ -39,5 +39,4 @@ function BloodSugarTable() {
     </div>
   );
 }
-
 export default BloodSugarTable;

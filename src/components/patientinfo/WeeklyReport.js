@@ -12,7 +12,7 @@ function WeeklyReport({ data, lines, title, chartType = "line" }) {
         <LineChart width={800} height={400} data={data} margin={{ top: 20, right: 30, left: 50, bottom: 30 }}
 >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" tickMargin={10} />
+          <XAxis dataKey="date" tickMargin={10} padding={{ left: 30, right: 30 }} />
           <YAxis domain={[0, 'dataMax']} padding={{ top: 10, bottom: 10 }}/>
           <Tooltip />
           <Legend />

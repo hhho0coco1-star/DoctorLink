@@ -1,6 +1,8 @@
-import { sleepData } from '../../data/dummyData'
+function SleepData({ data }) {
+  if (!Array.isArray(data) || data.length === 0) {
+    return <p>수면 데이터가 없습니다.</p>;
+  }
 
-function SleepData() {
   return (
     <div>
       <h3>수면 기록</h3>
@@ -12,10 +14,10 @@ function SleepData() {
           </tr>
         </thead>
         <tbody>
-          {sleepData.map((sleep, idx) => (
+          {data.map((d, idx) => (
             <tr key={idx}>
-              <td>{sleep.date}</td>
-              <td>{sleep.hours}</td>
+              <td>{d.date}</td>
+              <td>{d.hours}</td>
             </tr>
           ))}
         </tbody>

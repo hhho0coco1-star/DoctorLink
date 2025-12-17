@@ -1,10 +1,15 @@
 /* 공통 섹션 스타일 */
 .table-section {
+  flex: 1;
   margin: 20px 0;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  background-color: #fff; /* 통일 */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  /* 스크롤 추가 */
+  max-height: 400px;   /* 원하는 높이로 조정 */
+  overflow-y: auto;    /* 세로 스크롤 */
 }
 
 /* 제목 스타일 */
@@ -32,6 +37,9 @@
   background-color: #f0f0f0;
   font-weight: bold;
   color: #555;
+  position: sticky; /* 헤더 고정 */
+  top: 0;
+  z-index: 2;
 }
 
 .data-table tr:nth-child(even) {
@@ -57,15 +65,13 @@
   color: #fff;
 }
 
-.badge:contains("정상") {
+.badge.normal {
   background-color: #4caf50; /* 초록색 */
 }
-
-.badge:contains("주의") {
+.badge.warning {
   background-color: #ff9800; /* 주황색 */
 }
-
-.badge:contains("위험") {
+.badge.danger {
   background-color: #f44336; /* 빨강색 */
 }
 
@@ -97,21 +103,22 @@
   display: flex;
   gap: 40px;
   justify-content: space-between;
-  align-items: stretch; /* flex-start 대신 stretch로 높이 맞추기 */
+  align-items: stretch;
 }
 
 /* 왼쪽 박스: 진료 상담 내용 */
 .consultation-box {
-  flex: 1.2; /* 더 넓게 설정 */
+  flex: 1.2;
   min-width: 0;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 /* 오른쪽 박스: 처방 약 조회 */
 .prescription-box {
-  flex: 0.8; /* 상대적으로 좁게 설정 */
+  flex: 0.8;
   min-width: 0;
   padding: 20px;
   background-color: #fff;
@@ -119,27 +126,9 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-
-
-
-/* 공통 테이블 박스 스타일 */
-.table-section {
-  flex: 1;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.prescription-box {
-  flex: 1;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
+/* 스크롤 박스 */
 .scroll-box {
-  max-height: 160px;
+  max-height: 180px;
   overflow-y: auto;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -158,4 +147,33 @@
 .selected-list {
   margin-top: 20px;
   font-size: 0.95rem;
+}
+/* 체크박스 + 약 이름 나란히 정렬 */
+.checkbox-row {
+  display: flex;
+  align-items: center;   /* 세로 가운데 맞춤 */
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  gap: 1px;             /* 체크박스와 텍스트 사이 간격 */
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.checkbox-row input[type="checkbox"] {
+ flex-shrink: 0;        /* 크기 고정 */
+  width: 18px;           /* 적절한 너비 명시 */
+  height: 18px;          /* 적절한 높이 명시 */
+  margin: 0 8px 0 0;     /* 오른쪽 간격 살짝 추가 */
+  cursor: pointer;       /* 마우스 올리면 손가락 모양 */
+  
+  /* 만약 scale을 썼다면 제거하거나 1로 고정 */
+  transform: none;
+}
+
+.drug-name {
+ flex: 1;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1;        /* 텍스트 높이 정렬 */
+  display: flex;
+  align-items: center;
 }

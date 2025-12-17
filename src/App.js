@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import MyPage from './header/MyPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Calendar from './header/Calendar';
-import DashBoard from './header/DL04_DashBoard';
+
+import MyPage from './addressTest/MyPage';
+import Calendar from './addressTest/Calendar';
+import DashBoard from './/mainPage/DL04_DashBoard';
+import MainHeader from './mainHeader/MainHeader';
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import "./MainHeader.css";
+import "../mainHeader/MainHeader.css";
 import "./DL03_LeftDashBoard.css";
 
 import React, { useState, useEffect } from "react"

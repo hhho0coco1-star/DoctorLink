@@ -1,6 +1,6 @@
-import MainHeader from "./MainHeader"
-import Header from "./DL01_Header"
-import SideBar from "./DL02_SideBar"
+import MainHeader from "../mainHeader/MainHeader"
+import Header from "../mainHeader/DL01_Header"
+import SideBar from "../mainHeader/DL02_SideBar"
 import LeftDashBoard from "./DL03_LeftDashBoard"
 import RightDashBoard from "./DL05_RightDashBoard"
 

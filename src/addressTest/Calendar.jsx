@@ -1,4 +1,4 @@
-import MainHeader from "./MainHeader";
+import MainHeader from "../mainHeader/MainHeader";
 
 export default function Calendar() {
 

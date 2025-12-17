@@ -5,8 +5,6 @@ import SideBar from "./DL02_SideBar";
 export default function MainHeader() {
 
     return (
-        // 건강문진표
-        // 음주, 흡연
         <div className="main">
             {/* header */}
             <Header />
@@ -17,7 +15,6 @@ export default function MainHeader() {
                 <div>
                     {/* ======================== Text ======================== */}
                 </div>
-
             </main>
         </div>
 

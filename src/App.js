@@ -12,11 +12,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/healthq' element={<HealthQ/>} />
-        {/* <Route path="/" element={<DashBoard />} />
+        <Route path="/" element={<DashBoard />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/calendar" element={<Calendar />} /> */}
+        <Route path='/healthq' element={<HealthQ/>} />
 
+        {/* 미연결 */}
+        <Route path="/calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>
   );

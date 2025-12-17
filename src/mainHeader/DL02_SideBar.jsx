@@ -49,7 +49,7 @@ export default function DL02_SideBar() {
                         <div style={{ fontSize: "10px" }}>Today: {eatPill}회</div>
                     </div>
                 </div>
-                <Link to="/calendar" className="calender_css">
+                <Link to="/healthq" className="healthq_css">
                     <div className="aside_box1">
                         <FaCalendarCheck style={{ marginRight: '10px' }} />건강기록</div>
                 </Link>

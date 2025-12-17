@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.main_healthq {
+    width: 100%;
+    height: 88vh;
+    margin: 1vh;
+    padding: 1vh;
+
+    border-radius: 1vh;
+    background-color: lightskyblue;
+}

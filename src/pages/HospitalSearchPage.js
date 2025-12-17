@@ -5,6 +5,7 @@ import RegionModal from './hospital/RegionModal';
 import RegionSelectList from './hospital/RegionSelectList'
 import DepartmentSelectList from './hospital/DepartmentSelectList';
 import Dropdown from './hospital/Dropdown';
+import { timeOptions,holidayOptions } from './hospital/data/dropdownOptions';
 
 function HospitalSearchPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +60,11 @@ function HospitalSearchPage() {
                                 )}
                             </RegionModal>
                         </div>
-                        <div class="item_bottom">
-                            <Dropdown/>
+                        {/* 드롭다운 */}
+                        <div className="item_bottom">
+                            <Dropdown items={timeOptions}/>
+                            <Dropdown items={holidayOptions}/>
                         </div>
-
                     </div>
                 </div>
             </div>

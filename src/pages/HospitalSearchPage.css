@@ -37,3 +37,9 @@
 .select_button:hover {
     background: #f9f9f9;
 }
+
+/* 드롭다운 */
+.dropdown .active {
+    font-weight: bold;
+    background-color: #f0f6ff;
+}

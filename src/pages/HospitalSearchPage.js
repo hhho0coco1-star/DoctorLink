@@ -4,6 +4,7 @@ import MainHeader from "../header/MainHeader";
 import RegionModal from './hospital/RegionModal';
 import RegionSelectList from './hospital/RegionSelectList'
 import DepartmentSelectList from './hospital/DepartmentSelectList';
+import Dropdown from './hospital/Dropdown';
 
 function HospitalSearchPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,15 +60,7 @@ function HospitalSearchPage() {
                             </RegionModal>
                         </div>
                         <div class="item_bottom">
-                            <details>
-                                <summary>야간</summary>
-                                <ul>
-                                    <li>평일 야간</li>
-                                    <li>주간 야간</li>
-                                    <li>평일 24시</li>
-                                    <li>주간 24시</li>
-                                </ul>
-                            </details>
+                            <Dropdown/>
                         </div>
 
                     </div>

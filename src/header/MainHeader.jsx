@@ -13,9 +13,9 @@ export default function MainHeader() {
                 {/* aside */}
                 <SideBar />
 
-                <article>
+                <div>
                     {/* ======================== Text ======================== */}
-                </article>
+                </div>
 
             </main>
         </div>

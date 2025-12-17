@@ -38,7 +38,7 @@ export default function DL03_BloodBox({ userName, bpReading, graph }) {
     // ========================== return ==========================
 
     return ( // 👈 BloodBox 함수 안에서 return
-        <div className="dashBoard_Box02" style={{ width: "90vh" }}>
+        <div className="dashBoard_Box02" style={{ width: "70vh" }}>
             {/* 이름 + 상세조회 버튼 (유지) */}
             <div className="bp-header">
                 <span className="bp-name">{userName || "홍길동"}</span>

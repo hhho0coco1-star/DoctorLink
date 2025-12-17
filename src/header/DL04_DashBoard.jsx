@@ -18,7 +18,7 @@ export default function DashBoard() {
                     {/* aside */}
                     <SideBar />
                     {/* article */}
-                    <article>
+                    <div className="article_dashBoard">
                         <div className="dashBoard">
                             {/* ============================================================================================== */}
                             <div class="appointment-card">
@@ -78,7 +78,7 @@ export default function DashBoard() {
                             />
                             <div className="dashBoard_Box02">{<RightDashBoard />}</div>
                         </div>
-                    </article>
+                    </div>
                 </main>
             </div>
         </div>

@@ -18,19 +18,21 @@
 
 /* 버튼 */
 .select_button {
-    width: 100%;
-    padding-right: 10px;
+    min-width: 140px;
+    padding: 8px 12px;
 
     border: transparent;
     background: #fff;
 
     font-size: 1.5rem;
-    color: #000000;
+    color: #000;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    white-space: nowrap;
+    /* 줄바꿈 방지 */
     cursor: pointer;
 }
 
@@ -44,27 +46,28 @@
     background-color: #f0f6ff;
 }
 
-.item_bottom{
+.item_bottom {
     display: flex;
-    cursor: pointer;    
-    gap: 8px; /* 드롭다운 리스트 사이의 간격을 설정합니다. 필요에 따라 px 값을 조절하세요 */
-    margin-top: 14px; /* 위 요소와의 거리 */
+    cursor: pointer;
+    /* 드롭다운 리스트 사이의 간격을 설정합니다. 필요에 따라 px 값을 조절하세요 */
+    margin-top: 8px;
+    /* 위 요소와의 거리 */
+    gap: 8px;
 }
 
 .dropdown {
     position: relative;
-    width: 50%;
+    width: auto;
 }
 
 .dropdown__button {
     max-width: 120px;
-    
     width: 100%;
     padding: 9px 14px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 24px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: #222;
     text-align: left;
     cursor: pointer;
@@ -72,9 +75,11 @@
     align-items: center;
     justify-content: space-between;
     transition: background 0.15s;
+
 }
 
-.dropdown__button:hover, .dropdown__button:focus {
+.dropdown__button:hover,
+.dropdown__button:focus {
     background: #f9f9f9;
 }
 
@@ -88,15 +93,14 @@
     background: #fff;
     border: 1px solid #ccddee;
     border-radius: 8px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
     max-height: 240px;
     overflow: auto;
-    padding: 4px 0;
 }
 
 .dropdown__item {
     padding: 10px 16px;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: #333;
     cursor: pointer;
     display: flex;
@@ -117,4 +121,55 @@
     margin-left: auto;
     color: #2979ff;
     font-size: 1.1em;
+}
+
+.page.modal-open .page-content {
+    pointer-events: none;
+}
+
+.modal {
+    pointer-events: auto;
+    width: 100%;
+}
+
+.hospital-list-wrap {
+    border: 2px solid #000000;
+    padding: 30px;
+}
+
+.hospital-list {
+    /* 남은 공간을 가득 채우는 박스 테두리 표시 */
+    /* flex: 1; */
+    /* min-height: 180px; */
+    background: #fafdff;
+
+    display: flex;
+    /* 가로로 나열 */
+    flex-wrap: wrap;
+    /* 줄바꿈 허용 -> 여러 줄 */
+    gap: 35px;
+    /* 카드 사이 간격 */
+
+}
+
+.hospital-card {
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+
+    flex: 0 0 calc((100% - 35px)/2);
+    box-sizing: border-box;
+}
+
+.hospital-list .title {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.hospital-list .isopen {
+    color: rgb(0, 209, 0);
+}
+
+.hospital-list .font-col-gray {
+    color: #333;
 }

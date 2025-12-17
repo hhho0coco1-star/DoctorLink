@@ -1,12 +1,10 @@
-import "./MainHeader.css";
-import Header from "./DL01_Header";
-import SideBar from "./DL02_SideBar";
+import Header from "../mainHeader/DL01_Header"
+import SideBar from "../mainHeader/DL02_SideBar"
 
-export default function MainHeader() {
+export default function HealthQ() {
 
     return (
-        // 건강문진표
-        // 음주, 흡연
+
         <div className="main">
             {/* header */}
             <Header />

@@ -16,6 +16,7 @@ function HospitalSearchPage() {
 
     // 병원 정보를 담은 객체를 만듭니다.
     const hospitalInfo = {
+        id : "hp001",
         title: "새로운병원",
         address: "충남 천안시 동남구 중앙로 123번길",
         department: "내과",

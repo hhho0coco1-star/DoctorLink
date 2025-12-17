@@ -8,6 +8,8 @@ import './App.css';
 import MainPage from './header/MainPage';
 import Calendar from './header/Calendar';
 import CalendarOverview from "./pages/CalendarOverview";
+import Settings from "./pages/Settings";
+
 
 function App() {
   return (
@@ -16,11 +18,14 @@ function App() {
         {/* <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} /> */}
-        <Route path="/" element={<CalendarOverview />} />
+        <Route path="/calendar" element={<CalendarOverview />} />
+        <Route path="/find-password" element={<FindPassword />} />
+        <Route path="/settings" element={<Settings />} />
+
       </Routes>
     </BrowserRouter>
   );

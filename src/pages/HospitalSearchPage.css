@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.hospital_find {
+    padding: 10px;
+}
+
+.hospital_find .item {
+    display: flex;
+}
+
+.btn_filter .modal .item_top {
+    display: flex;
+}
+
+/* 버튼 */
+.select_button {
+    width: 100%;
+    padding-right: 10px;
+
+    border: transparent;
+    background: #fff;
+
+    font-size: 1.2rem;
+    color: #000000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.select_button:hover {
+    background: #f9f9f9;
+}

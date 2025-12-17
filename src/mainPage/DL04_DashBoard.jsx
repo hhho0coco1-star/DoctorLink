@@ -3,11 +3,14 @@ import Header from "../mainHeader/DL01_Header"
 import SideBar from "../mainHeader/DL02_SideBar"
 import LeftDashBoard from "./DL03_LeftDashBoard"
 import RightDashBoard from "./DL05_RightDashBoard"
+import SurveyModal from "../surveyModel/SurveyModel.jsx";
+import { useState } from "react"
 
 // css
 import "./DL04_DashBoard.css";
 
 export default function DashBoard() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <div>
@@ -16,7 +19,9 @@ export default function DashBoard() {
                 <Header />
                 <main className="mainBody">
                     {/* aside */}
-                    <SideBar />
+                    <SideBar onOpenSurvey={() => setIsModalOpen(true)} />
+
+                    {isModalOpen && <SurveyModal onClose={() => setIsModalOpen(false)} />}
                     {/* article */}
                     <div className="article_dashBoard">
                         <div className="dashBoard">

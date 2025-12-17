@@ -1,0 +1,189 @@
+/* ================= 전체 레이아웃 ================= */
+
+.event-calendar {
+    padding: 16px;
+    background-color: #f9fafb;
+}
+
+/* ================= 약 예제 버튼 ================= */
+
+.medication-samples {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0 16px;
+}
+
+.medication-samples button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.medication-samples button:hover {
+    background-color: #f1f5f9;
+}
+
+/* ================= 캘린더 ================= */
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 0;
+    color: #374151;
+}
+
+.calendar-cell {
+    min-height: 120px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-cell:hover {
+    background-color: #f8fafc;
+}
+
+/* 오늘 날짜 강조 */
+.calendar-cell.today {
+    outline: 2px solid #2563eb;
+}
+
+/* 날짜 숫자 */
+.date-number {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* ================= 이벤트 ================= */
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* 예약 */
+.event--reservation {
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 약 */
+.event--medication {
+    background-color: #f59e0b;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 5px;
+    border-radius: 4px;
+}
+
+/* 복용 완료 */
+.event--medication.taken {
+    background-color: #22c55e;
+    text-decoration: line-through;
+}
+
+/* ================= 달력 하단 버튼 ================= */
+
+.calendar-footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.quick-take-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.quick-take-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* ================= 모달 ================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #ffffff;
+    width: 320px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.modal h3 {
+    margin-bottom: 12px;
+}
+
+/* 에러 메시지 */
+.error-text {
+    color: #ef4444;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+/* 모달 input */
+.modal input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+/* 모달 버튼 영역 */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.modal-actions .btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.modal-actions .btn.confirm {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.modal-actions .btn.cancel {
+    background-color: #e5e7eb;
+}

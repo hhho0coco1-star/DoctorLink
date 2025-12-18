@@ -2,6 +2,7 @@
 export const testResultsData = [
   { item: '혈압', value1: '120', value2: '80', badge: '정상' },
   { item: '혈당', value1: '95', value2: '100', badge: '주의' },
+  { item: '콜레스테롤', value1: '95', value2: '100', badge: '주의' },
 ];
 
 // 지난 진료 내역 더미 데이터

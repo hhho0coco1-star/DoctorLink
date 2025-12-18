@@ -128,7 +128,7 @@
 
 /* 스크롤 박스 */
 .scroll-box {
-  max-height: 180px;
+  height: 180px;
   overflow-y: auto;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -153,7 +153,7 @@
   display: flex;
   align-items: center;   /* 세로 가운데 맞춤 */
   justify-content: flex-start; /* 왼쪽 정렬 */
-  gap: 1px;             /* 체크박스와 텍스트 사이 간격 */
+  gap: 6px;             /* 체크박스와 텍스트 사이 간격 */
   padding: 6px 0;
   border-bottom: 1px solid #eee;
 }
@@ -173,7 +173,7 @@
  flex: 1;
   font-size: 0.95rem;
   color: #333;
-  line-height: 1;        /* 텍스트 높이 정렬 */
+  line-height: 1.4;        /* 텍스트 높이 정렬 */
   display: flex;
   align-items: center;
 }

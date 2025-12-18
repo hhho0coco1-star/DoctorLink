@@ -118,7 +118,7 @@ function LifeReportTable() {
             );
           })}
 
-          {/* 전체 평균 행 */}
+          {/* 전체 평균 행
           <tr className="avg-row">
             <td>
               <strong>전체 평균</strong>
@@ -129,7 +129,7 @@ function LifeReportTable() {
             </td>
             <td>{avgSleep} 시간</td>
             <td>{avgWeight} kg</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>

@@ -6,11 +6,7 @@ import FindId from "./pages/FindId";
 import FindPassword from "./pages/FindPassword";
 import './App.css';
 import MainPage from './header/MainPage';
-<<<<<<< HEAD
-import Calendar from './header/CalendarOverview';
-=======
-import CalendarOverview from "./pages/CalendarOverview";
->>>>>>> calendar
+import Calendar from './pages/CalendarOverview';
 import Settings from "./pages/Settings";
 import HospitalSearchPage from "./pages/hospital/HospitalSearchPage"
 import HospitalDetail from "./pages/hospital/HospitalDetail";
@@ -26,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mypages" element={<MyPages />} />
-        <Route path="/calendar" element={<CalendarOverview />} />
+        <Route path="/calendar" element={<Calendar />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
         <Route path="/settings" element={<Settings />} />

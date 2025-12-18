@@ -29,7 +29,6 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/hospitalSearch" element={<HospitalSearchPage />} />
         <Route path="/hospital/:id" element={<HospitalDetail />} />
-        <Route path="/" element={<HospitalSearchPage />} />
 
       </Routes>
     </BrowserRouter>

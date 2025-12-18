@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MainHeader from "../header/MainHeader";
 import "./CalendarOverview.css";
 
@@ -13,6 +13,7 @@ export default function CalendarOverview() {
     const [selectedDay, setSelectedDay] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
+    const calendarStorageKey = "calendarEvents";
     const [events, setEvents] = useState({});
     const [error, setError] = useState("");
     const [form, setForm] = useState({
@@ -22,6 +23,27 @@ export default function CalendarOverview() {
 
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
     const today = new Date().getDate(); // ⭐ 오늘 날짜 (추가)
+
+    // ✅ HospitalDetail 등 다른 화면에서 저장한 예약/이벤트를 불러오기
+    useEffect(() => {
+        try {
+            const raw = localStorage.getItem(calendarStorageKey);
+            if (!raw) return;
+            const parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === "object") setEvents(parsed);
+        } catch (e) {
+            // ignore
+        }
+    }, []);
+
+    // ✅ 이벤트 변경 시 localStorage에 저장(새로고침/페이지 이동에도 유지)
+    useEffect(() => {
+        try {
+            localStorage.setItem(calendarStorageKey, JSON.stringify(events));
+        } catch (e) {
+            // ignore
+        }
+    }, [events]);
 
     /* ================= 예약 모달 로직 (기존) ================= */
     const openAddModal = (day) => {

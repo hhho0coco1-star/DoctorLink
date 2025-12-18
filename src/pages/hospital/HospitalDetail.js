@@ -22,6 +22,16 @@ export default function HospitalDetail() {
     const [ratingOverride, setRatingOverride] = useState(null);
     const [reviewCountOverride, setReviewCountOverride] = useState(null);
 
+    // ✅ 예약 모달 (CalendarOverview에 저장)
+    const calendarStorageKey = "calendarEvents";
+    const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
+    const [reserveError, setReserveError] = useState("");
+    const [reserveForm, setReserveForm] = useState({
+        day: new Date().getDate(),
+        dept: "",
+        time: "",
+    });
+
     useEffect(() => {
         if (!hospital) return;
         try {
@@ -110,6 +120,15 @@ export default function HospitalDetail() {
         if (!hospital) return "#";
         const q = encodeURIComponent(`${hospital.title} ${hospital.address}`);
         return `https://map.naver.com/p/search/${q}`;
+    }, [hospital]);
+
+    useEffect(() => {
+        if (!hospital) return;
+        // 모달 기본값: 담당과는 병원 진료과로
+        setReserveForm((prev) => ({
+            ...prev,
+            dept: prev.dept || hospital.department || "",
+        }));
     }, [hospital]);
 
     const treatments = useMemo(() => {
@@ -541,10 +560,14 @@ export default function HospitalDetail() {
                                     type="button"
                                     className="hospital-detail-cta"
                                     onClick={() => {
-                                        // TODO: 예약 페이지/모달로 연결
-                                        alert(
-                                            "예약 미구현."
-                                        );
+                                        if (!hospital) return;
+                                        setReserveError("");
+                                        setReserveForm((prev) => ({
+                                            day: prev.day ?? new Date().getDate(),
+                                            dept: hospital.department || prev.dept || "",
+                                            time: prev.time || "",
+                                        }));
+                                        setIsReserveModalOpen(true);
                                     }}
                                 >
                                     예약하기
@@ -584,6 +607,159 @@ export default function HospitalDetail() {
                     </div>
                 )}
             </div>
+
+            {isReserveModalOpen && hospital && (
+                <div
+                    className="hospital-modal-overlay"
+                    onClick={() => setIsReserveModalOpen(false)}
+                >
+                    <div
+                        className="hospital-modal"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="hospital-modal-title">예약하기</div>
+
+                        {reserveError && (
+                            <div className="hospital-modal-error">
+                                {reserveError}
+                            </div>
+                        )}
+
+                        <div className="hospital-modal-field">
+                            <label className="hospital-modal-label">담당과</label>
+                            <input
+                                className="hospital-modal-input"
+                                value={reserveForm.dept}
+                                onChange={(e) =>
+                                    setReserveForm((p) => ({
+                                        ...p,
+                                        dept: e.target.value,
+                                    }))
+                                }
+                                placeholder="예: 내과"
+                            />
+                        </div>
+
+                        <div className="hospital-modal-grid">
+                            <div className="hospital-modal-field">
+                                <label className="hospital-modal-label">
+                                    날짜(일)
+                                </label>
+                                <input
+                                    className="hospital-modal-input"
+                                    type="number"
+                                    min={1}
+                                    max={31}
+                                    value={reserveForm.day}
+                                    onChange={(e) =>
+                                        setReserveForm((p) => ({
+                                            ...p,
+                                            day: Number(e.target.value),
+                                        }))
+                                    }
+                                />
+                            </div>
+                            <div className="hospital-modal-field">
+                                <label className="hospital-modal-label">
+                                    시간
+                                </label>
+                                <input
+                                    className="hospital-modal-input"
+                                    type="time"
+                                    value={reserveForm.time}
+                                    onChange={(e) =>
+                                        setReserveForm((p) => ({
+                                            ...p,
+                                            time: e.target.value,
+                                        }))
+                                    }
+                                />
+                            </div>
+                        </div>
+
+                        <div className="hospital-modal-actions">
+                            <button
+                                type="button"
+                                className="hospital-modal-btn is-cancel"
+                                onClick={() => setIsReserveModalOpen(false)}
+                            >
+                                취소
+                            </button>
+                            <button
+                                type="button"
+                                className="hospital-modal-btn is-confirm"
+                                onClick={() => {
+                                    const dept = reserveForm.dept.trim();
+                                    const time = reserveForm.time;
+                                    const day = Number(reserveForm.day);
+
+                                    if (!dept) {
+                                        setReserveError(
+                                            "담당과를 입력해주세요."
+                                        );
+                                        return;
+                                    }
+                                    if (!time) {
+                                        setReserveError(
+                                            "시간을 선택해주세요."
+                                        );
+                                        return;
+                                    }
+                                    if (!Number.isFinite(day) || day < 1 || day > 31) {
+                                        setReserveError(
+                                            "날짜(일)는 1~31 사이로 입력해주세요."
+                                        );
+                                        return;
+                                    }
+
+                                    setReserveError("");
+
+                                    try {
+                                        const raw = localStorage.getItem(
+                                            calendarStorageKey
+                                        );
+                                        const parsed =
+                                            raw && raw !== "null"
+                                                ? JSON.parse(raw)
+                                                : {};
+                                        const prevEvents =
+                                            parsed && typeof parsed === "object"
+                                                ? parsed
+                                                : {};
+
+                                        const dayKey = String(day);
+                                        const dayEvents = prevEvents[dayKey] || [];
+                                        const next = {
+                                            ...prevEvents,
+                                            [dayKey]: [
+                                                ...dayEvents,
+                                                {
+                                                    type: "reservation",
+                                                    title: `${dept} · ${time}`,
+                                                    hospitalId: hospital.id,
+                                                    hospitalTitle: hospital.title,
+                                                },
+                                            ],
+                                        };
+
+                                        localStorage.setItem(
+                                            calendarStorageKey,
+                                            JSON.stringify(next)
+                                        );
+                                    } catch (e) {
+                                        // ignore
+                                    }
+
+                                    setIsReserveModalOpen(false);
+                                    alert("예약이 달력에 저장됐어요. (캘린더에서 확인)");
+                                }}
+                            >
+                                저장
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </MainHeader>
     );
 }

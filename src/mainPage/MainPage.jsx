@@ -1,13 +1,13 @@
-import MainHeader from "../mainHeader/MainHeader"
-import Header from "../mainHeader/DL01_Header"
-import SideBar from "../mainHeader/DL02_SideBar"
-import LeftDashBoard from "./DL03_LeftDashBoard"
-import RightDashBoard from "./DL05_RightDashBoard"
+import MainHeader from "../mainHeader/MainHeader.jsx"
+import Header from "../mainHeader/DL01_Header.jsx"
+import SideBar from "../mainHeader/DL02_SideBar.jsx"
+import LeftDashBoard from "./DL03_LeftDashBoard.jsx"
+import RightDashBoard from "./DL05_RightDashBoard.jsx"
 import SurveyModal from "../surveyModel/SurveyModel.jsx";
 import { useState } from "react"
 
 // css
-import "./DL04_DashBoard.css";
+import "./MainPage.css";
 
 export default function DashBoard() {
     const [isModalOpen, setIsModalOpen] = useState(false);

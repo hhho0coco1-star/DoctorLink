@@ -4,6 +4,8 @@ import MainHeader from "./MainHeader";
 
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../logIn/Login";
+import { useAuth } from "../AuthContext";
 
 import {
     FaUserCircle,
@@ -21,7 +23,20 @@ import {
     FaDeskpro
 } from 'react-icons/fa';
 
-export default function DL02_SideBar( { onOpenSurvey } ) {
+export default function DL02_SideBar({ onOpenSurvey }) {
+
+    const { loginTry, setLoginTry } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLoginClick = () => {
+        navigate("/login");
+    };
+
+    const handleLogoutClick = () => {
+        setLoginTry(false);
+        alert("로그아웃 되었습니다.");
+        navigate("/");
+    };
 
     const [eatPill, setEatPill] = useState(3);
     const [eat, setEat] = useState(1);
@@ -39,36 +54,61 @@ export default function DL02_SideBar( { onOpenSurvey } ) {
 
     return (
 
-        <aside>
+        <aside className="aside_Main">
             <div className="aside1">
-                <p style={{ fontSize: "0.9rem", margin: "1vh", color: "white", height:"900"}}>빠른 작업</p>
-                <div className="aside_box1" onClick={handlePillCheck}>
+                <p style={{ fontSize: "0.9rem", margin: "1vh", height: "900", fontWeight: "500" }}>빠른 작업</p>
+
+
+                <div
+                    className="aside_box1"
+                    onClick={() => {
+                        if (loginTry) {
+                            handlePillCheck(); // 로그인 상태면 약 복용 함수 실행
+                        } else {
+                            alert("로그인이 필요한 서비스입니다."); // 아니면 경고창
+                            navigate("/login"); // 로그인 페이지로 유도 (선택 사항)
+                        }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                >
                     <FaPills style={{ marginRight: '10px' }} />
                     <div className="text-wrapper">
                         <div>약 복용체크</div>
-                        <div style={{ fontSize: "10px" }}>Today: {eatPill}회</div>
+                        <div style={{ fontSize: "10px" }}>Today: {loginTry ? eatPill : 0}회</div>
                     </div>
                 </div>
-                <div className="aside_box1" onClick={onOpenSurvey} style={{ cursor: 'pointer' }}>
+
+                <div className="aside_box1" onClick={() => {
+                    if (loginTry) {
+                        onOpenSurvey();
+                    } else {
+                        alert("로그인이 필요한 서비스입니다."); // 아니면 경고창
+                        navigate("/login"); // 로그인 페이지로 유도 (선택 사항)
+                    }
+                }} style={{ cursor: 'pointer' }}>
                     <FaCalendarCheck style={{ marginRight: '10px' }} />건강기록 (문진표)
                 </div>
             </div>
 
             <div className="aside2">
-                <div className="aside1_box1">
-                    <FaUserMd style={{ marginRight: '10px' }} />의료정보</div>
-                <div className="aside1_box2">
-                    <FaHeartbeat style={{ marginRight: '10px' }} />건강기록</div>
-                <div className="aside1_box3">
-                    <FaTrophy style={{ marginRight: '10px' }} />건강목표</div>
-                <div className="aside1_box5">
+                <div className="aside1_box1 aside2_box">
+                    <FaUserMd style={{ marginRight: '10px' }} />의료진(전용)</div>
+                <div className="aside1_box2 aside2_box">
+                    <FaHeartbeat style={{ marginRight: '10px' }} />병원예약</div>
+                <div className="aside1_box5 aside2_box">
                     <FaUsers style={{ marginRight: '10px' }} />커뮤니티</div>
-                <div className="aside1_box6">
+                <div className="aside1_box6 aside2_box">
                     <FaCalendarAlt style={{ marginRight: '10px' }} />캘린더</div>
-                <div className="aside1_box6">
+                <div className="aside1_box6 aside2_box">
                     <FaCog style={{ marginRight: '10px' }} />설정</div>
-                <div className="aside1_box6">
-                    <FaSignOutAlt style={{ marginRight: '10px' }} />로그아웃</div>
+
+                {loginTry ? (
+                    <div className="aside2_box" onClick={handleLogoutClick}>
+                        <FaSignOutAlt style={{ marginRight: '10px' }} />로그아웃</div>
+                ) : (
+                    <div className="aside2_box" onClick={handleLoginClick}>
+                        <FaSignOutAlt style={{ marginRight: '10px' }} />로그인</div>
+                )}
             </div>
         </aside>
 

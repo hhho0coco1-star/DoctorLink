@@ -49,7 +49,7 @@ header {
     border-radius: 1vh;
     margin-right: 3vh;
 
-    background-color: lightgray;
+    background-color: rgb(216, 240, 255);
 }
 
 .header_3:hover {

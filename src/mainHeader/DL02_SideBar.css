@@ -5,7 +5,7 @@
 }
 
 /* =================== aside =================== */
-aside {
+.aside_Main {
     width: 20%;
     height: 85vh;
     flex-shrink: 0;
@@ -82,4 +82,23 @@ aside {
 .healthq_css {
     text-decoration: none;
     color: inherit;
+}
+
+.aside2_box:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+
+    transform: scale(1.05);
+    filter: brightness(110%) saturate(100%);
+}
+
+.aside2_box:active {
+    transform: scale(0.98);
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    filter: brightness(90%) saturate(100%);
+}
+
+.aside2_box {
+    cursor: pointer;
 }

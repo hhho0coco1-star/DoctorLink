@@ -14,11 +14,13 @@ export default function MainHeader() {
                 <SideBar onOpenSurvey={() => setIsModalOpen(true)} />
                 {/* 모달 상태가 true일 때만 컴포넌트 렌더링 */}
                 {isModalOpen && <SurveyModal onClose={() => setIsModalOpen(false)} />}
-            </main>
 
             <div>
                 {/* ==================================== add ==================================== */}
+                
             </div>
+            </main>
+
         </div>
     );
 }

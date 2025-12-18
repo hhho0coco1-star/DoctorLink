@@ -12,3 +12,9 @@ export const holidayOptions = [
     "토요일 진료",
     "공휴일 진료"
 ];
+
+export const openStatusOptions = [
+    "선택 안 함",
+    "진료중",
+    "휴진",
+];

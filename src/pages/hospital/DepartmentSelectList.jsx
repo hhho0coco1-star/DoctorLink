@@ -22,6 +22,19 @@ export default function DepartmentSelectList({ onSelect }) {
                 gap: "10px",
             }}
         >
+            <button
+                key="전체"
+                onClick={() => onSelect("전체")}
+                style={{
+                    padding: "12px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    background: "#fff",
+                    fontWeight: 700,
+                }}
+            >
+                전체
+            </button>
             {departments.map((dept) => (
                 <button
                     key={dept}

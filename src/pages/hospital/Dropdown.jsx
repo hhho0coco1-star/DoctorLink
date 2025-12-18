@@ -1,10 +1,23 @@
 
 import { useState, useRef, useEffect } from "react";
 
-export default function Dropdown({ items, defaultValue = "선택 안 함" }) {
+export default function Dropdown({
+    items,
+    defaultValue = "선택 안 함",
+    value,
+    onChange,
+    placeholder,
+    nullValueItem = defaultValue,
+}) {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState(defaultValue);
     const dropdownRef = useRef(null);
+
+    const isControlled = value !== undefined;
+    const selected = isControlled ? value : defaultValue;
+    const buttonLabel =
+        isControlled && (value === null || value === undefined)
+            ? (placeholder ?? defaultValue)
+            : (selected ?? placeholder ?? defaultValue);
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -28,7 +41,7 @@ export default function Dropdown({ items, defaultValue = "선택 안 함" }) {
                 className="dropdown__button"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {selected}
+                {buttonLabel}
             </button>
 
             {isOpen && (
@@ -39,7 +52,10 @@ export default function Dropdown({ items, defaultValue = "선택 안 함" }) {
                             className={`dropdown__item ${selected === item ? "active" : ""
                                 }`}
                             onClick={() => {
-                                setSelected(item);
+                                if (onChange) {
+                                    if (item === nullValueItem) onChange(null);
+                                    else onChange(item);
+                                }
                                 setIsOpen(false);
                             }}
                         >

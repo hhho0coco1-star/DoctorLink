@@ -9,7 +9,7 @@ import MainPage from './header/MainPage';
 import Calendar from './header/Calendar';
 import CalendarOverview from "./pages/CalendarOverview";
 import Settings from "./pages/Settings";
-import HospitalSearchPage from "./pages/HospitalSearchPage"
+import HospitalSearchPage from "./pages/hospital/HospitalSearchPage"
 
 
 function App() {

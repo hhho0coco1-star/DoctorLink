@@ -1,0 +1,352 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 검색 결과 변화로 스크롤바가 생겼다/사라질 때 발생하는 레이아웃 흔들림 방지(세로 스크롤바 공간 고정) */
+html {
+    overflow-y: scroll;
+}
+
+.hospital_find {
+    padding: 0;
+}
+
+.hospital_find .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid #e6e8ee;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+}
+
+.btn_filter .modal .item_top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hospital-toolbar {
+    padding: 12px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hospital-toolbar .icon {
+    color: #6b7280;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospital_find input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.98rem;
+    color: #111827;
+    background: transparent;
+}
+
+.hospital_find input::placeholder {
+    color: #9aa0a6;
+}
+
+/* 버튼 */
+.select_button {
+    min-width: 150px;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #e6e8ee;
+    background: #fff;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #111827;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    white-space: nowrap;
+    /* 줄바꿈 방지 */
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+}
+
+.select_button:hover {
+    background: #f9fafb;
+    border-color: #d7dbe6;
+}
+
+.select-button-arrow {
+    color: #6b7280;
+    font-size: 0.85rem;
+    margin-left: 10px;
+}
+
+/* 드롭다운 */
+.dropdown .active {
+    font-weight: bold;
+    background-color: #f0f6ff;
+}
+
+.item_bottom {
+    display: flex;
+    cursor: pointer;
+    /* 드롭다운 리스트 사이의 간격을 설정합니다. 필요에 따라 px 값을 조절하세요 */
+    margin-top: 8px;
+    /* 위 요소와의 거리 */
+    gap: 8px;
+}
+
+.btn_filter .modal {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* 필터(지역/진료과) + 드롭다운을 한 줄로 정렬 */
+.btn_filter .modal .item_top {
+    flex: 0 0 auto;
+}
+
+.btn_filter .modal .item_bottom {
+    margin-top: 0;
+    flex: 0 0 auto;
+}
+
+@media (max-width: 600px) {
+    .btn_filter .modal {
+        justify-content: flex-start;
+    }
+}
+
+.dropdown {
+    position: relative;
+    width: auto;
+}
+
+.dropdown__button {
+    max-width: 120px;
+    width: 100%;
+    padding: 9px 14px;
+    background: #fff;
+    border: 1px solid #e6e8ee;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    color: #222;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.15s;
+    white-space: nowrap;
+
+}
+
+.dropdown__button:hover,
+.dropdown__button:focus {
+    background: #f9fafb;
+}
+
+.dropdown__list {
+    position: absolute;
+    left: 0;
+    top: 110%;
+    z-index: 20;
+    width: max-content;
+    min-width: 100%;
+    margin-top: 6px;
+    background: #fff;
+    border: 1px solid #ccddee;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    max-height: 240px;
+    overflow: auto;
+}
+
+.dropdown__item {
+    padding: 10px 16px;
+    font-size: 0.7rem;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.12s;
+    white-space: nowrap;
+}
+
+.dropdown__item:hover {
+    background: #e9f0ff;
+}
+
+.dropdown__item.active {
+    font-weight: bold;
+    background-color: #f0f6ff;
+}
+
+.dropdown__item span:last-child {
+    margin-left: auto;
+    color: #2979ff;
+    font-size: 1.1em;
+}
+
+.page.modal-open .page-content {
+    pointer-events: none;
+}
+
+.modal {
+    pointer-events: auto;
+    width: 100%;
+}
+/* 병원 리스트 */
+.hospital-list-wrap {
+    padding: 20px;
+    /* 검색 결과 개수 변화로 스크롤바가 생겼다/사라질 때 레이아웃 폭이 바뀌며 "흔들림"이 생길 수 있음 */
+    scrollbar-gutter: stable;
+}
+
+.hospital-list {
+    /* 남은 공간을 가득 채우는 박스 테두리 표시 */
+    /* flex: 1; */
+    /* min-height: 180px; */
+    background: #fafdff;
+
+    display: flex;
+    /* 가로로 나열 */
+    flex-wrap: wrap;
+    /* 줄바꿈 허용 -> 여러 줄 */
+    gap: 35px;
+    /* 카드 사이 간격 */
+
+}
+
+.hospital-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    flex: 0 0 calc((100% - 35px)/2);
+    box-sizing: border-box;
+
+    background: #fff;
+    border: 1px solid #e6e8ee;
+    border-radius: 14px;
+    padding: 16px 16px;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.hospital-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(16, 24, 40, 0.10);
+    border-color: #d7dbe6;
+}
+
+.hospital-card .info {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 14px;
+}
+
+.hospital-list .title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #111827;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hospital-card .status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hospital-list .isopen {
+    color: rgb(0, 170, 0);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0, 170, 0, 0.10);
+}
+
+.hospital-list .isopen.isopen--closed {
+    color: #6b7280;
+    background: rgba(107, 114, 128, 0.12);
+}
+
+.hospital-card .locationm-row {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: #4b5563;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hospital-card .card-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.92rem;
+    color: #6b7280;
+}
+
+.hospital-card-thumb {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospital-card-thumb img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid #eef0f5;
+}
+
+.hospital-list .font-col-gray {
+    color: #333;
+}
+
+@media (max-width: 900px) {
+    .hospital-toolbar {
+        padding: 12px 16px 0;
+    }
+
+    .select_button {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .hospital-list {
+        gap: 16px;
+    }
+
+    .hospital-card {
+        flex: 0 0 100%;
+    }
+}

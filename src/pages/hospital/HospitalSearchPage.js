@@ -1,5 +1,6 @@
 import './HospitalSearchPage.css';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MainHeader from "../../header/MainHeader";
 import RegionModal from './RegionModal';
 import RegionSelectList from './RegionSelectList'
@@ -9,6 +10,7 @@ import { timeOptions, holidayOptions, openStatusOptions } from './data/dropdownO
 import hospitalInfoList from './data/hospitalInfo';
 
 function HospitalSearchPage() {
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [modalType, setModalType] = useState(null);
 
@@ -152,7 +154,18 @@ function HospitalSearchPage() {
                 <div className='hospital-list-wrap'>
                     <div className='hospital-list'>
                         {filteredHospitalInfoList.map((hospitalInfo) => (
-                            <div className='hospital-card' key={hospitalInfo.id}>
+                            <div
+                                className='hospital-card'
+                                key={hospitalInfo.id}
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => navigate(`/hospital/${hospitalInfo.id}`)}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter" || e.key === " ") {
+                                        navigate(`/hospital/${hospitalInfo.id}`);
+                                    }
+                                }}
+                            >
                                 <div className='info'>
                                     <div className='title'>
                                         {hospitalInfo.title}
@@ -182,13 +195,11 @@ function HospitalSearchPage() {
                                 </div>
                                 <div className="hospital-card-thumb">
                                     <img
-                                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-                                        alt="병원 내부"
-                                        style={{
-                                            width: "120px",
-                                            height: "120px",
-                                            objectFit: "cover",
-                                            borderRadius: "10px"
+                                        src={hospitalInfo.imgurl}
+                                        alt={`${hospitalInfo.title} 이미지`}
+                                        onError={(e) => {
+                                            e.currentTarget.src =
+                                                "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=400&q=80";
                                         }}
                                     />
                                 </div>

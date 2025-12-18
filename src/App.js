@@ -10,6 +10,7 @@ import Calendar from './header/Calendar';
 import CalendarOverview from "./pages/CalendarOverview";
 import Settings from "./pages/Settings";
 import HospitalSearchPage from "./pages/hospital/HospitalSearchPage"
+import HospitalDetail from "./pages/hospital/HospitalDetail";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/find-password" element={<FindPassword />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/hospitalSearch" element={<HospitalSearchPage />} />
+        <Route path="/hospital/:id" element={<HospitalDetail />} />
         <Route path="/" element={<HospitalSearchPage />} />
 
       </Routes>

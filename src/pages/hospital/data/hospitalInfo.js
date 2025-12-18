@@ -12,9 +12,10 @@ const hospitalInfo = [
         isHolidayOpen: false,
         isOpenNow: true,
         description:
-            "환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다.",
+            "환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다.환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다. 환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다. 환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다.환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다.환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다.환자 중심의 친절한 상담과 신속한 진단을 통해 신뢰받는 한빛의원입니다. 최첨단 진료기기를 보유하고 있으며, 내과 질환에 특화된 의료진이 건강을 책임집니다. 매일 위생과 방역에 신경을 쓰며 지역사회 건강 증진에 기여하고 있습니다.",
         rating: "4.7",
         reviewCount: 32,
+        imgurl: "/images/searchimg/Searchimg (1).jpg",
     },
     {
         id: "hp002",
@@ -32,6 +33,7 @@ const hospitalInfo = [
             "최신 장비로 정확한 진단과 시술을 제공하는 새미래치과입니다. 모든 연령층을 위한 맞춤형 치료와 친절한 설명으로 환자 만족도를 높이고 있습니다. 쾌적하고 현대적인 환경에서 안심하고 치료받으실 수 있습니다.",
         rating: "4.2",
         reviewCount: 46,
+        imgurl: "/images/searchimg/Searchimg (2).jpg",
     },
     {
         id: "hp003",
@@ -49,6 +51,7 @@ const hospitalInfo = [
             "소아와 청소년의 건강을 위해 진심을 다하는 참마음소아청소년과의원입니다. 성장과 발달에 대한 전문적인 상담과 예방접종 서비스를 제공하며, 아이들의 불안감을 최소화하기 위해 친근한 분위기 조성에 전력을 다합니다.",
         rating: "4.9",
         reviewCount: 58,
+        imgurl: "/images/searchimg/Searchimg (3).jpg",
     },
     {
         id: "hp004",
@@ -66,6 +69,7 @@ const hospitalInfo = [
             "관절, 척추, 스포츠손상 등에 대한 전문 진료를 제공하는 정형외과입니다. 풍부한 임상경험을 가진 의료진이 최신 치료법과 재활치료를 통해 빠른 회복을 지원합니다. 고객 만족을 위해 항상 노력합니다.",
         rating: "4.5",
         reviewCount: 65,
+        imgurl: "/images/searchimg/Searchimg (4).jpg",
     },
     {
         id: "hp005",
@@ -83,6 +87,7 @@ const hospitalInfo = [
             "코, 귀, 목 질환의 진단과 치료에 특화된 이비인후과 전문병원입니다. 내시경 진단을 통해 정확한 치료가 이루어지며, 부족함 없는 환자 상담으로 소문난 의원입니다. 깨끗한 환경과 환자 중심 서비스를 지향합니다.",
         rating: "3.8",
         reviewCount: 14,
+        imgurl: "/images/searchimg/Searchimg (5).jpg",
     },
     {
         id: "hp006",
@@ -100,6 +105,7 @@ const hospitalInfo = [
             "안질환 전문 진료와 다양한 시력 교정술을 제공하는 밝은눈안과입니다. 꼼꼼한 검사와 안전한 시술로 지역사회에 시력 건강을 책임지고 있습니다. 쾌적한 대기공간과 신속한 접수 서비스가 장점입니다.",
         rating: "4.0",
         reviewCount: 20,
+        imgurl: "/images/searchimg/Searchimg (6).jpg",
     },
     {
         id: "hp007",
@@ -117,6 +123,7 @@ const hospitalInfo = [
             "여성 건강과 출산을 위한 전문 클리닉으로, 임신·출산 관리부터 각종 여성질환 진료까지 포괄적으로 담당합니다. 신뢰받는 여성의사와 세심한 상담으로 많은 환자들의 만족도가 높습니다.",
         rating: "4.1",
         reviewCount: 40,
+        imgurl: "/images/searchimg/Searchimg (7).jpg",
     },
     {
         id: "hp008",
@@ -134,6 +141,7 @@ const hospitalInfo = [
             "우울증, 불안장애, 스트레스 관리 등 정신건강 분야의 종합진료를 제공하며, 환자의 프라이버시를 최우선으로 생각하는 의료기관입니다. 개별 맞춤 상담과 치료계획을 통해 일상 회복을 돕습니다.",
         rating: "4.4",
         reviewCount: 44,
+        imgurl: "/images/searchimg/Searchimg (8).jpg",
     },
     {
         id: "hp009",
@@ -151,6 +159,7 @@ const hospitalInfo = [
             "가족 단위의 전반적인 건강관리를 담당하며, 감기부터 만성질환까지 폭넓은 진료를 제공합니다. 진료와 예방, 정기검진까지 믿을 수 있는 진료를 선사합니다. 방문객 모두에게 친절한 서비스를 제공합니다.",
         rating: "4.6",
         reviewCount: 27,
+        imgurl: "/images/searchimg/Searchimg (9).jpg",
     },
     {
         id: "hp010",
@@ -168,6 +177,7 @@ const hospitalInfo = [
             "안심하고 아이를 맡길 수 있는 따뜻한 분위기의 초록소아청소년과의원입니다. 주기적인 건강검진과 예방접종, 급성질환 치료에 신속하게 대응합니다. 아이들의 다양한 건강문제에 경험 많은 의료진이 함께합니다.",
         rating: "4.8",
         reviewCount: 59,
+        imgurl: "/images/searchimg/Searchimg (10).jpg",
     },
     {
         id: "hp011",
@@ -185,6 +195,7 @@ const hospitalInfo = [
             "각종 근골격계 질환 및 재활치료에 특화된 의료진이 세심하게 치료방향을 제시하고 환자의 회복을 위한 맞춤 재활 서비스를 제공합니다. 넓은 물리치료실과 첨단 장비가 구비되어 있습니다.",
         rating: "4.3",
         reviewCount: 21,
+        imgurl: "/images/searchimg/Searchimg (11).jpg",
     },
     {
         id: "hp012",
@@ -202,6 +213,7 @@ const hospitalInfo = [
             "여드름, 색소침착 및 각종 피부질환 치료 경험이 풍부한 전문의가 진료합니다. 깨끗하고 편안한 환경에서 최신 레이저 시술을 받을 수 있으며, 맞춤형 피부관리 프로그램도 마련되어 있습니다.",
         rating: "4.0",
         reviewCount: 18,
+        imgurl: "/images/searchimg/Searchimg (12).jpg",
     },
     {
         id: "hp013",
@@ -219,6 +231,7 @@ const hospitalInfo = [
             "건강검진과 만성질환 관리를 중심으로 체계적인 내과 진료를 제공합니다. 개인별 맞춤 진료로 환자 한 분 한 분의 건강을 소중히 돌봅니다. 늘 밝고 친절한 의료진이 대기 중입니다.",
         rating: "4.6",
         reviewCount: 41,
+        imgurl: "/images/searchimg/Searchimg (13).jpg",
     },
     {
         id: "hp014",
@@ -236,6 +249,7 @@ const hospitalInfo = [
             "남성·여성 모두의 소변 및 비뇨기 건강을 위한 맞춤형 진료와 상담을 제공합니다. 첨단 검사기와 전문 의료진이 신속하고 정확한 진단을 약속드립니다. 항상 프라이버시를 소중히 여깁니다.",
         rating: "3.9",
         reviewCount: 13,
+        imgurl: "/images/searchimg/Searchimg (14).jpg",
     },
     {
         id: "hp015",
@@ -253,6 +267,7 @@ const hospitalInfo = [
             "두통, 어지럼증, 손발저림 등 신경 관련 질환을 전문적으로 진단하고 치료합니다. 풍부한 임상 경험을 바탕으로 환자 만족도가 높은 의원입니다. 빠른 진료 예약과 결과 안내가 가능합니다.",
         rating: "4.2",
         reviewCount: 24,
+        imgurl: "/images/searchimg/Searchimg (15).jpg",
     },
     {
         id: "hp016",
@@ -270,6 +285,7 @@ const hospitalInfo = [
             "척추 및 뇌질환에 특화된 전문 진료와 비수술적 치료를 주로 시행하는 신경외과입니다. 환자의 통증과 불편을 최소화하는 치료로 많은 환자층을 확보하고 있습니다.",
         rating: "4.7",
         reviewCount: 39,
+        imgurl: "/images/searchimg/Searchimg (16).jpg",
     },
     {
         id: "hp017",
@@ -287,6 +303,7 @@ const hospitalInfo = [
             "건강검진, 만성질환 관리, 예방접종 등 일상 건강문제 전반을 책임집니다. 항상 미소와 에너지로 환자에게 다가가며, 신속하고 정확한 진료로 주민에게 사랑받는 의원입니다.",
         rating: "4.1",
         reviewCount: 19,
+        imgurl: "/images/searchimg/Searchimg (17).jpg",
     },
     {
         id: "hp018",
@@ -304,6 +321,7 @@ const hospitalInfo = [
             "아이들의 성장과 건강을 위한 전문적인 진료와 예방프로그램을 운영합니다. 놀이공간과 밝은 인테리어로 친근한 병원 분위기를 강조합니다. 부모님들과의 원활한 소통이 특징입니다.",
         rating: "4.9",
         reviewCount: 60,
+        imgurl: "/images/searchimg/Searchimg (18).jpg",
     },
     {
         id: "hp019",
@@ -321,6 +339,7 @@ const hospitalInfo = [
             "소화기 질환 및 건강검진에 특화된 내과 전문의가 진료합니다. 매주 위·대장내시경 검사를 시행하며, 환자 안전과 편안함이 최우선입니다. 신속한 진료 예약과 세심한 검사 결과 설명이 호평받고 있습니다.",
         rating: "4.3",
         reviewCount: 35,
+        imgurl: "/images/searchimg/Searchimg (19).jpg",
     },
     {
         id: "hp020",
@@ -338,6 +357,7 @@ const hospitalInfo = [
             "전통한의학을 기반으로 개인별 체질에 맞춘 치료와 관리 프로그램을 제공합니다. 첩약, 침, 뜸 등 다양한 한방치료를 통해 자연치유력을 극대화시키는 데 집중합니다.",
         rating: "4.0",
         reviewCount: 22,
+        imgurl: "/images/searchimg/Searchimg (20).jpg",
     },
     {
         id: "hp021",
@@ -355,6 +375,7 @@ const hospitalInfo = [
             "비염, 중이염, 인후통 등 다양한 이비인후과 질환을 집중 진료하며, 내시경 장비를 활용해 정확한 진단을 합니다. 대기시간 최소화를 위해 효율적인 예약 시스템을 도입하였습니다.",
         rating: "4.4",
         reviewCount: 28,
+        imgurl: "/images/searchimg/Searchimg (21).jpg",
     },
     {
         id: "hp022",
@@ -372,6 +393,7 @@ const hospitalInfo = [
             "최신 레이저, 필러 등 피부미용 시술과 각종 진료를 제공하며, 환자 개개인에게 맞춤형 피부 솔루션을 제공합니다. 고객의 편의와 만족을 위해 노력하는 전문진료기관입니다.",
         rating: "4.5",
         reviewCount: 53,
+        imgurl: "/images/searchimg/Searchimg (22).jpg",
     },
     {
         id: "hp023",
@@ -389,6 +411,7 @@ const hospitalInfo = [
             "체질 진단부터 맞춤형 한방치료 프로그램까지 한의학적 전문성을 바탕으로 건강관리를 지원합니다. 다양한 한방 프로그램과 친절한 서비스가 장점입니다.",
         rating: "3.7",
         reviewCount: 12,
+        imgurl: "/images/searchimg/Searchimg (1).png",
     },
     {
         id: "hp024",
@@ -406,6 +429,7 @@ const hospitalInfo = [
             "다양한 재활치료 프로그램과 최신 재활장비를 이용하여 환자의 빠른 기능 회복을 지원합니다. 전문 물리치료사와 긴밀히 협력해 체계적인 치료가 가능합니다.",
         rating: "4.2",
         reviewCount: 17,
+        imgurl: "/images/searchimg/Searchimg (1).jfif",
     },
     {
         id: "hp025",
@@ -423,6 +447,7 @@ const hospitalInfo = [
             "관절, 척추, 골절 등 정형외과 진료에 특화된 전문 병원입니다. 개별 환자 맞춤 치료를 제공하며 최신 수술기법을 도입하고 있습니다. 재활치료와 상담이 동시 진행 가능합니다.",
         rating: "4.3",
         reviewCount: 23,
+        imgurl: "/images/searchimg/Searchimg (2).jfif",
     },
     {
         id: "hp026",
@@ -440,6 +465,7 @@ const hospitalInfo = [
             "정확한 분석과 진료를 바탕으로 망막, 백내장, 안압 등 폭넓은 안과 질환을 다룹니다. 전문 의료진이 신속하고 안정적으로 진료 서비스를 제공합니다.",
         rating: "4.7",
         reviewCount: 48,
+        imgurl: "/images/searchimg/Searchimg (3).jfif",
     },
     {
         id: "hp027",
@@ -457,6 +483,7 @@ const hospitalInfo = [
             "스트레스, 불안, 우울 등 정신건강 문제에 대한 전문 상담과 맞춤 치료를 제공합니다. 쾌적한 진료 환경과 비밀보장으로 믿음가는 심리치료를 진행합니다.",
         rating: "4.8",
         reviewCount: 51,
+        imgurl: "/images/searchimg/Searchimg (4).jfif",
     },
     {
         id: "hp028",
@@ -474,6 +501,7 @@ const hospitalInfo = [
             "뇌졸중, 디스크 등 신경계 질환에 대해 정확하고 신속한 진단과 치료를 제공합니다. 최신 의료장비와 풍부한 경험을 바탕으로 환자 만족도가 매우 높습니다.",
         rating: "4.6",
         reviewCount: 37,
+        imgurl: "/images/searchimg/Searchimg (5).jfif",
     },
     {
         id: "hp029",
@@ -491,6 +519,7 @@ const hospitalInfo = [
             "충치 치료, 임플란트, 스케일링 등 치과 전반 진료가 가능하며, 진료 전 설명과 친절한 응대가 호평받는 치과입니다. 첨단 장비를 도입해 빠르고 안전한 치료를 목표로 합니다.",
         rating: "4.5",
         reviewCount: 56,
+        imgurl: "/images/searchimg/Searchimg (6).jfif",
     },
     {
         id: "hp030",
@@ -508,6 +537,7 @@ const hospitalInfo = [
             "내과 전문의가 직접 진료하는 소규모 의원으로, 감기부터 만성질환까지 폭넓게 진료합니다. 친절한 상담과 따뜻한 분위기로 환자의 마음까지 보듬는 의료기관입니다.",
         rating: "4.0",
         reviewCount: 13,
+        imgurl: "/images/searchimg/Searchimg (7).jfif",
     },
 ];
 

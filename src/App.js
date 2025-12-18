@@ -3,9 +3,9 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import MyPage from './addressTest/MyPage';
-import Calendar from './addressTest/Calendar';
 import DashBoard from './/mainPage/DL04_DashBoard';
 import MainHeader from './mainHeader/MainHeader';
+
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
 
         {/* 미연결 */}
-        <Route path="/calendar" element={<Calendar />} />
+        {/* <Route path='/mypagetest' element={<Mypage />} /> */}
       </Routes>
     </BrowserRouter>
   );

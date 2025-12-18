@@ -145,6 +145,14 @@ aside {
     flex-direction: row;
 }
 
+/* ✅ children(페이지)이 렌더링되는 메인 영역 */
+.main-content {
+    flex: 1;
+    min-width: 0; /* flex item이 내용 때문에 비정상적으로 찌그러지지 않도록 */
+    padding: 24px;
+    background: #f5f7fa;
+}
+
 .dashBoard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

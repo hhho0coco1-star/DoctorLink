@@ -6,17 +6,13 @@ import FindId from "./pages/FindId";
 import FindPassword from "./pages/FindPassword";
 import './App.css';
 import MainPage from './header/MainPage';
-import Calendar from './header/Calendar';
-<<<<<<< HEAD
 import CalendarOverview from "./pages/CalendarOverview";
 import Settings from "./pages/Settings";
 import HospitalSearchPage from "./pages/hospital/HospitalSearchPage"
 import HospitalDetail from "./pages/hospital/HospitalDetail";
 
-=======
 import DashBoard from "./pages/DashBoard";
 import PatientDetail from "./pages/PatientDetail";
->>>>>>> f6820ed2e49674b42ab18be96a2b371a73fcecf6
 
 function App() {
   return (
@@ -26,17 +22,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mypages" element={<MyPages />} />
-        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/calendar" element={<CalendarOverview />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
-<<<<<<< HEAD
         <Route path="/settings" element={<Settings />} />
         <Route path="/hospitalSearch" element={<HospitalSearchPage />} />
         <Route path="/hospital/:id" element={<HospitalDetail />} />
-=======
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/patient/:id" element={<PatientDetail />} />
->>>>>>> f6820ed2e49674b42ab18be96a2b371a73fcecf6
 
       </Routes>
     </BrowserRouter>

@@ -1,9 +1,9 @@
-import React, { Children, useState } from "react";
-import Header from "./DL01_Header";
-import SideBar from "./DL02_SideBar";
+import React, { useState } from "react";
+import Header from "./DL01_Header.jsx";
+import SideBar from "./DL02_SideBar.jsx";
 import SurveyModal from "./surveyModel/SurveyModel.jsx";
 
-export default function MainHeader() {
+export default function MainHeader( { children }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
@@ -17,7 +17,7 @@ export default function MainHeader() {
 
                 <div className="main-content">
                     {/* ==================================== add ==================================== */}
-
+                    {children}
                 </div>
             </main>
         </div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MainHeader from "../pages/MainHeader";
+// import MainHeader from "../pages/MainHeader";
+// import MainHeader from "../mainHeader/MainHeader";
+import MainHeader from "../mainHeader/MainHeaderTest"
 import "./Settings.css";
 
 export default function Settings() {

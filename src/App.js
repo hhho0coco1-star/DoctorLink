@@ -12,11 +12,12 @@ import Signup from './logIn/Signup';
 
 // 
 import Calendar from './calendarOverview/CalendarOverview';
-import Settings from "./pages/Settings";
+import Settings from "./settings/Settings";
 import HospitalSearchPage from "./hospital/HospitalSearchPage"
 import HospitalDetail from "./hospital/HospitalDetail";
 import DashBoard from "./doctorDashBoard/DoctorDashBoard";
 import PatientDetail from "./patientDetail/PatientDetail";
+import Community from './community/Community';
 
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/patient/:id" element={<PatientDetail />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path='/community' element={<Community />} />
 
       </Routes>
     </BrowserRouter>

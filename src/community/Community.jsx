@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import MainHeader from "../pages/MainHeader";
+// import MainHeader from "../pages/MainHeader";
+import MainHeaderTest from "../mainHeader/MainHeaderTest"
 import "./Community.css";
 
 import {
@@ -112,7 +113,7 @@ export default function Community() {
     const posts = data[activeTab];
 
     return (
-        <MainHeader>
+        <MainHeaderTest>
             <div className="community-content">
                 {/* 상단 헤더 */}
                 <div className="community-top">
@@ -270,6 +271,6 @@ export default function Community() {
                         ))}
                 </div>
             </div>
-        </MainHeader>
+        </MainHeaderTest>
     );
 }

@@ -1,7 +1,5 @@
 // import React, { useState } from "react";
-import Header from "../mainHeader/DL01_Header.jsx";
-import SideBar from "../mainHeader/DL02_SideBar.jsx";
-import SurveyModal from "../mainHeader/surveyModel/SurveyModel.jsx";
+import MainHeader from "../mainHeader/MainHeaderTest";
 
 import React from "react";
 import { useEffect, useState } from "react";
@@ -238,204 +236,195 @@ function CalendarOverview() {
     };
 
     return (
+        <MainHeader>
 
-        <div className="main">
-            <Header />
-            <main className="mainBody">
-                {/* 사이드바에 열기 함수 전달 */}
-                <SideBar onOpenSurvey={() => setIsModalOpen(true)} />
-                {/* 모달 상태가 true일 때만 컴포넌트 렌더링 */}
-                {isModalOpen && <SurveyModal onClose={() => setIsModalOpen(false)} />}
+            <div className="main-content">
+                {/* ==================================== add ==================================== */}
+                <div className="event-calendar">
+                    <h2>병원 예약 / 복약 달력</h2>
 
-                <div className="main-content">
-                    {/* ==================================== add ==================================== */}
-                    <div className="event-calendar">
-                        <h2>병원 예약 / 복약 달력</h2>
-
-                        {/* ================= 약 예제 버튼 (추가) ================= */}
-                        <div className="medication-samples">
-                            {medicationSamples.map(med => (
-                                <button
-                                    key={med.id}
-                                    onClick={() => openMedicationModal(med)}
-                                >
-                                    {med.name} {med.dose}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* ================= 캘린더 ================= */}
-                        <div className="calendar-grid">
-                            {["일", "월", "화", "수", "목", "금", "토"].map(d => (
-                                <div key={d} className="day-name">{d}</div>
-                            ))}
-
-                            {days.map(day => (
-                                <div
-                                    key={day}
-                                    className={`calendar-cell ${day === today ? "today" : ""}`}
-                                    onClick={() => openAddModal(day)}
-                                >
-                                    <span className="date-number">{day}</span>
-
-                                    <div className="event-list">
-                                        {events[day]?.map((event, idx) => {
-                                            // 예약
-                                            if (event.type === "reservation") {
-                                                return (
-                                                    <div
-                                                        key={idx}
-                                                        className="event event--reservation"
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            openEditModal(day, idx);
-                                                        }}
-                                                    >
-                                                        {event.title}
-                                                    </div>
-                                                );
-                                            }
-
-                                            // 약
-                                            if (event.type === "medication") {
-                                                return (
-                                                    <div
-                                                        key={idx}
-                                                        className={`event event--medication ${event.taken ? "taken" : ""}`}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            toggleMedicationTaken(day, idx);
-                                                        }}
-                                                    >
-                                                        {event.name} {event.dose}
-                                                    </div>
-                                                );
-                                            }
-
-                                            return null;
-                                        })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* ================= ⭐ 달력 바로 아래 버튼 (추가) ================= */}
-                        <div className="calendar-footer">
-                            <button className="quick-take-btn" onClick={markTodayTaken}>
-                                오늘 약 복용 완료
+                    {/* ================= 약 예제 버튼 (추가) ================= */}
+                    <div className="medication-samples">
+                        {medicationSamples.map(med => (
+                            <button
+                                key={med.id}
+                                onClick={() => openMedicationModal(med)}
+                            >
+                                {med.name} {med.dose}
                             </button>
-                            <button className="clear-calendar-btn" onClick={resetCalendar}>
-                                달력 초기화
-                            </button>
-                        </div>
-
-                        {/* ================= 예약 모달 (기존) ================= */}
-                        {isModalOpen && (
-                            <div className="calendar-modal-overlay" onClick={closeModal}>
-                                <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
-                                    <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
-
-                                    {error && <p className="error-text">{error}</p>}
-
-                                    <input
-                                        placeholder="진료과 (예: 내과)"
-                                        value={form.dept}
-                                        onChange={e => setForm({ ...form, dept: e.target.value })}
-                                    />
-                                    <input
-                                        type="time"
-                                        value={form.time}
-                                        onChange={e => setForm({ ...form, time: e.target.value })}
-                                    />
-
-                                    <div className="modal-actions">
-                                        {editingIndex !== null && (
-                                            <button className="btn cancel" onClick={deleteReservation}>
-                                                삭제
-                                            </button>
-                                        )}
-                                        <button className="btn confirm" onClick={saveReservation}>
-                                            저장
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* ================= 약 모달 (추가) ================= */}
-                        {isMedModalOpen && (
-                            <div className="calendar-modal-overlay" onClick={closeMedicationModal}>
-                                <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
-                                    <h3>복약 등록</h3>
-
-                                    {medError && <p className="error-text">{medError}</p>}
-
-                                    <input
-                                        placeholder="약 이름 (예: 아스피린)"
-                                        value={medForm.name}
-                                        onChange={(e) => setMedForm((p) => ({ ...p, name: e.target.value }))}
-                                    />
-                                    <input
-                                        placeholder="용량/단위 (예: 100mg, 1정)"
-                                        value={medForm.dose}
-                                        onChange={(e) => setMedForm((p) => ({ ...p, dose: e.target.value }))}
-                                    />
-
-                                    <div className="calendar-modal-grid">
-                                        <div className="calendar-modal-field">
-                                            <label className="calendar-modal-label">시작일(일)</label>
-                                            <input
-                                                type="number"
-                                                min={1}
-                                                max={31}
-                                                value={medForm.startDay}
-                                                onChange={(e) =>
-                                                    setMedForm((p) => ({ ...p, startDay: Number(e.target.value) }))
-                                                }
-                                            />
-                                        </div>
-                                        <div className="calendar-modal-field">
-                                            <label className="calendar-modal-label">몇일마다</label>
-                                            <input
-                                                type="number"
-                                                min={1}
-                                                max={31}
-                                                value={medForm.intervalDays}
-                                                onChange={(e) =>
-                                                    setMedForm((p) => ({ ...p, intervalDays: Number(e.target.value) }))
-                                                }
-                                            />
-                                        </div>
-                                        <div className="calendar-modal-field">
-                                            <label className="calendar-modal-label">몇번</label>
-                                            <input
-                                                type="number"
-                                                min={1}
-                                                max={99}
-                                                value={medForm.times}
-                                                onChange={(e) =>
-                                                    setMedForm((p) => ({ ...p, times: Number(e.target.value) }))
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="modal-actions">
-                                        <button className="btn cancel" onClick={closeMedicationModal}>
-                                            취소
-                                        </button>
-                                        <button className="btn confirm" onClick={applyMedicationToCalendar}>
-                                            캘린더에 적용
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                        ))}
                     </div>
-                </div>
-            </main>
 
-        </div>
+                    {/* ================= 캘린더 ================= */}
+                    <div className="calendar-grid">
+                        {["일", "월", "화", "수", "목", "금", "토"].map(d => (
+                            <div key={d} className="day-name">{d}</div>
+                        ))}
+
+                        {days.map(day => (
+                            <div
+                                key={day}
+                                className={`calendar-cell ${day === today ? "today" : ""}`}
+                                onClick={() => openAddModal(day)}
+                            >
+                                <span className="date-number">{day}</span>
+
+                                <div className="event-list">
+                                    {events[day]?.map((event, idx) => {
+                                        // 예약
+                                        if (event.type === "reservation") {
+                                            return (
+                                                <div
+                                                    key={idx}
+                                                    className="event event--reservation"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        openEditModal(day, idx);
+                                                    }}
+                                                >
+                                                    {event.title}
+                                                </div>
+                                            );
+                                        }
+
+                                        // 약
+                                        if (event.type === "medication") {
+                                            return (
+                                                <div
+                                                    key={idx}
+                                                    className={`event event--medication ${event.taken ? "taken" : ""}`}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        toggleMedicationTaken(day, idx);
+                                                    }}
+                                                >
+                                                    {event.name} {event.dose}
+                                                </div>
+                                            );
+                                        }
+
+                                        return null;
+                                    })}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* ================= ⭐ 달력 바로 아래 버튼 (추가) ================= */}
+                    <div className="calendar-footer">
+                        <button className="quick-take-btn" onClick={markTodayTaken}>
+                            오늘 약 복용 완료
+                        </button>
+                        <button className="clear-calendar-btn" onClick={resetCalendar}>
+                            달력 초기화
+                        </button>
+                    </div>
+
+                    {/* ================= 예약 모달 (기존) ================= */}
+                    {isModalOpen && (
+                        <div className="calendar-modal-overlay" onClick={closeModal}>
+                            <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
+                                <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+
+                                {error && <p className="error-text">{error}</p>}
+
+                                <input
+                                    placeholder="진료과 (예: 내과)"
+                                    value={form.dept}
+                                    onChange={e => setForm({ ...form, dept: e.target.value })}
+                                />
+                                <input
+                                    type="time"
+                                    value={form.time}
+                                    onChange={e => setForm({ ...form, time: e.target.value })}
+                                />
+
+                                <div className="modal-actions">
+                                    {editingIndex !== null && (
+                                        <button className="btn cancel" onClick={deleteReservation}>
+                                            삭제
+                                        </button>
+                                    )}
+                                    <button className="btn confirm" onClick={saveReservation}>
+                                        저장
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* ================= 약 모달 (추가) ================= */}
+                    {isMedModalOpen && (
+                        <div className="calendar-modal-overlay" onClick={closeMedicationModal}>
+                            <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
+                                <h3>복약 등록</h3>
+
+                                {medError && <p className="error-text">{medError}</p>}
+
+                                <input
+                                    placeholder="약 이름 (예: 아스피린)"
+                                    value={medForm.name}
+                                    onChange={(e) => setMedForm((p) => ({ ...p, name: e.target.value }))}
+                                />
+                                <input
+                                    placeholder="용량/단위 (예: 100mg, 1정)"
+                                    value={medForm.dose}
+                                    onChange={(e) => setMedForm((p) => ({ ...p, dose: e.target.value }))}
+                                />
+
+                                <div className="calendar-modal-grid">
+                                    <div className="calendar-modal-field">
+                                        <label className="calendar-modal-label">시작일(일)</label>
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            max={31}
+                                            value={medForm.startDay}
+                                            onChange={(e) =>
+                                                setMedForm((p) => ({ ...p, startDay: Number(e.target.value) }))
+                                            }
+                                        />
+                                    </div>
+                                    <div className="calendar-modal-field">
+                                        <label className="calendar-modal-label">몇일마다</label>
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            max={31}
+                                            value={medForm.intervalDays}
+                                            onChange={(e) =>
+                                                setMedForm((p) => ({ ...p, intervalDays: Number(e.target.value) }))
+                                            }
+                                        />
+                                    </div>
+                                    <div className="calendar-modal-field">
+                                        <label className="calendar-modal-label">몇번</label>
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            max={99}
+                                            value={medForm.times}
+                                            onChange={(e) =>
+                                                setMedForm((p) => ({ ...p, times: Number(e.target.value) }))
+                                            }
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="modal-actions">
+                                    <button className="btn cancel" onClick={closeMedicationModal}>
+                                        취소
+                                    </button>
+                                    <button className="btn confirm" onClick={applyMedicationToCalendar}>
+                                        캘린더에 적용
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </MainHeader>
     );
 }
 

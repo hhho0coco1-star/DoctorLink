@@ -42,7 +42,7 @@ export default function DL03_BloodBox({ userName, bpReading, graph }) {
             {/* 이름 + 상세조회 버튼 (유지) */}
             <div className="bp-header">
                 <span className="bp-name">{userName || "홍길동"}</span>
-                <Link to="/mypage" className="bp-detail-button">
+                <Link to="/" className="bp-detail-button">
                     상세조회 &gt;
                 </Link>
             </div>

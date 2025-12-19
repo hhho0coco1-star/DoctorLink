@@ -94,15 +94,24 @@ export default function DL02_SideBar({ onOpenSurvey }) {
             <div className="aside2">
                 <div className="aside1_box1 aside2_box" onClick={() => {
                         if (loginTry) {
-                            navigate("/calendar");
+                            navigate("/dashboard");
                         } else {
                             alert("로그인이 필요한 서비스입니다.");
                             navigate("/login");
                         }
                     }}>
                     <FaUserMd style={{ marginRight: '10px' }} />의료진(전용)</div>
-                <div className="aside1_box2 aside2_box">
+
+                <div className="aside1_box2 aside2_box" onClick={() => {
+                        if (loginTry) {
+                            navigate("/hospitalSearch");
+                        } else {
+                            alert("로그인이 필요한 서비스입니다.");
+                            navigate("/login");
+                        }
+                    }}>
                     <FaHeartbeat style={{ marginRight: '10px' }} />병원예약</div>
+
                 <div className="aside1_box5 aside2_box"  onClick={() => {
                         if (loginTry) {
                             navigate("/community");
@@ -121,6 +130,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
                         }
                     }}>
                     <FaCalendarAlt style={{ marginRight: '10px' }} />캘린더</div>
+                    
                 <div className="aside1_box6 aside2_box" onClick={() => {
                         if (loginTry) {
                             navigate("/settings");

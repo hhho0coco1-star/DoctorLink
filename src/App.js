@@ -19,6 +19,9 @@ import DashBoard from "./doctorDashBoard/DoctorDashBoard";
 import PatientDetail from "./patientDetail/PatientDetail";
 import Community from './community/Community';
 
+// test
+// import CalendarOverviewTest from './calendarOverview/CalendarOverviewTest';
+
 
 export default function App() {
   return (
@@ -43,6 +46,9 @@ export default function App() {
         <Route path="/patient/:id" element={<PatientDetail />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path='/community' element={<Community />} />
+
+        {/* test */}
+        {/* <Route path='/calendartest' element={<CalendarOverviewTest />} /> */}
 
       </Routes>
     </BrowserRouter>

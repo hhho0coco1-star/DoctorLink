@@ -1,7 +1,4 @@
-// import React, { useState } from "react";
-import Header from "./DL01_Header";
-import SideBar from "./DL02_SideBar";
-import SurveyModal from "../surveyModel/SurveyModel.jsx";
+import MainHeaderTest from "../mainHeader/MainHeaderTest"
 
 import './HospitalSearchPage.css';
 import { useState } from "react";
@@ -87,171 +84,163 @@ export default function HospitalSearchPage() {
     });
 
     return (
-        <div className="main">
-            <Header />
-            <main className="mainBody">
-                {/* 사이드바에 열기 함수 전달 */}
-                <SideBar onOpenSurvey={() => setIsModalOpen(true)} />
-                {/* 모달 상태가 true일 때만 컴포넌트 렌더링 */}
-                {isModalOpen && <SurveyModal onClose={() => setIsModalOpen(false)} />}
 
-                <div>
-                    {/* ==================================== add ==================================== */}
 
-                    <div className={`page ${isOpen ? "modal-open" : ""}`}>
-                        {/* 상단 고정 헤더 */}
-                        <div className="page-content">
-                            {/* 검색창 */}
-                            <div className="hospital-toolbar">
-                                <div className='hospital_find'>
-                                    <div className='item'>
-                                        <span className="icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                                <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" strokeWidth="2" />
-                                                <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                            </svg>
-                                        </span>
-                                        <input
-                                            type='text'
-                                            placeholder='병원명, 진료과, 지역 검색'
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                        />
-                                    </div>
+        <MainHeaderTest>
+            {/* ==================================== add ==================================== */}
+
+            <div className={`page ${isOpen ? "modal-open" : ""}`}>
+                {/* 상단 고정 헤더 */}
+                <div className="page-content">
+                    {/* 검색창 */}
+                    <div className="hospital-toolbar">
+                        <div className='hospital_find'>
+                            <div className='item'>
+                                <span className="icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" strokeWidth="2" />
+                                        <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                    </svg>
+                                </span>
+                                <input
+                                    type='text'
+                                    placeholder='병원명, 진료과, 지역 검색'
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        {/* 버튼식 필터 */}
+                        <div className='btn_filter'>
+                            <div className='modal'>
+                                <div className="item_top">
+                                    <span className="icon" aria-hidden="true">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 5h18l-7 8v5l-4 2v-7L3 5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                                        </svg>
+                                    </span>
+                                    <button className='select_button' onClick={() => { setModalType("region"); setIsOpen(true); }}>
+                                        <span>{region ?? "지역"}</span>
+                                        <span className="select-button-arrow" aria-hidden="true">▼</span>
+                                    </button>
+                                    <button className='select_button' onClick={() => { setModalType("department"); setIsOpen(true) }}>
+                                        <span>{department ?? "진료과"}</span>
+                                        <span className="select-button-arrow" aria-hidden="true">▼</span>
+                                    </button>
                                 </div>
-
-                                {/* 버튼식 필터 */}
-                                <div className='btn_filter'>
-                                    <div className='modal'>
-                                        <div className="item_top">
-                                            <span className="icon" aria-hidden="true">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                                    <path d="M3 5h18l-7 8v5l-4 2v-7L3 5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                                                </svg>
-                                            </span>
-                                            <button className='select_button' onClick={() => { setModalType("region"); setIsOpen(true); }}>
-                                                <span>{region ?? "지역"}</span>
-                                                <span className="select-button-arrow" aria-hidden="true">▼</span>
-                                            </button>
-                                            <button className='select_button' onClick={() => { setModalType("department"); setIsOpen(true) }}>
-                                                <span>{department ?? "진료과"}</span>
-                                                <span className="select-button-arrow" aria-hidden="true">▼</span>
-                                            </button>
-                                        </div>
-                                        {/* 드롭다운 */}
-                                        <div className="item_bottom">
-                                            <Dropdown
-                                                items={timeOptions}
-                                                value={timeFilter}
-                                                onChange={setTimeFilter}
-                                                placeholder="야간 진료"
-                                                nullValueItem="선택 안 함"
-                                            />
-                                            <Dropdown
-                                                items={holidayOptions}
-                                                value={holidayFilter}
-                                                onChange={setHolidayFilter}
-                                                placeholder="휴일"
-                                                nullValueItem="선택 안 함"
-                                            />
-                                            <Dropdown
-                                                items={openStatusOptions}
-                                                value={openStatusFilter}
-                                                onChange={setOpenStatusFilter}
-                                                placeholder="진료 상태"
-                                                nullValueItem="선택 안 함"
-                                            />
-                                        </div>
-                                    </div>
+                                {/* 드롭다운 */}
+                                <div className="item_bottom">
+                                    <Dropdown
+                                        items={timeOptions}
+                                        value={timeFilter}
+                                        onChange={setTimeFilter}
+                                        placeholder="야간 진료"
+                                        nullValueItem="선택 안 함"
+                                    />
+                                    <Dropdown
+                                        items={holidayOptions}
+                                        value={holidayFilter}
+                                        onChange={setHolidayFilter}
+                                        placeholder="휴일"
+                                        nullValueItem="선택 안 함"
+                                    />
+                                    <Dropdown
+                                        items={openStatusOptions}
+                                        value={openStatusFilter}
+                                        onChange={setOpenStatusFilter}
+                                        placeholder="진료 상태"
+                                        nullValueItem="선택 안 함"
+                                    />
                                 </div>
                             </div>
                         </div>
-                        {/* 병원 목록 */}
-
-                        <div className='hospital-list-wrap'>
-                            <div className='hospital-list'>
-                                {filteredHospitalInfoList.map((hospitalInfo) => (
-                                    <div
-                                        className='hospital-card'
-                                        key={hospitalInfo.id}
-                                        role="button"
-                                        tabIndex={0}
-                                        onClick={() => navigate(`/hospital/${hospitalInfo.id}`)}
-                                        onKeyDown={(e) => {
-                                            if (e.key === "Enter" || e.key === " ") {
-                                                navigate(`/hospital/${hospitalInfo.id}`);
-                                            }
-                                        }}
-                                    >
-                                        <div className='info'>
-                                            <div className='title'>
-                                                {hospitalInfo.title}
-                                            </div>
-                                            <div className='status-row'>
-                                                <span className={`isopen ${hospitalInfo.isOpenNow ? "" : "isopen--closed"}`}>
-                                                    {hospitalInfo.isOpenNow ? '진료중' : '휴진'}
-                                                </span>
-                                                <span className='font-col-gray'>{hospitalInfo.closeTime} 진료종료</span>
-                                            </div>
-                                            <div className='locationm-row font-col-gray'>
-                                                {hospitalInfo.address}
-                                            </div>
-                                            <div className='card-meta-row'>
-                                                <span className="meta-icon" aria-hidden="true">
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M12 17.3 5.82 21l1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63 7.19.61-5.46 4.73L18.18 21 12 17.3Z"
-                                                            fill="currentColor"
-                                                        />
-                                                    </svg>
-                                                </span>
-                                                <span className='font-col-gray'>{hospitalInfo.rating}</span>
-                                                <span className='font-col-gray'> • 리뷰 {hospitalInfo.reviewCount}</span>
-                                                <span className='font-col-gray'> • {hospitalInfo.department}</span>
-                                            </div>
-                                        </div>
-                                        <div className="hospital-card-thumb">
-                                            <img
-                                                src={hospitalInfo.imgurl}
-                                                alt={`${hospitalInfo.title} 이미지`}
-                                                onError={(e) => {
-                                                    e.currentTarget.src =
-                                                        "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=400&q=80";
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                                {filteredHospitalInfoList.length === 0 && (
-                                    <div className='font-col-gray' style={{ padding: "8px 0" }}>
-                                        검색 결과가 없습니다.
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <RegionModal isOpen={isOpen} onClose={() => { setIsOpen(false); }}>
-                            {modalType === "region" && (
-                                <RegionSelectList
-                                    onSelect={(value) => {
-                                        setRegion(value === "전체" ? null : value);
-                                        setIsOpen(false);
-                                    }}
-                                />
-                            )}
-
-                            {modalType === "department" && (
-                                <DepartmentSelectList
-                                    onSelect={(value) => {
-                                        setDepartment(value === "전체" ? null : value);
-                                        setIsOpen(false);
-                                    }}
-                                />
-                            )}
-                        </RegionModal>
                     </div>
                 </div>
-            </main>
+                {/* 병원 목록 */}
 
-        </div>
+                <div className='hospital-list-wrap'>
+                    <div className='hospital-list'>
+                        {filteredHospitalInfoList.map((hospitalInfo) => (
+                            <div
+                                className='hospital-card'
+                                key={hospitalInfo.id}
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => navigate(`/hospital/${hospitalInfo.id}`)}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter" || e.key === " ") {
+                                        navigate(`/hospital/${hospitalInfo.id}`);
+                                    }
+                                }}
+                            >
+                                <div className='info'>
+                                    <div className='title'>
+                                        {hospitalInfo.title}
+                                    </div>
+                                    <div className='status-row'>
+                                        <span className={`isopen ${hospitalInfo.isOpenNow ? "" : "isopen--closed"}`}>
+                                            {hospitalInfo.isOpenNow ? '진료중' : '휴진'}
+                                        </span>
+                                        <span className='font-col-gray'>{hospitalInfo.closeTime} 진료종료</span>
+                                    </div>
+                                    <div className='locationm-row font-col-gray'>
+                                        {hospitalInfo.address}
+                                    </div>
+                                    <div className='card-meta-row'>
+                                        <span className="meta-icon" aria-hidden="true">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M12 17.3 5.82 21l1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63 7.19.61-5.46 4.73L18.18 21 12 17.3Z"
+                                                    fill="currentColor"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span className='font-col-gray'>{hospitalInfo.rating}</span>
+                                        <span className='font-col-gray'> • 리뷰 {hospitalInfo.reviewCount}</span>
+                                        <span className='font-col-gray'> • {hospitalInfo.department}</span>
+                                    </div>
+                                </div>
+                                <div className="hospital-card-thumb">
+                                    <img
+                                        src={hospitalInfo.imgurl}
+                                        alt={`${hospitalInfo.title} 이미지`}
+                                        onError={(e) => {
+                                            e.currentTarget.src =
+                                                "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=400&q=80";
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                        {filteredHospitalInfoList.length === 0 && (
+                            <div className='font-col-gray' style={{ padding: "8px 0" }}>
+                                검색 결과가 없습니다.
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <RegionModal isOpen={isOpen} onClose={() => { setIsOpen(false); }}>
+                    {modalType === "region" && (
+                        <RegionSelectList
+                            onSelect={(value) => {
+                                setRegion(value === "전체" ? null : value);
+                                setIsOpen(false);
+                            }}
+                        />
+                    )}
+
+                    {modalType === "department" && (
+                        <DepartmentSelectList
+                            onSelect={(value) => {
+                                setDepartment(value === "전체" ? null : value);
+                                setIsOpen(false);
+                            }}
+                        />
+                    )}
+                </RegionModal>
+            </div>
+        </MainHeaderTest >
+
     );
 }

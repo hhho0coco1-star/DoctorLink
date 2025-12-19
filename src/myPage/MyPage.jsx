@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../mainHeader/DL01_Header.jsx";
 import SideBar from "../mainHeader/DL02_SideBar.jsx";
-import SurveyModal from "../surveyModel/SurveyModel.jsx";
+import SurveyModal from "../mainHeader/surveyModel/SurveyModel.jsx";
 import "./MyPage.css";
 
 export default function MainHeader() {

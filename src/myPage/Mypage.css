@@ -12,7 +12,7 @@
 }
 
 /* Header */
-header {
+.header_Right01 {
     height: 12vh;
     display: flex;
     justify-content: space-between;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./DL01_Header";
 import SideBar from "./DL02_SideBar";
-import SurveyModal from "../surveyModel/SurveyModel.jsx";
+import SurveyModal from "./surveyModel/SurveyModel.jsx";
 
 export default function MainHeader() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,9 +15,8 @@ export default function MainHeader() {
                 {/* 모달 상태가 true일 때만 컴포넌트 렌더링 */}
                 {isModalOpen && <SurveyModal onClose={() => setIsModalOpen(false)} />}
 
-            <div>
+            <div className="main-content">
                 {/* ==================================== add ==================================== */}
-                
             </div>
             </main>
 

@@ -1,0 +1,190 @@
+// 방문 검사 결과 더미 데이터
+export const testResultsData = [
+  { item: '혈압', value1: '120', value2: '80', badge: '정상' },
+  { item: '혈당', value1: '95', value2: '100', badge: '주의' },
+  { item: '콜레스테롤', value1: '95', value2: '100', badge: '주의' },
+];
+
+// 지난 진료 내역 더미 데이터
+export const visitsData = [
+  { title1: 'Cell Text', title2: 'Cell Texts' },
+  { title1: 'Cell Text', title2: 'Cell Texts' },
+];
+  
+// 처방 약 더미 데이터
+export const drugsData = [
+  { id: 'tylenol', name: '타이레놀' },
+  { id: 'amoxicillin', name: '아목사실린' },
+  { id: 'rosuvastatin', name: '로수바스타틴' },
+  { id: 'ibuprofen', name: '이부프로펜' },
+  { id: 'metformin', name: '메트포르민' }
+]; // ✅ 마지막 원소 뒤에는 쉼표 없음
+
+
+export const lifeReportData = [
+  {
+    id: 1,
+    name: '홍길동',
+    phone: '010-1234-5678',
+    weight: '70kg',
+    dummyData: [
+      { date: '2025-12-10', fasting: 95, beforeBreakfast: 100, afterBreakfast: 120, beforeLunch: 105, afterLunch: 130, beforeDinner: 110, afterDinner: 140, beforeSleep: 100 },
+      { date: '2025-12-11', fasting: 92, beforeBreakfast: 98, afterBreakfast: 115, beforeLunch: 102, afterLunch: 128, beforeDinner: 108, afterDinner: 135, beforeSleep: 97 },
+      { date: '2025-12-12', fasting: 96, beforeBreakfast: 101, afterBreakfast: 118, beforeLunch: 106, afterLunch: 132, beforeDinner: 112, afterDinner: 138, beforeSleep: 99 },
+      { date: '2025-12-13', fasting: 94, beforeBreakfast: 99, afterBreakfast: 117, beforeLunch: 104, afterLunch: 129, beforeDinner: 109, afterDinner: 136, beforeSleep: 98 },
+      { date: '2025-12-14', fasting: 93, beforeBreakfast: 97, afterBreakfast: 116, beforeLunch: 103, afterLunch: 127, beforeDinner: 107, afterDinner: 134, beforeSleep: 96 },
+      { date: '2025-12-15', fasting: 95, beforeBreakfast: 100, afterBreakfast: 119, beforeLunch: 105, afterLunch: 131, beforeDinner: 111, afterDinner: 137, beforeSleep: 99 },
+      { date: '2025-12-16', fasting: 96, beforeBreakfast: 102, afterBreakfast: 121, beforeLunch: 106, afterLunch: 133, beforeDinner: 112, afterDinner: 139, beforeSleep: 100 },
+    ],
+    sleepData: [
+      { date: '2025-12-10', hours: 7.5 },
+      { date: '2025-12-11', hours: 6.8 },
+      { date: '2025-12-12', hours: 8.0 },
+      { date: '2025-12-13', hours: 7.2 },
+      { date: '2025-12-14', hours: 6.9 },
+      { date: '2025-12-15', hours: 7.7 },
+      { date: '2025-12-16', hours: 7.0 },
+    ],
+    bloodPressureData: [
+      { date: '2025-12-10', systolic: 120, diastolic: 80 },
+      { date: '2025-12-11', systolic: 125, diastolic: 82 },
+      { date: '2025-12-12', systolic: 118, diastolic: 78 },
+      { date: '2025-12-13', systolic: 122, diastolic: 81 },
+      { date: '2025-12-14', systolic: 126, diastolic: 83 },
+      { date: '2025-12-15', systolic: 119, diastolic: 79 },
+      { date: '2025-12-16', systolic: 124, diastolic: 80 },
+    ],
+  },
+  {
+    id: 2,
+    name: '임꺽정',
+    phone: '010-2345-6789',
+    weight: '82kg',
+    dummyData: [
+      { date: '2025-12-10', fasting: 110, beforeBreakfast: 115, afterBreakfast: 135, beforeLunch: 120, afterLunch: 145, beforeDinner: 125, afterDinner: 150, beforeSleep: 110 },
+      { date: '2025-12-11', fasting: 108, beforeBreakfast: 112, afterBreakfast: 132, beforeLunch: 118, afterLunch: 142, beforeDinner: 123, afterDinner: 148, beforeSleep: 108 },
+      { date: '2025-12-12', fasting: 109, beforeBreakfast: 114, afterBreakfast: 134, beforeLunch: 119, afterLunch: 143, beforeDinner: 124, afterDinner: 149, beforeSleep: 109 },
+      { date: '2025-12-13', fasting: 111, beforeBreakfast: 116, afterBreakfast: 136, beforeLunch: 121, afterLunch: 146, beforeDinner: 126, afterDinner: 151, beforeSleep: 111 },
+      { date: '2025-12-14', fasting: 107, beforeBreakfast: 111, afterBreakfast: 131, beforeLunch: 117, afterLunch: 141, beforeDinner: 122, afterDinner: 147, beforeSleep: 107 },
+      { date: '2025-12-15', fasting: 112, beforeBreakfast: 117, afterBreakfast: 137, beforeLunch: 122, afterLunch: 147, beforeDinner: 127, afterDinner: 152, beforeSleep: 112 },
+      { date: '2025-12-16', fasting: 109, beforeBreakfast: 114, afterBreakfast: 134, beforeLunch: 119, afterLunch: 143, beforeDinner: 124, afterDinner: 149, beforeSleep: 109 },
+    ],
+    sleepData: [
+      { date: '2025-12-10', hours: 6.5 },
+      { date: '2025-12-11', hours: 6.0 },
+      { date: '2025-12-12', hours: 6.8 },
+      { date: '2025-12-13', hours: 6.2 },
+      { date: '2025-12-14', hours: 6.4 },
+      { date: '2025-12-15', hours: 6.7 },
+      { date: '2025-12-16', hours: 6.3 },
+    ],
+    bloodPressureData: [
+      { date: '2025-12-10', systolic: 130, diastolic: 85 },
+      { date: '2025-12-11', systolic: 128, diastolic: 84 },
+      { date: '2025-12-12', systolic: 132, diastolic: 86 },
+      { date: '2025-12-13', systolic: 129, diastolic: 83 },
+      { date: '2025-12-14', systolic: 131, diastolic: 85 },
+      { date: '2025-12-15', systolic: 127, diastolic: 82 },
+      { date: '2025-12-16', systolic: 130, diastolic: 84 },
+    ],
+  },
+  {
+  id: 3,
+  name: '한타이',
+  phone: '010-3456-7890',
+  weight: '65kg',
+  dummyData: [
+    { date: '2025-12-10', fasting: 88, beforeBreakfast: 92, afterBreakfast: 110, beforeLunch: 95, afterLunch: 120, beforeDinner: 100, afterDinner: 125, beforeSleep: 90 },
+    { date: '2025-12-11', fasting: 87, beforeBreakfast: 91, afterBreakfast: 109, beforeLunch: 94, afterLunch: 119, beforeDinner: 99, afterDinner: 124, beforeSleep: 89 },
+    { date: '2025-12-12', fasting: 89, beforeBreakfast: 93, afterBreakfast: 111, beforeLunch: 96, afterLunch: 121, beforeDinner: 101, afterDinner: 126, beforeSleep: 91 },
+    { date: '2025-12-13', fasting: 90, beforeBreakfast: 94, afterBreakfast: 112, beforeLunch: 97, afterLunch: 122, beforeDinner: 102, afterDinner: 127, beforeSleep: 92 },
+    { date: '2025-12-14', fasting: 88, beforeBreakfast: 92, afterBreakfast: 110, beforeLunch: 95, afterLunch: 120, beforeDinner: 100, afterDinner: 125, beforeSleep: 90 },
+    { date: '2025-12-15', fasting: 91, beforeBreakfast: 95, afterBreakfast: 113, beforeLunch: 98, afterLunch: 123, beforeDinner: 103, afterDinner: 128, beforeSleep: 93 },
+    { date: '2025-12-16', fasting: 89, beforeBreakfast: 93, afterBreakfast: 111, beforeLunch: 96, afterLunch: 121, beforeDinner: 101, afterDinner: 126, beforeSleep: 91 },
+  ],
+  sleepData: [
+    { date: '2025-12-10', hours: 7.8 },
+    { date: '2025-12-11', hours: 7.5 },
+    { date: '2025-12-12', hours: 7.9 },
+    { date: '2025-12-13', hours: 7.6 },
+    { date: '2025-12-14', hours: 7.7 },
+    { date: '2025-12-15', hours: 7.4 },
+    { date: '2025-12-16', hours: 7.8 },
+  ],
+  bloodPressureData: [
+    { date: '2025-12-10', systolic: 115, diastolic: 75 },
+    { date: '2025-12-11', systolic: 116, diastolic: 76 },
+    { date: '2025-12-12', systolic: 114, diastolic: 74 },
+    { date: '2025-12-13', systolic: 117, diastolic: 77 },
+    { date: '2025-12-14', systolic: 115, diastolic: 75 },
+    { date: '2025-12-15', systolic: 118, diastolic: 78 },
+    { date: '2025-12-16', systolic: 116, diastolic: 76 },
+  ],
+},
+{
+  id: 4,
+  name: '이몽룡',
+  phone: '010-4567-8901',
+  weight: '72kg',
+  dummyData: [
+    { date: '2025-12-10', fasting: 102, beforeBreakfast: 106, afterBreakfast: 125, beforeLunch: 110, afterLunch: 135, beforeDinner: 115, afterDinner: 140, beforeSleep: 105 },
+    { date: '2025-12-11', fasting: 101, beforeBreakfast: 105, afterBreakfast: 124, beforeLunch: 109, afterLunch: 134, beforeDinner: 114, afterDinner: 139, beforeSleep: 104 },
+    { date: '2025-12-12', fasting: 103, beforeBreakfast: 107, afterBreakfast: 126, beforeLunch: 111, afterLunch: 136, beforeDinner: 116, afterDinner: 141, beforeSleep: 106 },
+    { date: '2025-12-13', fasting: 104, beforeBreakfast: 108, afterBreakfast: 127, beforeLunch: 112, afterLunch: 137, beforeDinner: 117, afterDinner: 142, beforeSleep: 107 },
+    { date: '2025-12-14', fasting: 102, beforeBreakfast: 106, afterBreakfast: 125, beforeLunch: 110, afterLunch: 135, beforeDinner: 115, afterDinner: 140, beforeSleep: 105 },
+    { date: '2025-12-15', fasting: 105, beforeBreakfast: 109, afterBreakfast: 128, beforeLunch: 113, afterLunch: 138, beforeDinner: 118, afterDinner: 143, beforeSleep: 108 },
+    { date: '2025-12-16', fasting: 103, beforeBreakfast: 107, afterBreakfast: 126, beforeLunch: 111, afterLunch: 136, beforeDinner: 116, afterDinner: 141, beforeSleep: 106 },
+  ],
+  sleepData: [
+    { date: '2025-12-10', hours: 6.5 },
+    { date: '2025-12-11', hours: 6.8 },
+    { date: '2025-12-12', hours: 7.0 },
+    { date: '2025-12-13', hours: 6.7 },
+    { date: '2025-12-14', hours: 6.9 },
+    { date: '2025-12-15', hours: 7.1 },
+    { date: '2025-12-16', hours: 6.6 },
+  ],
+  bloodPressureData: [
+    { date: '2025-12-10', systolic: 125, diastolic: 82 },
+    { date: '2025-12-11', systolic: 124, diastolic: 81 },
+    { date: '2025-12-12', systolic: 126, diastolic: 83 },
+    { date: '2025-12-13', systolic: 127, diastolic: 84 },
+    { date: '2025-12-14', systolic: 125, diastolic: 82 },
+    { date: '2025-12-15', systolic: 128, diastolic: 85 },
+    { date: '2025-12-16', systolic: 126, diastolic: 83 },
+  ],
+},
+{
+  id: 5,
+  name: '성춘향',
+  phone: '010-5678-9012',
+  weight: '60kg',
+  dummyData: [
+    { date: '2025-12-10', fasting: 93, beforeBreakfast: 97, afterBreakfast: 116, beforeLunch: 103, afterLunch: 127, beforeDinner: 107, afterDinner: 134, beforeSleep: 96 },
+    { date: '2025-12-11', fasting: 92, beforeBreakfast: 96, afterBreakfast: 115, beforeLunch: 102, afterLunch: 126, beforeDinner: 106, afterDinner: 133, beforeSleep: 95 },
+    { date: '2025-12-12', fasting: 94, beforeBreakfast: 98, afterBreakfast: 117, beforeLunch: 104, afterLunch: 128, beforeDinner: 108, afterDinner: 135, beforeSleep: 97 },
+    { date: '2025-12-13', fasting: 95, beforeBreakfast: 99, afterBreakfast: 118, beforeLunch: 105, afterLunch: 129, beforeDinner: 109, afterDinner: 136, beforeSleep: 98 },
+    { date: '2025-12-14', fasting: 93, beforeBreakfast: 97, afterBreakfast: 116, beforeLunch: 103, afterLunch: 127, beforeDinner: 107, afterDinner: 134, beforeSleep: 96 },
+    { date: '2025-12-15', fasting: 96, beforeBreakfast: 100, afterBreakfast: 119, beforeLunch: 106, afterLunch: 130, beforeDinner: 110, afterDinner: 137, beforeSleep: 99 },
+    { date: '2025-12-16', fasting: 94, beforeBreakfast: 98, afterBreakfast: 117, beforeLunch: 104, afterLunch: 128, beforeDinner: 108, afterDinner: 135, beforeSleep: 97 },
+  ],
+  sleepData: [
+    { date: '2025-12-10', hours: 7.2 },
+    { date: '2025-12-11', hours: 7.0 },
+    { date: '2025-12-12', hours: 7.3 },
+    { date: '2025-12-13', hours: 7.1 },
+    { date: '2025-12-14', hours: 7.4 },
+    { date: '2025-12-15', hours: 7.2 },
+    { date: '2025-12-16', hours: 7.3 },
+  ],
+  bloodPressureData: [
+    { date: '2025-12-10', systolic: 118, diastolic: 78 },
+    { date: '2025-12-11', systolic: 117, diastolic: 77 },
+    { date: '2025-12-12', systolic: 119, diastolic: 79 },
+    { date: '2025-12-13', systolic: 120, diastolic: 80 },
+    { date: '2025-12-14', systolic: 118, diastolic: 78 },
+    { date: '2025-12-15', systolic: 121, diastolic: 81 },
+    { date: '2025-12-16', systolic: 119, diastolic: 79 },
+  ],
+}
+]

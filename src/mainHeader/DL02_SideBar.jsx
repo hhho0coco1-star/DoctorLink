@@ -42,6 +42,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
     const [eat, setEat] = useState(1);
 
     // 약 복용 (클릭 이벤트)
+
     const handlePillCheck = () => {
         if (eatPill > 0) {
             alert(`약 ${eat}회 복용완료`);
@@ -91,13 +92,27 @@ export default function DL02_SideBar({ onOpenSurvey }) {
             </div>
 
             <div className="aside2">
-                <div className="aside1_box1 aside2_box">
+                <div className="aside1_box1 aside2_box" onClick={() => {
+                        if (loginTry) {
+                            navigate("/dashboard");
+                        } else {
+                            alert("로그인이 필요한 서비스입니다.");
+                            navigate("/login");
+                        }
+                    }}>
                     <FaUserMd style={{ marginRight: '10px' }} />의료진(전용)</div>
                 <div className="aside1_box2 aside2_box">
                     <FaHeartbeat style={{ marginRight: '10px' }} />병원예약</div>
-                <div className="aside1_box5 aside2_box">
+                <div className="aside1_box5 aside2_box" >
                     <FaUsers style={{ marginRight: '10px' }} />커뮤니티</div>
-                <div className="aside1_box6 aside2_box">
+                <div className="aside1_box6 aside2_box" onClick={() => {
+                        if (loginTry) {
+                            navigate("/calendar");
+                        } else {
+                            alert("로그인이 필요한 서비스입니다.");
+                            navigate("/login");
+                        }
+                    }}>
                     <FaCalendarAlt style={{ marginRight: '10px' }} />캘린더</div>
                 <div className="aside1_box6 aside2_box">
                     <FaCog style={{ marginRight: '10px' }} />설정</div>

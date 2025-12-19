@@ -26,7 +26,7 @@
 }
 
 /* Header 컨테이너 스타일 */
-header {
+.header_Right01 {
     border: 1px solid black;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;

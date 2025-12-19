@@ -1,0 +1,297 @@
+/* ================= 전체 레이아웃 ================= */
+
+.event-calendar {
+    padding: 16px;
+    /* ✅ 왼쪽 정렬 + 하나의 카드(객체)처럼 보이게 */
+    background-color: #ffffff;
+    border: 1px solid #dbe7ff;
+    border-radius: 8px; /* 각진 유지 */
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    /* width: 100vw; */
+    max-width: 760px;
+    margin: 0; /* 가운데 정렬 제거 */
+    box-sizing: border-box;
+}
+
+.event-calendar h2 {
+    margin: 6px 0 12px;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+    color: #0f172a;
+    text-align: left;
+}
+
+/* ================= 약 예제 버튼 ================= */
+
+.medication-samples {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8f0ff; /* 상단(예약/약)과 캘린더 구분 */
+}
+
+.medication-samples button {
+    padding: 8px 12px;
+    border-radius: 6px; /* 각진 유지 */
+    border: 1px solid #dbe7ff;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.medication-samples button:hover {
+    background-color: #eef4ff;
+    border-color: #bcd3ff;
+}
+
+/* ================= 캘린더 ================= */
+
+.calendar-grid {
+    display: grid;
+    /* ✅ 화면에 맞게 자동 축소(가로 overflow 방지) */
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 0;
+    color: #334155;
+}
+
+.calendar-cell {
+    aspect-ratio: 1 / 1; /* 정사각형 */
+    min-height: 0;
+    background-color: #ffffff;
+    border: 1px solid #dbe7ff;
+    border-radius: 8px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+    transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.calendar-cell:hover {
+    background-color: #f5f9ff;
+    border-color: #bcd3ff;
+    box-shadow: 0 4px 14px rgba(31, 79, 214, 0.10);
+}
+
+/* 오늘 날짜 강조 */
+.calendar-cell.today {
+    outline: 2px solid #1f4fd6;
+    background-color: #eef4ff;
+}
+
+/* 날짜 숫자 */
+.date-number {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #0f172a;
+}
+
+/* ================= 이벤트 ================= */
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* 예약 */
+.event--reservation {
+    background-color: #1f4fd6;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 약 */
+.event--medication {
+    background-color: #0ea5e9; /* 약: 청록/하늘 (의료 느낌) */
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 복용 완료 */
+.event--medication.taken {
+    background-color: #16a34a;
+    text-decoration: line-through;
+    opacity: 0.92;
+}
+
+/* ================= 달력 하단 버튼 ================= */
+
+.calendar-footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.quick-take-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #1f4fd6;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(31, 79, 214, 0.18);
+    transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.quick-take-btn:hover {
+    background-color: #173ea8;
+    transform: translateY(-1px);
+}
+
+/* 달력 초기화 */
+.clear-calendar-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #e11d48;
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(225, 29, 72, 0.16);
+    transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.clear-calendar-btn:hover {
+    background-color: #be123c;
+    transform: translateY(-1px);
+}
+
+/* ================= 모달 ================= */
+
+.calendar-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 16px;
+}
+
+.calendar-modal {
+    background-color: #ffffff;
+    width: min(92vw, 360px);
+    padding: 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    border: 1px solid #dbe7ff;
+    box-shadow: 0 18px 50px rgba(2, 6, 23, 0.22);
+}
+
+.calendar-modal h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+/* 에러 메시지 */
+.error-text {
+    color: #e11d48;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+/* 모달 input */
+.calendar-modal input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #dbe7ff;
+    border-radius: 6px;
+    outline: none;
+    background: #ffffff;
+}
+
+.calendar-modal input:focus {
+    border-color: rgba(31, 79, 214, 0.7);
+    box-shadow: 0 0 0 3px rgba(31, 79, 214, 0.18);
+}
+
+/* 약 모달 내부 그리드 */
+.calendar-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.calendar-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.calendar-modal-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* 모달 버튼 영역 */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.modal-actions .btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.modal-actions .btn.confirm {
+    background-color: #1f4fd6;
+    color: #ffffff;
+}
+
+.modal-actions .btn.cancel {
+    background-color: #e8f0ff;
+}

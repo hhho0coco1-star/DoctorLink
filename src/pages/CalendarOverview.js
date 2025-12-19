@@ -14,7 +14,16 @@ export default function CalendarOverview() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
     const calendarStorageKey = "calendarEvents";
-    const [events, setEvents] = useState({});
+    const [events, setEvents] = useState(() => {
+        try {
+            const raw = localStorage.getItem(calendarStorageKey);
+            if (!raw) return {};
+            const parsed = JSON.parse(raw);
+            return parsed && typeof parsed === "object" ? parsed : {};
+        } catch (e) {
+            return {};
+        }
+    });
     const [error, setError] = useState("");
     const [form, setForm] = useState({
         dept: "",
@@ -34,18 +43,6 @@ export default function CalendarOverview() {
 
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
     const today = new Date().getDate(); // ⭐ 오늘 날짜 (추가)
-
-    // ✅ HospitalDetail 등 다른 화면에서 저장한 예약/이벤트를 불러오기
-    useEffect(() => {
-        try {
-            const raw = localStorage.getItem(calendarStorageKey);
-            if (!raw) return;
-            const parsed = JSON.parse(raw);
-            if (parsed && typeof parsed === "object") setEvents(parsed);
-        } catch (e) {
-            // ignore
-        }
-    }, []);
 
     // ✅ 이벤트 변경 시 localStorage에 저장(새로고침/페이지 이동에도 유지)
     useEffect(() => {

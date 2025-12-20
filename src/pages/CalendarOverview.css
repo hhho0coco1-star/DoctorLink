@@ -220,11 +220,27 @@
     box-shadow: 0 18px 50px rgba(2, 6, 23, 0.22);
 }
 
-.calendar-modal h3 {
+.calendar-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 12px;
+}
+
+.calendar-modal h3 {
+    margin: 0;
     font-size: 16px;
     font-weight: 800;
     color: #0f172a;
+}
+
+.calendar-modal-date {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1f4fd6;
+    padding: 4px 12px;
+    background: rgba(31, 79, 214, 0.1);
+    border-radius: 6px;
 }
 
 /* 에러 메시지 */

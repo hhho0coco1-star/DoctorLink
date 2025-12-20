@@ -314,7 +314,22 @@ export default function CalendarOverview() {
             {isModalOpen && (
                 <div className="calendar-modal-overlay" onClick={closeModal}>
                     <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
-                        <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+                        <div className="calendar-modal-header">
+                            <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+                            {selectedDay && (() => {
+                                const now = new Date();
+                                const year = now.getFullYear();
+                                const month = now.getMonth();
+                                const dateObj = new Date(year, month, selectedDay);
+                                const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+                                const dayOfWeek = weekDays[dateObj.getDay()];
+                                return (
+                                    <div className="calendar-modal-date">
+                                        {selectedDay}일 ({dayOfWeek})
+                                    </div>
+                                );
+                            })()}
+                        </div>
 
                         {error && <p className="error-text">{error}</p>}
 

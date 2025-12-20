@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MainHeader from "../../header/MainHeader";
 import hospitalInfoList from "./data/hospitalInfo";
@@ -26,6 +26,8 @@ export default function HospitalDetail() {
     const calendarStorageKey = "calendarEvents";
     const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
     const [reserveError, setReserveError] = useState("");
+    const [isTimeInputFocused, setIsTimeInputFocused] = useState(false);
+    const timeInputRef = useRef(null);
     const [reserveForm, setReserveForm] = useState({
         day: new Date().getDate(),
         dept: "",
@@ -118,7 +120,7 @@ export default function HospitalDetail() {
 
     const naverMapSearchUrl = useMemo(() => {
         if (!hospital) return "#";
-        const q = encodeURIComponent(`${hospital.title} ${hospital.address}`);
+        const q = encodeURIComponent(`${hospital.address}`);
         return `https://map.naver.com/p/search/${q}`;
     }, [hospital]);
 
@@ -130,6 +132,66 @@ export default function HospitalDetail() {
             dept: prev.dept || hospital.department || "",
         }));
     }, [hospital]);
+
+    const handleSave = () => {
+        if (!hospital) return;
+
+        const dept = reserveForm.dept.trim();
+        const time = reserveForm.time;
+        const day = Number(reserveForm.day);
+
+        if (!dept) {
+            setReserveError("담당과를 입력해주세요.");
+            return;
+        }
+        if (!time) {
+            setReserveError("시간을 선택해주세요.");
+            return;
+        }
+        if (!Number.isFinite(day) || day < 1 || day > 31) {
+            setReserveError("날짜(일)는 1~31 사이로 입력해주세요.");
+            return;
+        }
+
+        setReserveError("");
+
+        try {
+            const raw = localStorage.getItem(calendarStorageKey);
+            const parsed =
+                raw && raw !== "null"
+                    ? JSON.parse(raw)
+                    : {};
+            const prevEvents =
+                parsed && typeof parsed === "object"
+                    ? parsed
+                    : {};
+
+            const dayKey = String(day);
+            const dayEvents = prevEvents[dayKey] || [];
+            const next = {
+                ...prevEvents,
+                [dayKey]: [
+                    ...dayEvents,
+                    {
+                        type: "reservation",
+                        title: `${dept} · ${time}`,
+                        hospitalId: hospital.id,
+                        hospitalTitle: hospital.title,
+                    },
+                ],
+            };
+
+            localStorage.setItem(
+                calendarStorageKey,
+                JSON.stringify(next)
+            );
+        } catch (e) {
+            // ignore
+        }
+
+        setIsReserveModalOpen(false);
+        alert("예약이 달력에 저장됐어요. (캘린더에서 확인)");
+    };
 
     const treatments = useMemo(() => {
         if (!hospital) return [];
@@ -664,6 +726,7 @@ export default function HospitalDetail() {
                                     시간
                                 </label>
                                 <input
+                                    ref={timeInputRef}
                                     className="hospital-modal-input"
                                     type="time"
                                     value={reserveForm.time}
@@ -673,15 +736,28 @@ export default function HospitalDetail() {
                                             time: e.target.value,
                                         }))
                                     }
+                                    onFocus={() => setIsTimeInputFocused(true)}
+                                    onBlur={() => {
+                                        // 약간의 지연을 주어 버튼 클릭 이벤트가 먼저 처리되도록
+                                        setTimeout(() => {
+                                            setIsTimeInputFocused(false);
+                                        }, 150);
+                                    }}
                                 />
                             </div>
                         </div>
 
-                        <div className="hospital-modal-actions">
+                        <div className={`hospital-modal-actions ${isTimeInputFocused ? "is-left-aligned" : ""}`}>
                             <button
                                 type="button"
                                 className="hospital-modal-btn is-cancel"
-                                onClick={() => setIsReserveModalOpen(false)}
+                                onClick={() => {
+                                    // 시간 입력 필드가 포커스되어 있으면 blur 처리
+                                    if (timeInputRef.current && document.activeElement === timeInputRef.current) {
+                                        timeInputRef.current.blur();
+                                    }
+                                    setIsReserveModalOpen(false);
+                                }}
                             >
                                 취소
                             </button>
@@ -689,69 +765,16 @@ export default function HospitalDetail() {
                                 type="button"
                                 className="hospital-modal-btn is-confirm"
                                 onClick={() => {
-                                    const dept = reserveForm.dept.trim();
-                                    const time = reserveForm.time;
-                                    const day = Number(reserveForm.day);
-
-                                    if (!dept) {
-                                        setReserveError(
-                                            "담당과를 입력해주세요."
-                                        );
+                                    // 시간 입력 필드가 포커스되어 있으면 blur 처리 후 저장 로직 실행
+                                    if (timeInputRef.current && document.activeElement === timeInputRef.current) {
+                                        timeInputRef.current.blur();
+                                        // blur 후 저장 로직 실행을 위해 약간의 지연
+                                        setTimeout(() => {
+                                            handleSave();
+                                        }, 100);
                                         return;
                                     }
-                                    if (!time) {
-                                        setReserveError(
-                                            "시간을 선택해주세요."
-                                        );
-                                        return;
-                                    }
-                                    if (!Number.isFinite(day) || day < 1 || day > 31) {
-                                        setReserveError(
-                                            "날짜(일)는 1~31 사이로 입력해주세요."
-                                        );
-                                        return;
-                                    }
-
-                                    setReserveError("");
-
-                                    try {
-                                        const raw = localStorage.getItem(
-                                            calendarStorageKey
-                                        );
-                                        const parsed =
-                                            raw && raw !== "null"
-                                                ? JSON.parse(raw)
-                                                : {};
-                                        const prevEvents =
-                                            parsed && typeof parsed === "object"
-                                                ? parsed
-                                                : {};
-
-                                        const dayKey = String(day);
-                                        const dayEvents = prevEvents[dayKey] || [];
-                                        const next = {
-                                            ...prevEvents,
-                                            [dayKey]: [
-                                                ...dayEvents,
-                                                {
-                                                    type: "reservation",
-                                                    title: `${dept} · ${time}`,
-                                                    hospitalId: hospital.id,
-                                                    hospitalTitle: hospital.title,
-                                                },
-                                            ],
-                                        };
-
-                                        localStorage.setItem(
-                                            calendarStorageKey,
-                                            JSON.stringify(next)
-                                        );
-                                    } catch (e) {
-                                        // ignore
-                                    }
-
-                                    setIsReserveModalOpen(false);
-                                    alert("예약이 달력에 저장됐어요. (캘린더에서 확인)");
+                                    handleSave();
                                 }}
                             >
                                 저장

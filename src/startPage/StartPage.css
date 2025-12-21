@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+    color: #E0E6ED;
+}
+
+/* Main */
+.startPage_Main {
+    background: url(./startPage_img/startPage_img.png) no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+/* Main */
+
+
+/* Header */
+.startPage_HeaderBar {
+    /* color: #fff; */
+    height: 10vh;
+    line-height: 10vh;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-content: center;
+
+}
+
+.startPage_HeaderBar>h1 {
+    margin-left: 2vw;
+}
+
+.startPage_HeaderBar>p {
+    margin-right: 2vw;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+    user-select: none; /* 복사, 드래그 x */
+}
+
+.startPage_HeaderBar>p:hover {
+    color: #4da3ff;
+    text-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.startPage_HeaderBar>p:active {
+    transform: scale(0.95); 
+    color: #1a73e8;
+} 
+/* Header */
+
+/* Section */
+.startPage_Section {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.startPage_Section>h2 {
+    position: absolute;
+    top: 20vh;
+    left: 15vh;
+}
+
+.startPage_Section>p {
+    position: absolute;
+    top: 25vh;
+    left: 15vh;
+}
+/* Section */
+
+.cta_container {
+    display: flex;
+    gap: 20px;            /* 버튼 사이 간격 */
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;      /* 화면 작아지면 줄바꿈 */
+
+    position: relative;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    color: white;
+    user-select: none; /* 아까 배운 텍스트 선택 방지 */
+}
+
+/* 환자용 버튼 (Neon Blue) */
+.btn_user {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+
+    position: absolute;
+    top: 30vh;
+    left: 8vw;
+}
+
+.btn_user:hover {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+}
+
+/* 의료진용 버튼 (Deep Teal) */
+.btn_doctor {
+    background: linear-gradient(135deg, #059669, #10b981);
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+
+    position: absolute;
+    top: 30vh;
+    left: 24vw;
+}
+
+.btn_doctor:hover {
+    background: linear-gradient(135deg, #047857, #059669);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(5, 150, 105, 0.5);
+}
+
+/* 버튼 클릭 시 눌리는 효과 */
+.btn:active {
+    transform: scale(0.96);
+}
+
+/* 아이콘 스타일 */
+.btn_icon {
+    font-size: 1.2rem;
+}

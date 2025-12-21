@@ -7,17 +7,19 @@ import Calendar from './addressTest/Calendar';
 import DashBoard from './/mainPage/DL04_DashBoard';
 import MainHeader from './mainHeader/MainHeader';
 
+import StartPage from './startPage/StartPage';
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DashBoard />} />
-        <Route path="/mypage" element={<MyPage />} />
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/" element={<DashBoard />} />
+    //     <Route path="/mypage" element={<MyPage />} />
 
-        {/* 미연결 */}
-        <Route path="/calendar" element={<Calendar />} />
-      </Routes>
-    </BrowserRouter>
+    //     <Route path="/calendar" element={<Calendar />} />
+    //   </Routes>
+    // </BrowserRouter>
+    <StartPage />
   );
 }
 

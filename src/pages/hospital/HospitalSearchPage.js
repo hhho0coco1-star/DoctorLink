@@ -1,6 +1,6 @@
 import './HospitalSearchPage.css';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import MainHeader from "../../header/MainHeader";
 import RegionModal from './RegionModal';
 import RegionSelectList from './RegionSelectList'
@@ -11,12 +11,20 @@ import hospitalInfoList from './data/hospitalInfo';
 
 function HospitalSearchPage() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [modalType, setModalType] = useState(null);
 
     // null = 전체(필터 미적용). UI 표시용으로는 기본 라벨(지역/진료과)을 보여줌
     const [region, setRegion] = useState(null);
     const [department, setDepartment] = useState(null);
+
+    // 모바일 페이지에서 진료과 선택 시 필터 적용
+    useEffect(() => {
+        if (location.state?.department) {
+            setDepartment(location.state.department);
+        }
+    }, [location.state]);
     const [searchQuery, setSearchQuery] = useState("");
     // null = 전체(필터 미적용). UI 표시용으로는 기본 라벨(시간/휴일)을 보여줌
     const [timeFilter, setTimeFilter] = useState(null);

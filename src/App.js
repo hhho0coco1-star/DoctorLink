@@ -6,6 +6,7 @@ import FindId from "./pages/FindId";
 import FindPassword from "./pages/FindPassword";
 import './App.css';
 import MainPage from './header/MainPage';
+import MobileMainPage from './pages/MobileMainPage';
 import Calendar from './pages/CalendarOverview';
 import Settings from "./pages/Settings";
 import HospitalSearchPage from "./pages/hospital/HospitalSearchPage"
@@ -13,12 +14,21 @@ import HospitalDetail from "./pages/hospital/HospitalDetail";
 
 import DashBoard from "./pages/DashBoard";
 import PatientDetail from "./pages/PatientDetail";
+import { isMobile } from "./utils/isMobile";
+
+// 메인 페이지 컴포넌트 (모바일 감지)
+function MainPageWrapper() {
+  if (isMobile()) {
+    return <MobileMainPage />;
+  }
+  return <MainPage />;
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPageWrapper />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mypages" element={<MyPages />} />

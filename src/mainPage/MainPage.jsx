@@ -76,12 +76,13 @@ export default function DashBoard() {
                         {/* ====================== Blood_Box ====================== */}
                         <div className="dashBoard02">
                             {/* 🌟 BloodBox 컴포넌트 호출 및 props 전달 */}
-                            <LeftDashBoard
+                            <LeftDashBoard 
                                 userName="홍길동"
                                 bpReading="135 / 95"
                                 graph="80%"
                             />
-                            <div className="dashBoard_Box02">{<RightDashBoard />}</div>
+                            <div className="dashBoard_Box02" 
+                            style={{backgroundColor: "lightskyblue"}}>{<RightDashBoard />}</div>
                         </div>
                     </div>
                 </main>

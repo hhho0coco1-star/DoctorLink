@@ -13,6 +13,7 @@ import HospitalDetail from "./pages/hospital/HospitalDetail";
 
 import DashBoard from "./pages/DashBoard";
 import PatientDetail from "./pages/PatientDetail";
+import Community from "./pages/Community";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/hospital/:id" element={<HospitalDetail />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/patient/:id" element={<PatientDetail />} />
+        <Route path="/community" element={<Community />} />
 
       </Routes>
     </BrowserRouter>

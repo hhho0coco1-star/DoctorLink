@@ -1,14 +1,18 @@
 // css
 import './StartPage.css';
+import React from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 export default function StartPage() {
+
+    const navigate = useNavigate();
 
     return (
         <div className='startPage_Main'>
             {/* header */}
             <header className="startPage_HeaderBar">
                 <h1>DoctorLink</h1>
-                <p>LogIn</p>
+                <p><Link to="/login" style={{ color: "inherit", textDecoration: "none" }}>LogIn</Link></p>
             </header>
             {/* header */}
 
@@ -22,11 +26,11 @@ export default function StartPage() {
                 </section>
 
                 <div class="cta_container">
-                    <button class="btn btn_user">
+                    <button class="btn btn_user" onClick={() => navigate("/login")}>
                         <span class="btn_icon">👤</span>
                         환자로 시작하기
                     </button>
-                    <button class="btn btn_doctor">
+                    <button class="btn btn_doctor" onClick={() => navigate("/login")}>
                         <span class="btn_icon">🩺</span>
                         의료진으로 시작하기
                     </button>

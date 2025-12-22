@@ -1,22 +1,22 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import MyPages from "./pages/MyPages";
-import FindId from "./pages/FindId";
-import FindPassword from "./pages/FindPassword";
 import './App.css';
-import MainPage from './header/MainPage';
-import MobileMainPage from './pages/MobileMainPage';
-import Calendar from './pages/CalendarOverview';
-import Settings from "./pages/Settings";
-import HospitalSearchPage from "./pages/hospital/HospitalSearchPage"
-import HospitalDetail from "./pages/hospital/HospitalDetail";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import DashBoard from "./pages/DashBoard";
-import PatientDetail from "./pages/PatientDetail";
+import MyPage from './myPage/MyPage';
+import MainPage from './mainPage/MainPage';
+import Login from './logIn/Login';
+import FindId from './logIn/FindId';
+import FindPassword from './logIn/FindPassword';
+import Signup from './logIn/Signup';
 import { isMobile } from "./utils/isMobile";
+import MobileMainPage from './mobilemainpage/MobileMainPage';
+import Calendar from './calendarOverview/CalendarOverview';
+import Settings from "./settings/Settings";
+import HospitalSearchPage from "./hospital/HospitalSearchPage"
+import HospitalDetail from "./hospital/HospitalDetail";
+import DashBoard from "./doctorDashBoard/DoctorDashBoard";
+import PatientDetail from "./patientDetail/PatientDetail";
+import Community from './community/Community';
 
-// 메인 페이지 컴포넌트 (모바일 감지)
 function MainPageWrapper() {
   if (isMobile()) {
     return <MobileMainPage />;
@@ -24,27 +24,31 @@ function MainPageWrapper() {
   return <MainPage />;
 }
 
-function App() {
+
+export default function App() {
   return (
+
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPageWrapper />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mypages" element={<MyPages />} />
-        <Route path="/calendar" element={<Calendar />} />
         <Route path="/find-id" element={<FindId />} />
         <Route path="/find-password" element={<FindPassword />} />
+        <Route path="/mypage" element={<MyPage />} />
+
+        {/*  */}
+        <Route path="/calendar" element={<Calendar />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/hospitalSearch" element={<HospitalSearchPage />} />
         <Route path="/hospital/:id" element={<HospitalDetail />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/patient/:id" element={<PatientDetail />} />
+        <Route path='/community' element={<Community />} />
+
 
       </Routes>
     </BrowserRouter>
-  );
+
+  )
 }
-
-export default App;
-

@@ -1,0 +1,840 @@
+/* Hospital Detail - 기본 레이아웃(좌/우) + 우측 스티키 */
+
+.hospital-detail-page {
+    /* ✅ 좌측 섹션 가로 폭을 더 넓게: 전체 컨테이너 폭을 확장 */
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px;
+    /* ✅ MainHeader를 건드리지 않고, HospitalDetail 내부에서만 스크롤 생성 */
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    /* ✅ 스크롤은 되지만 스크롤바는 숨김 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge Legacy */
+}
+
+/* ✅ WebKit(Chrome/Safari/Edge) 스크롤바 숨김 */
+.hospital-detail-page::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.hospital-detail-topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.hospital-detail-back {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.hospital-detail-topbar-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.hospital-detail-empty {
+    padding: 20px;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.hospital-detail-layout {
+    display: grid;
+    /* ✅ 우측을 조금만 줄여 좌측에 더 많은 공간을 줌 */
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 40px;
+    align-items: start;
+    min-height: 100%;
+}
+
+/* ✅ 전역 aside{width:20%} 규칙을 HospitalDetail 우측 패널에서만 무력화 */
+.hospital-detail-layout>aside.hospital-detail-right {
+    width: auto;
+    height: auto;
+}
+
+.hospital-detail-left {
+    min-width: 0;
+}
+
+.hospital-detail-hero {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f3f4f6;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.hospital-detail-hero-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.hospital-detail-card {
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    /* ✅ 왼쪽 섹션 내부 요소들(소개/알림/오늘박스/오시는길 등) 세로 간격을 통일해서 넓힘 */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* gap 기반으로 간격을 관리하므로, 카드 내부의 기존 margin-top은 0으로 정리 */
+.hospital-detail-card .hospital-detail-section {
+    margin-top: 0;
+}
+
+.hospital-detail-card .hospital-detail-sub {
+    margin-top: 0;
+}
+
+.hospital-detail-card .hospital-detail-info-list {
+    margin-top: 0;
+}
+
+.hospital-detail-card .hospital-detail-alert {
+    margin-top: 0;
+}
+
+.hospital-detail-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.hospital-detail-title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+.hospital-detail-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+}
+
+.hospital-detail-badge.is-open {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.25);
+    color: #047857;
+}
+
+.hospital-detail-badge.is-closed {
+    background: rgba(239, 68, 68, 0.10);
+    border-color: rgba(239, 68, 68, 0.20);
+    color: #b91c1c;
+}
+
+.hospital-detail-sub {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+/* ✅ 안내문 + 오늘 진료시간 박스 */
+.hospital-detail-alert {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.hospital-detail-alert-text {
+    padding: 12px 12px;
+    border-radius: 14px;
+    background: linear-gradient(
+        90deg,
+        rgba(37, 99, 235, 0.10),
+        rgba(79, 70, 229, 0.08)
+    );
+    border: none;
+    color: rgba(30, 64, 175, 0.88); /* 조금 덜 진하게 */
+    font-weight: 600;
+    line-height: 1.45;
+    font-size: 15px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.hospital-detail-alert-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 1;
+    color: #ffffff;
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.90), rgba(79, 70, 229, 0.90));
+    box-shadow: 0 8px 14px rgba(37, 99, 235, 0.14);
+    margin-top: 1px;
+}
+
+.hospital-detail-today-box {
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(37, 99, 235, 0.045);
+    border: none;
+    box-shadow: none;
+}
+
+.today-box-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.today-box-left {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+}
+
+.today-box-label {
+    font-weight: 900;
+    font-size: 20px;
+    color: rgba(17, 24, 39, 0.92);
+    white-space: nowrap;
+}
+
+.today-box-date {
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.55);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.today-box-right {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.today-box-time {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.2px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.today-box-weekend {
+    font-size: 13px;
+    font-weight: 900;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+}
+
+.today-box-weekend.is-ok {
+    background: rgba(16, 185, 129, 0.09);
+    border-color: rgba(16, 185, 129, 0.25);
+    color: #047857;
+}
+
+.today-box-weekend.is-no {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.20);
+    color: #b91c1c;
+}
+
+/* ✅ 오시는 길 (네이버지도 연동: 링크/복사) */
+.hospital-detail-direction {
+    display: grid;
+    gap: 12px;
+}
+
+.direction-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(79, 70, 229, 0.06);
+    border: none;
+}
+
+.direction-pin {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.12);
+    border: none;
+}
+
+.direction-pin-icon {
+    width: 18px;
+    height: 18px;
+    fill: #2563eb;
+    display: block;
+}
+
+.direction-text {
+    min-width: 0;
+    display: grid;
+    gap: 4px;
+}
+
+.direction-name {
+    font-weight: 900;
+    color: rgba(17, 24, 39, 0.92);
+}
+
+.direction-address {
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.4;
+}
+
+.direction-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.direction-btn {
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 900;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.direction-btn.is-outline {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.78);
+}
+
+.direction-btn.is-primary {
+    border: none;
+    color: #fff;
+    background: linear-gradient(
+        90deg,
+        rgba(37, 99, 235, 0.82),
+        rgba(79, 70, 229, 0.82)
+    );
+    box-shadow: 0 10px 18px rgba(37, 99, 235, 0.08);
+}
+
+.direction-hint {
+    font-size: 13px;
+}
+
+/* ✅ 진료항목 칩 */
+.hospital-detail-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hospital-detail-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.07);
+    color: rgba(30, 64, 175, 0.88);
+    font-weight: 800;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* ✅ 의료진 카드 */
+.doctor-list {
+    display: grid;
+    gap: 10px;
+}
+
+.doctor-card {
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.doctor-name {
+    font-weight: 900;
+    color: rgba(17, 24, 39, 0.92);
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.doctor-role {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.doctor-specialty {
+    margin-top: 6px;
+    color: rgba(0, 0, 0, 0.72);
+    font-size: 14px;
+}
+
+/* ✅ 별점/리뷰 라인 + 리뷰 작성 */
+.hospital-detail-rating-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.rating-value {
+    font-weight: 900;
+    color: rgba(17, 24, 39, 0.92);
+}
+
+.review-form {
+    display: grid;
+    gap: 10px;
+}
+
+.review-form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.review-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    color: rgba(17, 24, 39, 0.9);
+}
+
+/* ✅ 별점 선택: 별 5개를 클릭해서 1~5 선택 */
+.review-star-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.review-star {
+    border: none;
+    background: transparent;
+    padding: 4px 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.review-star.is-on {
+    color: rgba(245, 158, 11, 0.95); /* amber */
+}
+
+.review-star.is-off {
+    color: rgba(0, 0, 0, 0.18);
+}
+
+.review-star:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.review-star:focus-visible {
+    outline: 2px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 2px;
+}
+
+.review-textarea {
+    width: 100%;
+    resize: vertical;
+    border-radius: 14px;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.95);
+    line-height: 1.5;
+}
+
+.review-submit {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 900;
+    color: rgba(30, 64, 175, 0.92);
+    background: rgba(37, 99, 235, 0.08);
+    cursor: pointer;
+}
+
+.review-list {
+    display: grid;
+    gap: 10px;
+}
+
+.review-item {
+    border-radius: 14px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.review-item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.review-item-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-delete {
+    border: none;
+    background: transparent;
+    color: rgba(239, 68, 68, 0.85);
+    font-weight: 900;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 10px;
+}
+
+.review-delete:hover {
+    background: rgba(239, 68, 68, 0.08);
+}
+
+/* ================= 예약 모달 (HospitalDetail) ================= */
+.hospital-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.hospital-modal {
+    width: min(420px, calc(100vw - 32px));
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hospital-modal-title {
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: rgba(17, 24, 39, 0.92);
+}
+
+.hospital-modal-error {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(239, 68, 68, 0.10);
+    color: rgba(185, 28, 28, 0.95);
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.hospital-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.hospital-modal-field {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.hospital-modal-label {
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.62);
+}
+
+.hospital-modal-input {
+    width: 100%;
+    border-radius: 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.hospital-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+    transition: justify-content 0.2s ease;
+}
+
+.hospital-modal-actions.is-left-aligned {
+    justify-content: flex-start;
+}
+
+.hospital-modal-btn {
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+}
+
+.hospital-modal-btn.is-cancel {
+    background: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.hospital-modal-btn.is-confirm {
+    background: rgba(37, 99, 235, 0.10);
+    color: rgba(30, 64, 175, 0.92);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+}
+
+@media (max-width: 420px) {
+    .hospital-modal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.review-item-stars {
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: rgba(245, 158, 11, 0.95); /* amber */
+}
+
+.review-item-stars-empty {
+    color: rgba(0, 0, 0, 0.18);
+}
+
+.review-item-text {
+    color: rgba(0, 0, 0, 0.78);
+    line-height: 1.5;
+}
+
+.muted {
+    color: rgba(0, 0, 0, 0.62);
+}
+
+.dot {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.hospital-detail-info-list {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 10px;
+    font-size: 14px;
+}
+
+.info-row .label {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.info-row .value {
+    color: rgba(0, 0, 0, 0.88);
+    word-break: keep-all;
+}
+
+.hospital-detail-section {
+    margin-top: 16px;
+}
+
+.section-title {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.section-body {
+    margin: 0;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.78);
+}
+
+.section-placeholder {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px dashed rgba(0, 0, 0, 0.18);
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.hospital-detail-right {
+    min-width: 0;
+    align-self: start;
+    /* ✅ HospitalDetail 내부 스크롤(.hospital-detail-page) 기준으로 우측 패널이 따라오도록 */
+    position: sticky;
+    top: 16px;
+    height: fit-content;
+}
+
+.hospital-detail-sticky {
+    /* ✅ 우측 섹션을 "하나의 박스"로 */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: fit-content;
+    padding: 16px;
+    border-radius: 18px;
+    /* ✅ 배경이 너무 튀지 않게: 거의 흰색 + 아주 약한 블루 틴트 */
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.hospital-detail-summary {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+}
+
+.hospital-detail-summary-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-title {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.summary-meta {
+    display: grid;
+    gap: 6px;
+    font-size: 13px;
+    min-width: 0;
+}
+
+.summary-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+}
+
+.hospital-detail-cta {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 14px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.92), rgba(79, 70, 229, 0.92));
+    box-shadow: 0 10px 18px rgba(37, 99, 235, 0.12);
+    /* ✅ 우측 박스 내에서 '예약하기'를 항상 최하단으로 */
+    margin-top: auto;
+    order: 3;
+}
+
+.hospital-detail-cta:active {
+    transform: translateY(1px);
+}
+
+.hospital-detail-mini {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    display: grid;
+    gap: 10px;
+    font-size: 13px;
+    min-width: 0;
+    order: 2;
+}
+
+.mini-row {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 10px;
+    align-items: baseline;
+}
+
+.mini-label {
+    color: rgba(30, 64, 175, 0.75);
+    font-weight: 900;
+}
+
+.mini-value {
+    color: rgba(17, 24, 39, 0.9);
+}
+
+.mini-label {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+}
+
+.mini-value {
+    color: rgba(0, 0, 0, 0.78);
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 960px) {
+    .hospital-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hospital-detail-right {
+        position: static;
+        top: auto;
+    }
+
+    .hospital-detail-hero-img {
+        height: 220px;
+    }
+}

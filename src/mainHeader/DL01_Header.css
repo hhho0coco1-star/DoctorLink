@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 로고 (h1.header__logo) 스타일: 아이콘 미표시 문제 해결 */
+.header__logo {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+
+    margin-left: 16px;
+}
+
+/* Link 태그 (a) 스타일 */
+.header__logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Header 컨테이너 스타일 */
+.header_Right01 {
+    border: 1px solid black;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 영역 (header_1, 3) */
+.header_1,
+.header_3 {
+    width: 25vh;
+    padding: 1vh;
+}
+
+.header_3 {
+    border-radius: 1vh;
+    margin-right: 3vh;
+
+    background-color: rgb(216, 240, 255);
+}
+
+.header_3:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 
+                0 10px 10px rgba(0, 0, 0, 0.22);
+    
+    transform: scale(1.05); 
+    filter: brightness(110%) saturate(100%);
+}
+
+.header_3_name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+}
+
+.header_3_info {
+    display: block;
+    text-align: center;
+
+}
+
+/* 환영 메시지 영역 (header_2) */
+.header_2 {
+    width: 60%;
+    padding: 1vh;
+}
+
+.header__profile-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../App.css";
+import "./Login.css";
 import googleLogo from "../assets/logos/google.png";
 import kakaoLogo from "../assets/logos/kakao.png";
 import naverLogo from "../assets/logos/naver.png";

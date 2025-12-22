@@ -1,111 +1,124 @@
+/* Pretendard 폰트 불러오기 (CDN) */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+/* 전역 폰트 설정 */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
-.appointment-card {
-    height: 20vh; 
-    padding: 2vh;
-    margin: 2vh;
-    border-radius: 12px;
-    
-    /* 이미지의 배경색 그라데이션 */
-    background: linear-gradient(135deg, #4c77f2, #294eb8); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
-    
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between; 
-
-    cursor: pointer;
+/* 기본 배경 및 폰트 설정 */
+body {
+    background-color: #f1f5f9; /* 차분한 라이트 블루 그레이 */
+    color: #334155;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
 
-/* 마우스 올림 */
-.appointment-card:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 
-                0 10px 10px rgba(0, 0, 0, 0.22);
-    
-    transform: scale(1.05); 
-    filter: brightness(110%) saturate(100%);
-}
-
-/* 마우스 클릭 */
-.appointment-card:active {
-    transform: scale(0.98); 
-    
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
-    filter: brightness(90%) saturate(100%);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-start;
-}
-
-.calendar-icon {
-    font-size: 40px;
-    font-weight: 300; 
-    color: rgba(255, 255, 255, 0.9); 
-}
-
-.appointment-tag {
-    background-color: white;
-    color: #4c77f2; 
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    white-space: nowrap; 
-}
-
-.card-body {
-    /* 공간이 남으면 아래로 밀어내기 */
-    margin-top: auto; 
-}
-
-.number {
-    font-size: 64px;
-    font-weight: 500; 
-    line-height: 1; 
-    margin-bottom: 5px;
-}
-
-.description {
-    font-size: 18px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.article_dashBoard {
-    /* background-color: lightgray; */
-    width: 100%;
-    height: g90vh;
-}
-
-
-/* 대시보드 1 ~ 4 */
-.dashBoard_Box {
-    width: 20vw;
-    height: 20vh;
-    margin: 1.5vh;
-
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
+/* 대시보드 상단 레이아웃 */
 .dashBoard {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+    gap: 5px; /* 카드 사이 간격 */
 }
 
+/* 공통 카드 스타일 - 의학 페이지 스타일로 최적화 */
+.appointment-card {
+    min-height: 160px; /* 고정 vh 대신 최소 높이 권장 */
+    padding: 20px;
+    margin: 10px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 각 카드별 메디컬 테마 컬러 (수정됨) */
+.appointment-card:nth-child(1) { background: linear-gradient(135deg, #3b82f6, #2563eb); } /* 진료 - 신뢰감 있는 블루 */
+.appointment-card:nth-child(2) { background: linear-gradient(135deg, #8b5cf6, #7c3aed); } /* 신규 - 차분한 퍼플 */
+.appointment-card:nth-child(3) { background: linear-gradient(135deg, #f43f5e, #e11d48); } /* 처방 - 주목도 있는 로즈 */
+.appointment-card:nth-child(4) { background: linear-gradient(135deg, #f59e0b, #d97706); } /* 메시지 - 따뜻한 오렌지 */
+
+/* 마우스 효과 - 부드럽게 강조 */
+.appointment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+    filter: brightness(105%);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-icon {
+    font-size: 28px; /* 크기 최적화 */
+    opacity: 0.9;
+}
+
+.appointment-tag {
+    background-color: rgba(255, 255, 255, 0.2); /* 반투명 배경으로 세련되게 */
+    backdrop-filter: blur(4px);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 8px; /* 둥근 사각형이 더 전문적임 */
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.number {
+    font-size: 48px; /* 너무 큰 폰트 크기 조정 */
+    font-weight: 700;
+    margin-bottom: 2px;
+    letter-spacing: -1px;
+}
+
+.description {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* 하단 대시보드 영역 (혈압/혈당 등) */
 .dashBoard02 {
     display: grid;
     grid-template-columns: 3fr 2fr;
+    padding: 10px;
+    gap: 20px;
+}
 
+/* 기존 lightskyblue 배경 대신 깔끔한 흰색 카드 추천 */
+.dashBoard_Box02 {
+    background-color: white !important;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* 사이드바와 대시보드를 감싸는 부모 */
+.mainBody {
+    display: flex;       /* 가로 배치 */
+    width: 100%;        /* 전체 너비 사용 */
+    min-height: 90vh;
+    align-items: flex-start;
+    background-color: #f1f5f9;
+}
+
+/* 메인 콘텐츠 영역: 이 부분이 남은 공간을 다 채워야 합니다 */
+.article_dashBoard {
+    flex-grow: 1;        /* 남은 공간을 모두 차지함 */
+    padding: 20px;       /* 내부 여백 */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../App.css";
+import "./Login.css";
 
 export default function FindPassword() {
     const navigate = useNavigate();

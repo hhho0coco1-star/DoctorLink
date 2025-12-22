@@ -24,6 +24,8 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  white-space: nowrap;   /* 줄바꿈 없이 한 줄로 표시 */
+
 }
 
 .data-table th,
@@ -176,4 +178,12 @@
   line-height: 1.4;        /* 텍스트 높이 정렬 */
   display: flex;
   align-items: center;
+}
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #4caf50; /* 초록색 배경 */
+  color: white;              /* 글자색 흰색 */
+  border-radius: 4px;
+  font-size: 0.85em;
 }

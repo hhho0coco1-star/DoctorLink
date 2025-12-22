@@ -55,6 +55,37 @@ function LifeReportTable() {
     ) / lifeReportData.length
   ).toFixed(1);
 
+  // ✅ 활동량 평균 추가
+  const avgSteps = (
+    lifeReportData.reduce((sumPatients, patient) => {
+      if (!patient.activityData || patient.activityData.length === 0) return sumPatients;
+      const patientAvg =
+        patient.activityData.reduce((sum, d) => sum + d.steps, 0) /
+        patient.activityData.length;
+      return sumPatients + patientAvg;
+    }, 0) / lifeReportData.length
+  ).toFixed(0);
+
+  const avgActivityHours = (
+    lifeReportData.reduce((sumPatients, patient) => {
+      if (!patient.activityData || patient.activityData.length === 0) return sumPatients;
+      const patientAvg =
+        patient.activityData.reduce((sum, d) => sum + d.activityHours, 0) /
+        patient.activityData.length;
+      return sumPatients + patientAvg;
+    }, 0) / lifeReportData.length
+  ).toFixed(1);
+
+  const avgActivityCalories = (
+    lifeReportData.reduce((sumPatients, patient) => {
+      if (!patient.activityData || patient.activityData.length === 0) return sumPatients;
+      const patientAvg =
+        patient.activityData.reduce((sum, d) => sum + d.activityCalories, 0) /
+        patient.activityData.length;
+      return sumPatients + patientAvg;
+    }, 0) / lifeReportData.length
+  ).toFixed(0);
+
   return (
     <div className="table-section life-report">
       <h2>🧍 환자 라이프 리포트 결과</h2>
@@ -62,10 +93,13 @@ function LifeReportTable() {
         <thead>
           <tr>
             <th>이름</th>
-            <th>혈당(공복 평균)</th>
-            <th>혈압 평균</th>
-            <th>수면 평균</th>
-            <th>체중</th>
+            <th>평균혈당(공복)</th>
+            <th>평균혈압</th>
+            <th>평균수면</th>
+            <th>평균체중</th>
+            <th>평균활동량</th>
+            {/* <th>평균활동</th> */}
+            <th>평균칼로리</th>
           </tr>
         </thead>
         <tbody>
@@ -96,6 +130,25 @@ function LifeReportTable() {
                   patient.sleepData.length
                 : 0;
 
+            // ✅ 환자별 활동량 평균
+            const avgPatientSteps =
+              patient.activityData && patient.activityData.length > 0
+                ? patient.activityData.reduce((sum, d) => sum + d.steps, 0) /
+                  patient.activityData.length
+                : 0;
+
+            // const avgPatientActivityHours =
+            //   patient.activityData && patient.activityData.length > 0
+            //     ? patient.activityData.reduce((sum, d) => sum + d.activityHours, 0) /
+            //       patient.activityData.length
+            //     : 0;
+
+            const avgPatientActivityCalories =
+              patient.activityData && patient.activityData.length > 0
+                ? patient.activityData.reduce((sum, d) => sum + d.activityCalories, 0) /
+                  patient.activityData.length
+                : 0;
+
             return (
               <tr key={patient.id}>
                 <td
@@ -114,22 +167,14 @@ function LifeReportTable() {
                 </td>
                 <td>{avgSleepHours.toFixed(1)} 시간</td>
                 <td>{patient.weight}</td>
+                <td>{avgPatientSteps.toFixed(0)} 걸음</td>
+                {/* <td>{avgPatientActivityHours.toFixed(1)} 시간</td> */}
+                <td>{avgPatientActivityCalories.toFixed(0)} kcal</td>
               </tr>
             );
           })}
 
-          {/* 전체 평균 행
-          <tr className="avg-row">
-            <td>
-              <strong>전체 평균</strong>
-            </td>
-            <td>{avgBloodSugar} mg/dL</td>
-            <td>
-              {avgSystolic}/{avgDiastolic} mmHg
-            </td>
-            <td>{avgSleep} 시간</td>
-            <td>{avgWeight} kg</td>
-          </tr> */}
+         
         </tbody>
       </table>
     </div>

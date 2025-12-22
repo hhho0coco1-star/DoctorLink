@@ -7,7 +7,8 @@ import Login from './logIn/Login';
 import FindId from './logIn/FindId';
 import FindPassword from './logIn/FindPassword';
 import Signup from './logIn/Signup';
-
+import { isMobile } from "./utils/isMobile";
+import MobileMainPage from './mobilemainpage/MobileMainPage';
 import Calendar from './calendarOverview/CalendarOverview';
 import Settings from "./settings/Settings";
 import HospitalSearchPage from "./hospital/HospitalSearchPage"
@@ -16,16 +17,20 @@ import DashBoard from "./doctorDashBoard/DoctorDashBoard";
 import PatientDetail from "./patientDetail/PatientDetail";
 import Community from './community/Community';
 
+function MainPageWrapper() {
+  if (isMobile()) {
+    return <MobileMainPage />;
+  }
+  return <MainPage />;
+}
+
 
 export default function App() {
   return (
 
     <BrowserRouter>
       <Routes>
-
-        <Route path="/" element={<MainPage />} />
-
-        {/* 로그인 */}
+        <Route path="/" element={<MainPageWrapper />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/find-id" element={<FindId />} />

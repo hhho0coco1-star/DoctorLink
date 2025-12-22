@@ -1,0 +1,193 @@
+.mobile-main-page {
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding-bottom: 70px; /* 하단 네비게이션 바 공간 */
+    box-sizing: border-box;
+}
+
+.mobile-home-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px 16px;
+    box-sizing: border-box;
+}
+
+/* 인사말 섹션 */
+.mobile-greeting-section {
+    background: #ffffff;
+    border: 1px solid #dbe7ff;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.mobile-greeting {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    color: #0f172a;
+}
+
+.mobile-greeting-name {
+    color: #1f4fd6;
+}
+
+.mobile-greeting-desc {
+    font-size: 14px;
+    margin: 0 0 20px 0;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.mobile-consultation-btn {
+    display: inline-block;
+    background: #eef4ff;
+    color: #1f4fd6;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid #bcd3ff;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.mobile-consultation-btn:active {
+    background: #dbe7ff;
+    border-color: #9bb5ff;
+    transform: scale(0.98);
+}
+
+.mobile-consultation-btn:active {
+    transform: scale(0.98);
+}
+
+/* 섹션 */
+.mobile-section {
+    margin-bottom: 32px;
+}
+
+.mobile-section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 16px 0;
+    padding-left: 4px;
+}
+
+/* 진료과 그리드 */
+.mobile-department-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.mobile-department-btn {
+    background: #ffffff;
+    border: 1px solid #e6e8ee;
+    border-radius: 12px;
+    padding: 14px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.mobile-department-btn:active {
+    background: #f5f9ff;
+    border-color: #bcd3ff;
+    transform: scale(0.98);
+}
+
+/* 활용하기 그리드 */
+.mobile-util-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.mobile-util-card {
+    background: #ffffff;
+    border: 1px solid #e6e8ee;
+    border-radius: 12px;
+    padding: 20px 12px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.mobile-util-card:active {
+    background: #f5f9ff;
+    border-color: #bcd3ff;
+    transform: scale(0.98);
+}
+
+.mobile-util-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef4ff;
+    border-radius: 14px;
+    color: #1f4fd6;
+}
+
+.mobile-util-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.mobile-util-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    text-align: center;
+}
+
+/* 하단 여백 */
+.mobile-bottom-spacer {
+    height: 20px;
+}
+
+@media (max-width: 480px) {
+    .mobile-home-content {
+        padding: 16px 12px;
+    }
+
+    .mobile-greeting {
+        font-size: 20px;
+    }
+
+    .mobile-department-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mobile-util-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .mobile-util-card {
+        padding: 16px 8px;
+    }
+
+    .mobile-util-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .mobile-util-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+

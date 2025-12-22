@@ -1,5 +1,5 @@
-import LifeReportTable from '../components/dashboard/LifeReportTable';
-import MainHeader from "../header/MainHeader";
+import LifeReportTable from "../doctorDashBoard/dashboard/LifeReportTable"
+import MainHeader from "../mainHeader/MainHeader"
 import { useState, useEffect } from "react";
 import { lifeReportData, drugsData } from "../data/dummyData";
 

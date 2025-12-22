@@ -13,8 +13,8 @@ import Calendar from './calendarOverview/CalendarOverview';
 import Settings from "./settings/Settings";
 import HospitalSearchPage from "./hospital/HospitalSearchPage"
 import HospitalDetail from "./hospital/HospitalDetail";
-import DashBoard from "./doctorDashBoard/DoctorDashBoard";
-import PatientDetail from "./patientDetail/PatientDetail";
+import DashBoard from './pages/DashBoard';
+import PatientDetail from './pages/PatientDetail';
 import Community from './community/Community';
 import StartPage from './startPage/StartPage';
 

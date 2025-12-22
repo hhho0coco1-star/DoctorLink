@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import BloodSugarTable from "../components/patientinfo/BloodSugarTable";
-import BloodPressureData from "../components/patientinfo/BloodPressureData";
-import WeeklyReport from "../components/patientinfo/WeeklyReport";
+import BloodSugarTable from "../patientDetail/patientinfo/BloodSugarTable";
+import BloodPressureData from "../patientDetail/patientinfo/BloodPressureData";
+import WeeklyReport from "../patientDetail/patientinfo/WeeklyReport";
 import { lifeReportData } from "../data/dummyData";
-import MainHeader from "../header/MainHeader";
-import "../components/patientinfo/Table.css";
-import SleepData from "../components/patientinfo/SleepData";
-import DailyActivity from "../components/patientinfo/DailyActivity";
-import GoalManagementBox from "../components/patientinfo/GoalManagementBox";
-import PastVisitsTable from "../components/dashboard/PastVisitsTable";
-import TestResultsTable from "../components/dashboard/TestResultsTable";
+import MainHeader from "../mainHeader/MainHeader";
+import "../patientDetail/patientinfo/Table.css";
+import SleepData from "../patientDetail/patientinfo/SleepData";
+import DailyActivity from "../patientDetail/patientinfo/DailyActivity";
+import GoalManagementBox from "../patientDetail/patientinfo/GoalManagementBox";
+import PastVisitsTable from "../doctorDashBoard/dashboard/PastVisitsTable";
+import TestResultsTable from "../doctorDashBoard/dashboard/TestResultsTable";
 function groupByDateAndAverage(data) {
   const grouped = {};
   data.forEach(({ date, steps, activityCalories, activityHours }) => {

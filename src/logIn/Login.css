@@ -276,3 +276,26 @@
     margin: 0;                     /* 기본 margin 제거 */
     flex-shrink: 0;                /* 줄어들면서 밀리지 않게 */
 }
+/* 의사 체크 라인 */
+.doctor-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin: 10px 0 4px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.doctor-check input[type="checkbox"] {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* 관리자 승인 안내 문구 */
+.doctor-notice {
+    font-size: 12px;
+    color: #6b7280;        /* 회색 */
+    margin-bottom: 12px;
+    padding-left: 2px;
+}

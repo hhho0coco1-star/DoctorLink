@@ -17,3 +17,67 @@
     
     background-color: lightskyblue;
 }
+
+.right_dashboard_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* background-color: lightskyblue; */
+}
+
+.sub_card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* 기존 카드와 통일 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sub_card h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    align-self: flex-start; /* 제목은 왼쪽 정렬 */
+}
+
+/* 활동 트래커 원형 스타일 */
+.circle_placeholder {
+    width: 100px;
+    height: 100px;
+    border: 10px solid #f0f0f0;
+    border-top: 10px solid #4da3ff; /* 포인트 컬러 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* 복약 스케줄 스타일 */
+.meds_info {
+    background: #f8fbff;
+    padding: 10px 15px;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.meds_time {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.meds_countdown {
+    font-size: 0.85rem;
+    color: #ff5a5a; /* 강조색 */
+    font-weight: 600;
+}

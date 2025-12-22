@@ -29,7 +29,7 @@ export default function DL01_Header() {
     // 홈페이지 상단 헤드
     return (
         <header className="header_Right01">
-            <Link to="/" className="header__logo-link">
+            <Link to="/mainpage" className="header__logo-link">
                 <h1 className="header_1 header__logo">
                     <FaStethoscope className="logo-icon" />
                     <span>DoctorLink</span></h1>

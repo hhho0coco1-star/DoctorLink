@@ -149,15 +149,14 @@ export default function Signup() {
                 {/* 비밀번호 */}
                 <input className="auth-input" type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <input className="auth-input" type="password" placeholder="비밀번호 확인" value={confirm} onChange={(e) => setConfirm(e.target.value)} />
-
-                {/* ✅ 의사 여부 */}
+                {/* 의사 여부 체크 */}
                 <label className="doctor-check">
-                    의사입니까?
+                    <span>의사입니까?</span>
                     <input
                         type="checkbox"
                         checked={isDoctor}
                         onChange={(e) => setIsDoctor(e.target.checked)}
-                        />
+                    />
                 </label>
 
                 {/* ✅ 의사 면허증 업로드 */}
@@ -172,6 +171,9 @@ export default function Signup() {
                         {licenseFile && (
                             <p className="file-name">{licenseFile.name}</p>
                         )}
+                        <p className="doctor-notice">
+                            ※ 의사 계정은 면허 확인 후 관리자 승인 시 등업됩니다.
+                        </p>
                     </div>
                 )}
 

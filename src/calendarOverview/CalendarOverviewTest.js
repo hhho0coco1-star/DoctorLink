@@ -44,17 +44,14 @@ export default function CalendarOverview() {
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
     const today = new Date().getDate(); // ⭐ 오늘 날짜 (추가)
 
-    // ✅ HospitalDetail 등 다른 화면에서 저장한 예약/이벤트를 불러오기
+    // ✅ 이벤트 변경 시 localStorage에 저장(새로고침/페이지 이동에도 유지)
     useEffect(() => {
         try {
-            const raw = localStorage.getItem(calendarStorageKey);
-            if (!raw) return;
-            const parsed = JSON.parse(raw);
-            if (parsed && typeof parsed === "object") setEvents(parsed);
+            localStorage.setItem(calendarStorageKey, JSON.stringify(events));
         } catch (e) {
             // ignore
         }
-    }, []);
+    }, [events]);
 
     /* ================= 예약 모달 로직 (기존) ================= */
     const openAddModal = (day) => {
@@ -317,7 +314,22 @@ export default function CalendarOverview() {
             {isModalOpen && (
                 <div className="calendar-modal-overlay" onClick={closeModal}>
                     <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
-                        <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+                        <div className="calendar-modal-header">
+                            <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+                            {selectedDay && (() => {
+                                const now = new Date();
+                                const year = now.getFullYear();
+                                const month = now.getMonth();
+                                const dateObj = new Date(year, month, selectedDay);
+                                const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+                                const dayOfWeek = weekDays[dateObj.getDay()];
+                                return (
+                                    <div className="calendar-modal-date">
+                                        {selectedDay}일 ({dayOfWeek})
+                                    </div>
+                                );
+                            })()}
+                        </div>
 
                         {error && <p className="error-text">{error}</p>}
 

@@ -2,62 +2,120 @@ import React, { useState, useEffect } from 'react';
 import "./SurveyModel.css";
 
 const surveyQuestions = [
-    { id: 'drinking', label: '음주 여부', description: '최근 1주일 내에 술을 마신 적이 있나요?' },
-    { id: 'smoking', label: '흡연 여부', description: '현재 담배를 피우고 계신가요?' },
-    { id: 'exercise', label: '운동 여부', description: '주 3회 이상 규칙적인 운동을 하시나요?' },
+    { id: 'drinking', label: '음주 여부' },
+    { id: 'smoking', label: '흡연 여부' },
+    { id: 'exercise', label: '운동 여부' },
 ];
 
 const frequencyOptions = ["주 1~2회", "주 3~4회", "주 5회 이상", "매일"];
 
 export default function SurveyModal({ onClose }) {
 
-    // 2. 외부 스크롤 방지 로직 추가
     useEffect(() => {
-        // 모달이 열릴 때 바디 스크롤 막기
         document.body.style.overflow = 'hidden';
-        
-        // 모달이 닫힐 때 원래대로 복구 (Cleanup 함수)
         return () => {
             document.body.style.overflow = 'unset';
         };
     }, []);
 
     const [answers, setAnswers] = useState({
-        // 생활 습관 (체크박스 + 선택)
         drinking: { checked: false, frequency: "" },
         smoking: { checked: false, frequency: "" },
         exercise: { checked: false, frequency: "" },
-        // [추가] 병력 및 증상 (텍스트 입력)
-        medicalHistory: "", // 기저질환
-        medications: "",    // 복용약물
-        familyHistory: "",   // 가족력
-        painLocation: "",    // 통증부위
-        symptoms: ""         // 전신증상
+
+        medicalHistory: "",
+        medications: "",
+        familyHistory: "",
+
+        painLocation: "",
+        painScale: "",
+        painStartDate: "",
+        painEndDate: "",
+        painOngoing: false,
+        symptoms: ""
     });
 
-    // 체크박스/선택 핸들러
+    const [painRecords, setPainRecords] = useState([]);
+
+    /* ================= 핸들러 ================= */
+
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
-        setAnswers({ ...answers, [name]: { ...answers[name], checked } });
+        setAnswers(prev => ({
+            ...prev,
+            [name]: { ...prev[name], checked }
+        }));
     };
 
     const handleFrequencyChange = (e) => {
         const { name, value } = e.target;
-        setAnswers({ ...answers, [name]: { ...answers[name], frequency: value } });
+        setAnswers(prev => ({
+            ...prev,
+            [name]: { ...prev[name], frequency: value }
+        }));
     };
 
-    // [추가] 텍스트 입력 핸들러
     const handleTextChange = (e) => {
         const { name, value } = e.target;
-        setAnswers({ ...answers, [name]: value });
+        setAnswers(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleOngoingChange = (e) => {
+        const checked = e.target.checked;
+        setAnswers(prev => ({
+            ...prev,
+            painOngoing: checked,
+            painEndDate: checked ? "" : prev.painEndDate
+        }));
+    };
+
+    const resetPainSection = () => {
+        setAnswers(prev => ({
+            ...prev,
+            painLocation: "",
+            painScale: "",
+            painStartDate: "",
+            painEndDate: "",
+            painOngoing: false,
+            symptoms: ""
+        }));
+    };
+
+    const handleSavePainRecord = () => {
+        if (
+            !answers.painLocation &&
+            !answers.painScale &&
+            !answers.painStartDate &&
+            !answers.symptoms
+        ) {
+            alert("통증 정보를 입력해주세요.");
+            return;
+        }
+
+        const newRecord = {
+            location: answers.painLocation || "미기재",
+            scale: answers.painScale || "미기재",
+            period: answers.painOngoing
+                ? `${answers.painStartDate || "날짜 미상"} ~ 진행 중`
+                : `${answers.painStartDate || "날짜 미상"} ~ ${answers.painEndDate || "종료일 미상"}`,
+            symptoms: answers.symptoms || "없음"
+        };
+
+        setPainRecords(prev => [...prev, newRecord]);
+        resetPainSection();
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('최종 결과:', answers);
-        alert('설문이 제출되었습니다!');
+        console.log("최종 제출 데이터", { answers, painRecords });
+        alert("설문이 제출되었습니다.");
         onClose();
     };
+
+    /* ================= JSX ================= */
 
     return (
         <div className="modal-overlay">
@@ -66,67 +124,131 @@ export default function SurveyModal({ onClose }) {
                     <h2>건강 상세 문진표</h2>
                     <button className="close-btn" onClick={onClose}>×</button>
                 </div>
-                
-                <form onSubmit={handleSubmit} className="survey-form">
-                    <div className="survey-scroll-area" style={{ maxHeight: '60vh', overflowY: 'auto', paddingRight: '10px' }}>
-                        
-                        {/* 1. 생활 습관 섹션 */}
+
+                <form onSubmit={handleSubmit}>
+                    <div className="survey-scroll-area">
+
                         <h3 className="section-title">생활 습관</h3>
-                        {surveyQuestions.map((q) => (
-                            <div key={q.id} className="question-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ fontWeight: 'bold' }}>
+                        {surveyQuestions.map(q => (
+                            <div key={q.id} className="question-group">
+                                <label>
                                     <input
                                         type="checkbox"
                                         name={q.id}
                                         checked={answers[q.id].checked}
                                         onChange={handleCheckboxChange}
-                                    /> {q.label}
+                                    />
+                                    {q.label}
                                 </label>
+
                                 {answers[q.id].checked && (
-                                    <div style={{ marginLeft: '25px', marginTop: '5px' }}>
-                                        <select name={q.id} value={answers[q.id].frequency} onChange={handleFrequencyChange} required>
-                                            <option value="">-- 빈도 선택 --</option>
-                                            {frequencyOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                                        </select>
-                                    </div>
+                                    <select
+                                        name={q.id}
+                                        value={answers[q.id].frequency}
+                                        onChange={handleFrequencyChange}
+                                    >
+                                        <option value="">-- 빈도 선택 --</option>
+                                        {frequencyOptions.map(opt => (
+                                            <option key={opt} value={opt}>{opt}</option>
+                                        ))}
+                                    </select>
                                 )}
                             </div>
                         ))}
 
                         <hr />
 
-                        {/* 2. 병력 및 약물 섹션 */}
                         <h3 className="section-title">병력 및 약물복용</h3>
                         <div className="input-group">
-                            <label>기저질환 (앓고 계신 병)</label>
-                            <input type="text" name="medicalHistory" value={answers.medicalHistory} onChange={handleTextChange} placeholder="예: 고혈압, 당뇨 등" />
+                            <label>기저질환</label>
+                            <input name="medicalHistory" value={answers.medicalHistory} onChange={handleTextChange} />
                         </div>
                         <div className="input-group">
-                            <label>복용 중인 약물</label>
-                            <input type="text" name="medications" value={answers.medications} onChange={handleTextChange} placeholder="현재 드시는 약을 적어주세요" />
+                            <label>복용 약물</label>
+                            <input name="medications" value={answers.medications} onChange={handleTextChange} />
                         </div>
                         <div className="input-group">
                             <label>가족력</label>
-                            <input type="text" name="familyHistory" value={answers.familyHistory} onChange={handleTextChange} placeholder="가족 중 유전 질환이 있나요?" />
+                            <input name="familyHistory" value={answers.familyHistory} onChange={handleTextChange} />
                         </div>
 
                         <hr />
 
-                        {/* 3. 증상 섹션 */}
-                        <h3 className="section-title">통증 및 증상</h3>
+                        <h3 className="section-title">통증 및 증상 (선택)</h3>
+
                         <div className="input-group">
                             <label>통증 부위</label>
-                            <input type="text" name="painLocation" value={answers.painLocation} onChange={handleTextChange} placeholder="어디가 아프신가요?" />
+                            <input name="painLocation" value={answers.painLocation} onChange={handleTextChange} />
                         </div>
+
                         <div className="input-group">
-                            <label>전신 증상 (기타)</label>
-                            <textarea name="symptoms" value={answers.symptoms} onChange={handleTextChange} placeholder="기타 불편하신 증상을 자유롭게 적어주세요" rows="3" />
+                            <label>통증 정도</label>
+                            <div className="pain-scale-group">
+                                {[...Array(10)].map((_, i) => {
+                                    const v = String(i + 1);
+                                    return (
+                                        <label key={v} className="pain-radio">
+                                            <input
+                                                type="radio"
+                                                name="painScale"
+                                                value={v}
+                                                checked={answers.painScale === v}
+                                                onChange={handleTextChange}
+                                            />
+                                            <span>{v}</span>
+                                        </label>
+                                    );
+                                })}
+                            </div>
                         </div>
+                        <label className="ongoing-label">
+                            현재도 통증이 있음 (진행형)
+                            <input type="checkbox" checked={answers.painOngoing} onChange={handleOngoingChange} />
+                        </label>
+
+                        <div className="input-group">
+                            <label>통증 시작일</label>
+                            <input type="date" name="painStartDate" value={answers.painStartDate} onChange={handleTextChange} />
+                        </div>
+
+
+                        <div className="input-group">
+                            <label>통증 종료일</label>
+                            <input
+                                type="date"
+                                name="painEndDate"
+                                value={answers.painEndDate}
+                                onChange={handleTextChange}
+                                disabled={answers.painOngoing}
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label>기타 증상</label>
+                            <textarea name="symptoms" value={answers.symptoms} onChange={handleTextChange} />
+                        </div>
+
+                        <button type="button" onClick={handleSavePainRecord}>
+                            기록 저장
+                        </button>
+
+                        {painRecords.length > 0 && (
+                            <ul>
+                                {painRecords.map((r, i) => (
+                                    <li key={i}>
+                                        ===========================================<br></br>
+                                        📅 {r.period}<br></br>  {r.location} / 🔥 {r.scale}  /  {r.symptoms}<br></br>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
                     </div>
 
-                    <button type="submit" className="submit-btn" style={{ width: '100%', padding: '12px', marginTop: '20px' }}>제출하기</button>
+                    <button type="submit" className="submit-btn">제출하기</button>
                 </form>
             </div>
         </div>
     );
+
 }

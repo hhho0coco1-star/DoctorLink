@@ -177,8 +177,6 @@
     cursor: pointer;
 }
 
-CSS
-
 /* 기존 코드를 아래와 같이 수정 (input 뒤에 속성 선택자 추가) */
 .input-group input[type="text"], 
 .input-group input[type="number"],
@@ -188,4 +186,41 @@ CSS
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 0.9rem;
+}
+/* 통증 정도 라디오 그룹 */
+.pain-scale-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* 라디오 + 숫자 중앙 정렬 */
+.pain-radio {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.pain-radio input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* 진행형 체크 */
+.ongoing-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* 종료일 비활성화 스타일 */
+.input-group input:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
 }

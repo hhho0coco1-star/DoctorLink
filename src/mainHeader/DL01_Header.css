@@ -26,8 +26,8 @@
 .header_Right01 {
     /* background-color: lightblue; */
     border: 1px solid black;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    /* border-top-left-radius: 12px; */
+    /* border-top-right-radius: 12px; */
     height: 12vh;
     display: flex;
     flex-direction: row;

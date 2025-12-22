@@ -15,7 +15,7 @@
 .aside1 {
     padding: 1vh;
     height: 23vh;
-    background-color: rgb(216, 240, 255);
+    /* background-color: rgb(216, 240, 255); */
     border: 1px solid black;
     border-top: 0;
     border-bottom: 0px;

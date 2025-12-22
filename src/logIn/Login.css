@@ -245,3 +245,34 @@
 .auth-button:disabled:hover {
     background-color: #c7d2fe;
 }
+/* 의사 체크 */
+.doctor-check {
+    display: inline-flex;          /* ⭐ 핵심 */
+    align-items: center;           /* 세로 중앙 정렬 */
+    gap: 8px;                      /* 글자 - 체크박스 간격 */
+    font-size: 14px;
+    margin: 10px 0 12px;
+    white-space: nowrap;           /* ⭐ 줄바꿈 방지 */
+    cursor: pointer;
+}
+/* 면허증 업로드 */
+.license-upload {
+    margin-bottom: 14px;
+}
+
+.license-label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+.file-name {
+    font-size: 12px;
+    color: #2563eb;
+    margin-top: 4px;
+}
+.doctor-check input[type="checkbox"] {
+    margin: 0;                     /* 기본 margin 제거 */
+    flex-shrink: 0;                /* 줄어들면서 밀리지 않게 */
+}

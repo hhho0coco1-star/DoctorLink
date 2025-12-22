@@ -12,7 +12,7 @@ export default function Signup() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [rrn, setRrn] = useState(""); // 주민번호 앞자리
+    const [rrn, setRrn] = useState("");
 
     const [verified, setVerified] = useState(false);
     const [agree, setAgree] = useState(false);
@@ -21,6 +21,9 @@ export default function Signup() {
     const [sentCode, setSentCode] = useState(false);
     const [authCode, setAuthCode] = useState("");
 
+    /* ✅ 의사 관련 상태 */
+    const [isDoctor, setIsDoctor] = useState(false);
+    const [licenseFile, setLicenseFile] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,7 +38,22 @@ export default function Signup() {
             return;
         }
 
-        alert("회원가입 완료");
+        if (isDoctor && !licenseFile) {
+            alert("의사 면허증을 업로드해주세요.");
+            return;
+        }
+
+        console.log({
+            email,
+            name,
+            phone,
+            address,
+            rrn,
+            role: isDoctor ? "DOCTOR" : "USER",
+            licenseFile,
+        });
+
+        alert(isDoctor ? "의사 회원가입 완료 (승인 대기)" : "회원가입 완료");
         navigate("/login");
     };
 
@@ -45,12 +63,7 @@ export default function Signup() {
                 <h2 className="auth-title">회원가입</h2>
 
                 {/* 개인정보 */}
-                <input
-                    className="auth-input"
-                    placeholder="이름"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
+                <input className="auth-input" placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} />
 
                 <input
                     className="auth-input"
@@ -75,7 +88,7 @@ export default function Signup() {
                     onChange={(e) => setAddress(e.target.value)}
                 />
 
-                {/* 이메일 + 인증 */}
+                {/* 이메일 인증 */}
                 <div style={{ display: "flex", gap: "8px" }}>
                     <input
                         className="auth-input"
@@ -89,7 +102,7 @@ export default function Signup() {
                     <button
                         type="button"
                         className="auth-button"
-                        style={{ width: "120px", height: "44px"}}
+                        style={{ width: "120px", height: "44px" }}
                         onClick={() => {
                             alert("인증번호 전송 (목업: 123456)");
                             setSentCode(true);
@@ -112,7 +125,7 @@ export default function Signup() {
                         <button
                             type="button"
                             className="auth-button"
-                            style={{ width: "80px", height: "44px"}}
+                            style={{ width: "80px", height: "44px" }}
                             onClick={() => {
                                 if (authCode === "123456") {
                                     alert("인증 완료");
@@ -126,39 +139,46 @@ export default function Signup() {
                         </button>
                     </div>
                 )}
+
                 {verified && (
                     <p style={{ fontSize: "12px", color: "#16a34a", marginBottom: "10px" }}>
                         ✔ 이메일 인증 완료
                     </p>
                 )}
 
-
-
                 {/* 비밀번호 */}
-                <input
-                    className="auth-input"
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <input className="auth-input" type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input className="auth-input" type="password" placeholder="비밀번호 확인" value={confirm} onChange={(e) => setConfirm(e.target.value)} />
 
-                <input
-                    className="auth-input"
-                    type="password"
-                    placeholder="비밀번호 확인"
-                    value={confirm}
-                    onChange={(e) => setConfirm(e.target.value)}
-                />
-
-                {/* 개인정보 이용 동의 */}
-                <label className="checkbox" style={{ marginBottom: "10px" }}>
+                {/* ✅ 의사 여부 */}
+                <label className="doctor-check">
+                    의사입니까?
                     <input
                         type="checkbox"
-                        checked={agree}
-                        onChange={(e) => setAgree(e.target.checked)}
-                    />
+                        checked={isDoctor}
+                        onChange={(e) => setIsDoctor(e.target.checked)}
+                        />
+                </label>
+
+                {/* ✅ 의사 면허증 업로드 */}
+                {isDoctor && (
+                    <div className="license-upload">
+                        <label className="license-label">의사 면허증 업로드</label>
+                        <input
+                            type="file"
+                            accept="image/*,.pdf"
+                            onChange={(e) => setLicenseFile(e.target.files[0])}
+                        />
+                        {licenseFile && (
+                            <p className="file-name">{licenseFile.name}</p>
+                        )}
+                    </div>
+                )}
+
+                {/* 개인정보 동의 */}
+                <label className="checkbox" style={{ marginBottom: "10px" }}>
                     개인정보 이용에 동의합니다
+                    <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
                 </label>
 
                 <button className="auth-button" disabled={!agree}>
@@ -180,14 +200,8 @@ export default function Signup() {
                     <div className="terms-overlay">
                         <div className="terms-box">
                             <h4>이용약관</h4>
-                            <p>
-                                본 서비스는 학습용 목업 페이지이며
-                                실제 개인정보는 저장되지 않습니다.
-                            </p>
-                            <button
-                                className="terms-btn"
-                                onClick={() => setShowTerms(false)}
-                            >
+                            <p>본 서비스는 학습용 목업 페이지이며 실제 개인정보는 저장되지 않습니다.</p>
+                            <button className="terms-btn" onClick={() => setShowTerms(false)}>
                                 동의
                             </button>
                         </div>

@@ -282,3 +282,12 @@
     margin: 0;
     flex: 0 0 auto;
 }
+.auth-button:disabled {
+    background-color: #c7d2fe;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.auth-button:disabled:hover {
+    background-color: #c7d2fe;
+}

@@ -16,6 +16,7 @@ import HospitalDetail from "./hospital/HospitalDetail";
 import DashBoard from "./doctorDashBoard/DoctorDashBoard";
 import PatientDetail from "./patientDetail/PatientDetail";
 import Community from './community/Community';
+import StartPage from './startPage/StartPage';
 
 function MainPageWrapper() {
   if (isMobile()) {
@@ -30,7 +31,8 @@ export default function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPageWrapper />} />
+        <Route path="/" element={<StartPage />} />
+        <Route path="/mainpage" element={<MainPageWrapper />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/find-id" element={<FindId />} />
@@ -49,6 +51,5 @@ export default function App() {
 
       </Routes>
     </BrowserRouter>
-
   )
 }

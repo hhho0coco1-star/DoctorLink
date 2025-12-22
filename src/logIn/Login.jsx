@@ -19,7 +19,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         alert("로그인 성공");
-        navigate("/");
+        navigate("/mainpage");
 
         setLoginTry(true);
     };

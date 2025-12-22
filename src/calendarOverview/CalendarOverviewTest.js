@@ -14,7 +14,16 @@ export default function CalendarOverview() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
     const calendarStorageKey = "calendarEvents";
-    const [events, setEvents] = useState({});
+    const [events, setEvents] = useState(() => {
+        try {
+            const raw = localStorage.getItem(calendarStorageKey);
+            if (!raw) return {};
+            const parsed = JSON.parse(raw);
+            return parsed && typeof parsed === "object" ? parsed : {};
+        } catch (e) {
+            return {};
+        }
+    });
     const [error, setError] = useState("");
     const [form, setForm] = useState({
         dept: "",
@@ -46,15 +55,6 @@ export default function CalendarOverview() {
             // ignore
         }
     }, []);
-
-    // ✅ 이벤트 변경 시 localStorage에 저장(새로고침/페이지 이동에도 유지)
-    useEffect(() => {
-        try {
-            localStorage.setItem(calendarStorageKey, JSON.stringify(events));
-        } catch (e) {
-            // ignore
-        }
-    }, [events]);
 
     /* ================= 예약 모달 로직 (기존) ================= */
     const openAddModal = (day) => {

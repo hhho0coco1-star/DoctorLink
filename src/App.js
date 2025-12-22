@@ -16,34 +16,36 @@ import DashBoard from "./doctorDashBoard/DoctorDashBoard";
 import PatientDetail from "./patientDetail/PatientDetail";
 import Community from './community/Community';
 
+import StartPage from './startPage/StartPage';
+
 
 export default function App() {
   return (
 
-    <BrowserRouter>
-      <Routes>
+    // <BrowserRouter>
+    //   <Routes>
 
-        <Route path="/" element={<MainPage />} />
+    //     <Route path="/" element={<MainPage />} />
 
-        {/* 로그인 */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/find-id" element={<FindId />} />
-        <Route path="/find-password" element={<FindPassword />} />
-        <Route path="/mypage" element={<MyPage />} />
+    //     {/* 로그인 */}
+    //     <Route path="/login" element={<Login />} />
+    //     <Route path="/signup" element={<Signup />} />
+    //     <Route path="/find-id" element={<FindId />} />
+    //     <Route path="/find-password" element={<FindPassword />} />
+    //     <Route path="/mypage" element={<MyPage />} />
 
-        {/*  */}
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/hospitalSearch" element={<HospitalSearchPage />} />
-        <Route path="/hospital/:id" element={<HospitalDetail />} />
-        <Route path="/dashboard" element={<DashBoard />} />
-        <Route path="/patient/:id" element={<PatientDetail />} />
-        <Route path='/community' element={<Community />} />
+    //     {/*  */}
+    //     <Route path="/calendar" element={<Calendar />} />
+    //     <Route path="/settings" element={<Settings />} />
+    //     <Route path="/hospitalSearch" element={<HospitalSearchPage />} />
+    //     <Route path="/hospital/:id" element={<HospitalDetail />} />
+    //     <Route path="/dashboard" element={<DashBoard />} />
+    //     <Route path="/patient/:id" element={<PatientDetail />} />
+    //     <Route path='/community' element={<Community />} />
 
 
-      </Routes>
-    </BrowserRouter>
-
+    //   </Routes>
+    // </BrowserRouter>
+    <StartPage />
   )
 }

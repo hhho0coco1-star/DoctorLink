@@ -19,6 +19,7 @@ import Community from './community/Community';
 import StartPage from './startPage/StartPage';
 import HealthPage from './mobilemainpage/HealthPage';
 import HistoryPage from './mobilemainpage/HistoryPage';
+import ConsultationPage from './mobilemainpage/ConsultationPage';
 
 function MainPageWrapper() {
   if (isMobile()) {
@@ -57,6 +58,7 @@ export default function App() {
         <Route path='/community' element={<Community />} />
         <Route path="/health" element={<HealthPage />} />
         <Route path="/history" element={<HistoryPage />} />
+        <Route path="/consultation" element={<ConsultationPage />} />
 
 
       </Routes>

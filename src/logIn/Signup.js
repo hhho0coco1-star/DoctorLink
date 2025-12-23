@@ -21,7 +21,7 @@ export default function Signup() {
     const [sentCode, setSentCode] = useState(false);
     const [authCode, setAuthCode] = useState("");
 
-    /* ✅ 의사 관련 상태 */
+    /* 의사 관련 */
     const [isDoctor, setIsDoctor] = useState(false);
     const [licenseFile, setLicenseFile] = useState(null);
 
@@ -43,26 +43,38 @@ export default function Signup() {
             return;
         }
 
-        console.log({
+        /* ✅ 회원 정보 localStorage 저장 (로그인과 동일한 key) */
+        const user = {
             email,
+            password,
             name,
             phone,
             address,
             rrn,
-            role: isDoctor ? "DOCTOR" : "USER",
-            licenseFile,
-        });
+            role: isDoctor ? "DOCTOR_PENDING" : "USER", // 승인 대기
+            createdAt: new Date().toISOString(),
+        };
 
-        alert(isDoctor ? "의사 회원가입 완료 (승인 대기)" : "회원가입 완료");
+        localStorage.setItem(
+            "doctorlink_user",
+            JSON.stringify(user)
+        );
+
+        alert(
+            isDoctor
+                ? "의사 회원가입 완료 (관리자 승인 대기)"
+                : "회원가입 완료"
+        );
+
         navigate("/login");
     };
+
 
     return (
         <div className="auth-container">
             <form className="auth-box" onSubmit={handleSubmit}>
                 <h2 className="auth-title">회원가입</h2>
 
-                {/* 개인정보 */}
                 <input className="auth-input" placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} />
 
                 <input
@@ -146,38 +158,26 @@ export default function Signup() {
                     </p>
                 )}
 
-                {/* 비밀번호 */}
                 <input className="auth-input" type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <input className="auth-input" type="password" placeholder="비밀번호 확인" value={confirm} onChange={(e) => setConfirm(e.target.value)} />
-                {/* 의사 여부 체크 */}
+
+                {/* 의사 체크 */}
                 <label className="doctor-check">
                     <span>의사입니까?</span>
-                    <input
-                        type="checkbox"
-                        checked={isDoctor}
-                        onChange={(e) => setIsDoctor(e.target.checked)}
-                    />
+                    <input type="checkbox" checked={isDoctor} onChange={(e) => setIsDoctor(e.target.checked)} />
                 </label>
 
-                {/* ✅ 의사 면허증 업로드 */}
                 {isDoctor && (
                     <div className="license-upload">
                         <label className="license-label">의사 면허증 업로드</label>
-                        <input
-                            type="file"
-                            accept="image/*,.pdf"
-                            onChange={(e) => setLicenseFile(e.target.files[0])}
-                        />
-                        {licenseFile && (
-                            <p className="file-name">{licenseFile.name}</p>
-                        )}
+                        <input type="file" accept="image/*,.pdf" onChange={(e) => setLicenseFile(e.target.files[0])} />
+                        {licenseFile && <p className="file-name">{licenseFile.name}</p>}
                         <p className="doctor-notice">
                             ※ 의사 계정은 면허 확인 후 관리자 승인 시 등업됩니다.
                         </p>
                     </div>
                 )}
 
-                {/* 개인정보 동의 */}
                 <label className="checkbox" style={{ marginBottom: "10px" }}>
                     개인정보 이용에 동의합니다
                     <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
@@ -191,7 +191,6 @@ export default function Signup() {
                     이미 계정이 있나요? <Link to="/login">로그인</Link>
                 </div>
 
-                {/* 이용약관 */}
                 <div className="terms-mini">
                     <span className="terms-link" onClick={() => setShowTerms(true)}>
                         이용약관

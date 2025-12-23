@@ -1,6 +1,6 @@
 // import "./MainHeader.css";
-import "./DL02_SideBar.css";
-import MainHeader from "./MainHeader";
+import "./SideBar_Doctor.css";
+import MainHeader from "./MainHeader_Doctor";
 
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom";
@@ -120,51 +120,17 @@ export default function DL02_SideBar({ onOpenSurvey }) {
     return (
 
         <aside className="aside_Main">
-            <div className="aside1">
-                <p style={{ fontSize: "0.9rem", margin: "1vh", height: "900", fontWeight: "500" }}>빠른 작업</p>
-
-
-                <div
-                    className="aside_box1"
-                    onClick={() => {
-                        if (loginTry) {
-                            handlePillCheck(); // 로그인 상태면 약 복용 함수 실행
-                        } else {
-                            alert("로그인이 필요한 서비스입니다."); // 아니면 경고창
-                            navigate("/login"); // 로그인 페이지로 유도 (선택 사항)
-                        }
-                    }}
-                    style={{ cursor: 'pointer' }}
-                >
-                    <FaPills style={{ marginRight: '10px' }} />
-                    <div className="text-wrapper">
-                        <div>약 복용체크</div>
-                        <div style={{ fontSize: "10px" }}>Today: {loginTry ? unTakenCount : 0}개</div>
-                    </div>
-                </div>
-
-                <div className="aside_box1" onClick={() => {
-                    if (loginTry) {
-                        onOpenSurvey();
-                    } else {
-                        alert("로그인이 필요한 서비스입니다."); // 아니면 경고창
-                        navigate("/login"); // 로그인 페이지로 유도 (선택 사항)
-                    }
-                }} style={{ cursor: 'pointer' }}>
-                    <FaCalendarCheck style={{ marginRight: '10px' }} />건강기록 (문진표)
-                </div>
-            </div>
 
             <div className="aside2">
                 <div className="aside1_box1 aside2_box" onClick={() => {
                         if (loginTry) {
-                            navigate("/patient/1");
+                            navigate("/dashboard");
                         } else {
                             alert("로그인이 필요한 서비스입니다.");
                             navigate("/login");
                         }
                     }}>
-                    <FaUserMd style={{ marginRight: '10px' }} />건강정보</div>
+                    <FaUserMd style={{ marginRight: '10px' }} />환자정보</div>
 
                 <div className="aside1_box2 aside2_box" onClick={() => {
                         if (loginTry) {
@@ -174,7 +140,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
                             navigate("/login");
                         }
                     }}>
-                    <FaHeartbeat style={{ marginRight: '10px' }} />병원예약</div>
+                    <FaHeartbeat style={{ marginRight: '10px' }} />예약정보</div>
 
                 <div className="aside1_box5 aside2_box"  onClick={() => {
                         if (loginTry) {

@@ -21,6 +21,11 @@ import HealthPage from './mobilemainpage/HealthPage';
 import HistoryPage from './mobilemainpage/HistoryPage';
 import ConsultationPage from './mobilemainpage/ConsultationPage';
 
+// Test
+import DashBoard_Doctor from './doctorpage/DashBoard_Doctor';
+import Mypage_Doctor from "./doctorpage/MyPage_Doctor";
+import PatientDetail_Doctor from './doctorpage/PatientDetail_Doctor';
+
 function MainPageWrapper() {
   if (isMobile()) {
     return <MobileMainPage />;
@@ -60,6 +65,10 @@ export default function App() {
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/consultation" element={<ConsultationPage />} />
 
+        {/* test */}
+        <Route path="/dashboard_doctor" element={<DashBoard_Doctor />} />
+        <Route path="/mypage_doctor" element={<Mypage_Doctor />} />
+        <Route path="/patient_doctor/:id" element={<PatientDetail_Doctor />} />
 
       </Routes>
     </BrowserRouter>

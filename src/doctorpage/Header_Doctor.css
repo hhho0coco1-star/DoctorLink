@@ -1,0 +1,154 @@
+/* 전역 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header 컨테이너: 상단 고정 및 그림자 효과 */
+.header_Right01 {
+    height: 100px;
+    /* vh 대신 고정 높이가 정렬에 유리합니다 */
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+    /* 검정 선 대신 연한 회색 */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    /* 매우 은은한 그림자 */
+}
+
+/* 로고 영역 스타일 */
+.header_1 {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    /* 짙은 네이비 그레이 */
+    letter-spacing: -0.5px;
+}
+
+/* 로고 텍스트 중 일부에 포인트 컬러 적용 시 (선택 사항) */
+/* .header__logo span { color: #2563eb; } */
+
+.header__logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 중앙 환영 메시지 (header_2) */
+.header_2 {
+    flex: 1;
+    margin-left: 80px;
+}
+
+.header_2 p:first-child {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.header_2 p:last-child {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* 우측 사용자 프로필 카드 (header_3) */
+/* 프로필 카드 컨테이너 */
+.header_3 {
+    min-width: 160px;
+    padding: 12px 20px;
+    background-color: #f0f7ff;
+    /* 아주 연한 메디컬 블루 배경 */
+    border-radius: 12px;
+    border: 1px solid #e0eefe;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 링크 기본 스타일 제거 (밑줄 및 파란색 방지) */
+.header__profile-link {
+    text-decoration: none !important;
+    /* 밑줄 절대 제거 */
+    display: flex;
+    flex-direction: column;
+    /* 이름을 위로, 번호를 아래로 배치 */
+    align-items: center;
+    gap: 2px;
+    /* 이름과 환자번호 사이의 간격 */
+}
+
+/* 사용자 이름 스타일 */
+.header_3_name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    /* 짙은 네이비 (가독성 중심) */
+}
+
+/* 환자 번호 정보 스타일 */
+.header_3_info {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+    /* 차분한 보조 텍스트 색상 */
+    letter-spacing: 0.02em;
+    /* 정보 전달을 위해 자간 확보 */
+}
+
+/* 마우스 올렸을 때 효과 */
+.header_3:hover {
+    background-color: #e0f2fe;
+    border-color: #bae6fd;
+    transform: translateY(-1px);
+}
+
+/* ... 기존 코드 유지 ... */
+
+/* [반응형] 태블릿 및 작은 화면 (1024px 이하) */
+@media (max-width: 1024px) {
+    .header_Right01 {
+        padding: 0 20px;
+        /* 양옆 여백 축소 */
+        height: 80px;
+        /* 헤더 높이 살짝 축소 */
+    }
+
+    .header_2 {
+        margin-left: 30px;
+        /* 중앙 메시지 간격 축소 */
+    }
+}
+
+/* [모바일] 768px 이하에서 헤더 숨기기 */
+@media (max-width: 768px) {
+    .header_Right01 {
+        display: none !important;
+    }
+}
+
+.header_Right01 {
+    height: 100px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    
+    /* 고정값 핵심 설정 */
+    width: 100%; 
+    min-width: 1400px; /* 화면이 이보다 작아지면 요소가 겹치지 않고 가로 스크롤 발생 */
+}

@@ -4,7 +4,8 @@ import BloodSugarTable from "../patientDetail/patientinfo/BloodSugarTable";
 import BloodPressureData from "../patientDetail/patientinfo/BloodPressureData";
 import WeeklyReport from "../patientDetail/patientinfo/WeeklyReport";
 import { lifeReportData } from "../data/dummyData";
-import MainHeader from "../mainHeader/MainHeader";
+// import MainHeader from "../mainHeader/MainHeader";
+import MainHeader from "./MainHeader_Doctor";
 import "../patientDetail/patientinfo/Table.css";
 import SleepData from "../patientDetail/patientinfo/SleepData";
 import DailyActivity from "../patientDetail/patientinfo/DailyActivity";
@@ -64,7 +65,7 @@ function averageBloodSugarData(data) {
   }));
 }
 
-function PatientDetail() {
+function PatientDetail_Doctor() {
   const [activeTab, setActiveTab] = useState("bloodSugar");
   const { id } = useParams();
   const patient = lifeReportData.find((p) => p.id === parseInt(id));
@@ -236,10 +237,16 @@ function PatientDetail() {
             </div>
           </div>
 
+          {/* 목표 관리 박스 */}
+          <GoalManagementBox
+            goals={currentPatientGoals}
+            patientId={id}
+            onSave={handleSavePatientGoals}
+          />
         </div>
       </div>
     </MainHeader>
   );
 }
 
-export default PatientDetail;
+export default PatientDetail_Doctor;

@@ -17,12 +17,20 @@ import DashBoard from './pages/DashBoard';
 import PatientDetail from './pages/PatientDetail';
 import Community from './community/Community';
 import StartPage from './startPage/StartPage';
+import HealthPage from './mobilemainpage/HealthPage';
+import HistoryPage from './mobilemainpage/HistoryPage';
 
 function MainPageWrapper() {
   if (isMobile()) {
     return <MobileMainPage />;
   }
   return <MainPage />;
+}
+function StartPageWrapper() {
+  if (isMobile()) {
+    return <MobileMainPage />;
+  }
+  return <StartPage />;
 }
 
 
@@ -31,7 +39,7 @@ export default function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<StartPage />} />
+        <Route path="/" element={<StartPageWrapper />} />
         <Route path="/mainpage" element={<MainPageWrapper />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -47,6 +55,8 @@ export default function App() {
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/patient/:id" element={<PatientDetail />} />
         <Route path='/community' element={<Community />} />
+        <Route path="/health" element={<HealthPage />} />
+        <Route path="/history" element={<HistoryPage />} />
 
 
       </Routes>

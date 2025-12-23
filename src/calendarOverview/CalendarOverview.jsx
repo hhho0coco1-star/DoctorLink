@@ -17,6 +17,8 @@ function CalendarOverview() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
     const calendarStorageKey = "calendarEvents";
+    const appointmentStorageKey = "appointments"; // ⭐ 대시보드 연동용
+
     const [events, setEvents] = useState(() => {
         try {
             const raw = localStorage.getItem(calendarStorageKey);
@@ -26,7 +28,7 @@ function CalendarOverview() {
         } catch (e) {
             return {};
         }
-    });    
+    });
     const [error, setError] = useState("");
     const [form, setForm] = useState({
         dept: "",
@@ -80,6 +82,21 @@ function CalendarOverview() {
     };
 
     const saveReservation = () => {
+        const savedAppointments =
+            JSON.parse(localStorage.getItem(appointmentStorageKey)) || [];
+
+        const newAppointment = {
+            id: `${selectedDay}-${form.dept}-${form.time}`,
+            dept: form.dept,
+            time: form.time,
+            day: selectedDay
+        };
+
+        localStorage.setItem(
+            appointmentStorageKey,
+            JSON.stringify([...savedAppointments, newAppointment])
+        );
+
         if (!form.dept.trim()) {
             setError("진료과를 입력해주세요.");
             return;
@@ -114,6 +131,16 @@ function CalendarOverview() {
     };
 
     const deleteReservation = () => {
+        // ⭐ 대시보드 예약도 같이 삭제
+        const savedAppointments =
+            JSON.parse(localStorage.getItem(appointmentStorageKey)) || [];
+
+        const filtered = savedAppointments.filter(
+            a => !(a.day === selectedDay && a.dept === form.dept && a.time === form.time)
+        );
+
+        localStorage.setItem(appointmentStorageKey, JSON.stringify(filtered));
+
         setEvents(prev => {
             const filtered = prev[selectedDay].filter((_, i) => i !== editingIndex);
             return { ...prev, [selectedDay]: filtered };
@@ -321,22 +348,22 @@ function CalendarOverview() {
                     {isModalOpen && (
                         <div className="calendar-modal-overlay" onClick={closeModal}>
                             <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
-                            <div className="calendar-modal-header">
-                            <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
-                            {selectedDay && (() => {
-                                const now = new Date();
-                                const year = now.getFullYear();
-                                const month = now.getMonth();
-                                const dateObj = new Date(year, month, selectedDay);
-                                const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
-                                const dayOfWeek = weekDays[dateObj.getDay()];
-                                return (
-                                    <div className="calendar-modal-date">
-                                        {selectedDay}일 ({dayOfWeek})
-                                    </div>
-                                );
-                            })()}
-                        </div>
+                                <div className="calendar-modal-header">
+                                    <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+                                    {selectedDay && (() => {
+                                        const now = new Date();
+                                        const year = now.getFullYear();
+                                        const month = now.getMonth();
+                                        const dateObj = new Date(year, month, selectedDay);
+                                        const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+                                        const dayOfWeek = weekDays[dateObj.getDay()];
+                                        return (
+                                            <div className="calendar-modal-date">
+                                                {selectedDay}일 ({dayOfWeek})
+                                            </div>
+                                        );
+                                    })()}
+                                </div>
                                 {error && <p className="error-text">{error}</p>}
 
                                 <input

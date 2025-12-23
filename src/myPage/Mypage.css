@@ -6,6 +6,13 @@
     background: #f5f7fa;
 }
 
+/* [모바일] 768px 이하에서 패딩 조정 */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px 16px !important;
+    }
+}
+
 /* =================== MyPage =================== */
 
 .mypage-content {

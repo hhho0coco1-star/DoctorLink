@@ -10,10 +10,29 @@
     padding: 1vh;
 }
 
+/* [모바일] 768px 이하에서 패딩 제거 */
+@media (max-width: 768px) {
+    .main {
+        padding: 0 !important;
+    }
+}
+
 /* MainBody */
 .mainBody {
     display: flex;
     flex-direction: row;
+}
+
+/* [모바일] 768px 이하에서 레이아웃 조정 */
+@media (max-width: 768px) {
+    .mainBody {
+        flex-direction: column;
+    }
+    
+    .main-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
 }
 
 

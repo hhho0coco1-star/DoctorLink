@@ -38,18 +38,82 @@ export default function DL02_SideBar({ onOpenSurvey }) {
         navigate("/");
     };
 
-    const [eatPill, setEatPill] = useState(3);
-    const [eat, setEat] = useState(1);
+    const calendarStorageKey = "calendarEvents";
+    const today = new Date().getDate();
 
-    // 약 복용 (클릭 이벤트)
+    // 오늘 날짜의 미복용 약 개수 가져오기
+    const getTodayUnTakenCount = () => {
+        try {
+            const raw = localStorage.getItem(calendarStorageKey);
+            if (!raw) return 0;
+            const events = JSON.parse(raw);
+            const todayEvents = events[today] || [];
+            return todayEvents.filter(e => e.type === "medication" && !e.taken).length;
+        } catch (e) {
+            return 0;
+        }
+    };
 
+    const [unTakenCount, setUnTakenCount] = useState(getTodayUnTakenCount);
+
+    // localStorage 변경 감지하여 카운트 업데이트
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setUnTakenCount(getTodayUnTakenCount());
+        };
+
+        // localStorage 변경 감지를 위한 인터벌 (더 정확한 방법은 CustomEvent 사용)
+        const interval = setInterval(handleStorageChange, 500);
+        
+        // 페이지 포커스 시에도 업데이트
+        window.addEventListener('focus', handleStorageChange);
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('focus', handleStorageChange);
+        };
+    }, []);
+
+    // 약 복용 (캘린더의 markTodayTaken과 동일한 기능)
     const handlePillCheck = () => {
-        if (eatPill > 0) {
-            alert(`약 ${eat}회 복용완료`);
-            setEatPill(eatPill - 1);
-            setEat(eat + 1);
-        } else {
-            alert("오늘의 약 복용을 모두 완료했습니다.");
+        try {
+            const raw = localStorage.getItem(calendarStorageKey);
+            const events = raw ? JSON.parse(raw) : {};
+            const todayEvents = events[today] || [];
+            
+            // 오늘 날짜의 약이 있는지 확인
+            const todayMedications = todayEvents.filter(e => e.type === "medication");
+            if (todayMedications.length === 0) {
+                alert("오늘 복용할 약이 없습니다.");
+                return;
+            }
+
+            // 이미 모두 복용했는지 확인
+            const unTakenMeds = todayMedications.filter(e => !e.taken);
+            if (unTakenMeds.length === 0) {
+                alert("오늘의 약 복용을 모두 완료했습니다.");
+                setUnTakenCount(0);
+                return;
+            }
+
+            // 오늘 날짜의 모든 약을 복용 완료 처리
+            const updatedEvents = {
+                ...events,
+                [today]: todayEvents.map(e =>
+                    e.type === "medication" ? { ...e, taken: true } : e
+                )
+            };
+
+            localStorage.setItem(calendarStorageKey, JSON.stringify(updatedEvents));
+            setUnTakenCount(0);
+            
+            // 캘린더 페이지에 변경사항 알림
+            window.dispatchEvent(new CustomEvent('calendarEventsUpdated', { detail: { events: updatedEvents } }));
+            
+            alert(`오늘의 약 ${unTakenMeds.length}개 복용 완료되었습니다.`);
+        } catch (e) {
+            console.error("약 복용 체크 오류:", e);
+            alert("약 복용 체크 중 오류가 발생했습니다.");
         }
     }
 
@@ -75,7 +139,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
                     <FaPills style={{ marginRight: '10px' }} />
                     <div className="text-wrapper">
                         <div>약 복용체크</div>
-                        <div style={{ fontSize: "10px" }}>Today: {loginTry ? eatPill : 0}회</div>
+                        <div style={{ fontSize: "10px" }}>Today: {loginTry ? unTakenCount : 0}개</div>
                     </div>
                 </div>
 

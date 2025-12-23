@@ -17,6 +17,8 @@ function CalendarOverview() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
     const calendarStorageKey = "calendarEvents";
+    const appointmentStorageKey = "appointments"; // ⭐ 대시보드 연동용
+
     const [events, setEvents] = useState(() => {
         try {
             const raw = localStorage.getItem(calendarStorageKey);
@@ -26,7 +28,7 @@ function CalendarOverview() {
         } catch (e) {
             return {};
         }
-    });    
+    });
     const [error, setError] = useState("");
     const [form, setForm] = useState({
         dept: "",
@@ -57,6 +59,60 @@ function CalendarOverview() {
         }
     }, [events]);
 
+    // ✅ localStorage 변경사항 감지 (사이드바에서 약 복용체크 시 갱신)
+    useEffect(() => {
+        const handleCalendarEventsUpdated = (event) => {
+            // 사이드바에서 약 복용체크를 했을 때 events state 업데이트
+            const updatedEvents = event.detail?.events;
+            if (updatedEvents) {
+                setEvents(updatedEvents);
+            } else {
+                // CustomEvent가 없으면 localStorage에서 직접 읽기
+                try {
+                    const raw = localStorage.getItem(calendarStorageKey);
+                    if (raw) {
+                        const parsed = JSON.parse(raw);
+                        if (parsed && typeof parsed === "object") {
+                            setEvents(parsed);
+                        }
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+        };
+
+        // storage 이벤트는 다른 탭에서만 발생하므로 CustomEvent 사용
+        window.addEventListener('calendarEventsUpdated', handleCalendarEventsUpdated);
+
+        // 페이지 포커스 시에도 localStorage 확인 (폴백)
+        const handleFocus = () => {
+            try {
+                const raw = localStorage.getItem(calendarStorageKey);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed && typeof parsed === "object") {
+                        setEvents(prevEvents => {
+                            // 문자열 비교로 변경 여부 확인 (무한 루프 방지)
+                            const prevStr = JSON.stringify(prevEvents);
+                            const newStr = JSON.stringify(parsed);
+                            return prevStr !== newStr ? parsed : prevEvents;
+                        });
+                    }
+                }
+            } catch (e) {
+                // ignore
+            }
+        };
+
+        window.addEventListener('focus', handleFocus);
+
+        return () => {
+            window.removeEventListener('calendarEventsUpdated', handleCalendarEventsUpdated);
+            window.removeEventListener('focus', handleFocus);
+        };
+    }, [calendarStorageKey]);
+
     /* ================= 예약 모달 로직 (기존) ================= */
     const openAddModal = (day) => {
         setSelectedDay(day);
@@ -80,6 +136,21 @@ function CalendarOverview() {
     };
 
     const saveReservation = () => {
+        const savedAppointments =
+            JSON.parse(localStorage.getItem(appointmentStorageKey)) || [];
+
+        const newAppointment = {
+            id: `${selectedDay}-${form.dept}-${form.time}`,
+            dept: form.dept,
+            time: form.time,
+            day: selectedDay
+        };
+
+        localStorage.setItem(
+            appointmentStorageKey,
+            JSON.stringify([...savedAppointments, newAppointment])
+        );
+
         if (!form.dept.trim()) {
             setError("진료과를 입력해주세요.");
             return;
@@ -114,6 +185,16 @@ function CalendarOverview() {
     };
 
     const deleteReservation = () => {
+        // ⭐ 대시보드 예약도 같이 삭제
+        const savedAppointments =
+            JSON.parse(localStorage.getItem(appointmentStorageKey)) || [];
+
+        const filtered = savedAppointments.filter(
+            a => !(a.day === selectedDay && a.dept === form.dept && a.time === form.time)
+        );
+
+        localStorage.setItem(appointmentStorageKey, JSON.stringify(filtered));
+
         setEvents(prev => {
             const filtered = prev[selectedDay].filter((_, i) => i !== editingIndex);
             return { ...prev, [selectedDay]: filtered };
@@ -321,22 +402,22 @@ function CalendarOverview() {
                     {isModalOpen && (
                         <div className="calendar-modal-overlay" onClick={closeModal}>
                             <div className="calendar-modal" onClick={(e) => e.stopPropagation()}>
-                            <div className="calendar-modal-header">
-                            <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
-                            {selectedDay && (() => {
-                                const now = new Date();
-                                const year = now.getFullYear();
-                                const month = now.getMonth();
-                                const dateObj = new Date(year, month, selectedDay);
-                                const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
-                                const dayOfWeek = weekDays[dateObj.getDay()];
-                                return (
-                                    <div className="calendar-modal-date">
-                                        {selectedDay}일 ({dayOfWeek})
-                                    </div>
-                                );
-                            })()}
-                        </div>
+                                <div className="calendar-modal-header">
+                                    <h3>{editingIndex !== null ? "예약 수정" : "예약 추가"}</h3>
+                                    {selectedDay && (() => {
+                                        const now = new Date();
+                                        const year = now.getFullYear();
+                                        const month = now.getMonth();
+                                        const dateObj = new Date(year, month, selectedDay);
+                                        const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+                                        const dayOfWeek = weekDays[dateObj.getDay()];
+                                        return (
+                                            <div className="calendar-modal-date">
+                                                {selectedDay}일 ({dayOfWeek})
+                                            </div>
+                                        );
+                                    })()}
+                                </div>
                                 {error && <p className="error-text">{error}</p>}
 
                                 <input

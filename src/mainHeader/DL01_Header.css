@@ -129,6 +129,14 @@
         /* 중앙 메시지 간격 축소 */
     }
 }
+
+/* [모바일] 768px 이하에서 헤더 숨기기 */
+@media (max-width: 768px) {
+    .header_Right01 {
+        display: none !important;
+    }
+}
+
 .header_Right01 {
     height: 100px;
     background-color: #ffffff;

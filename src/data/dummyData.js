@@ -72,7 +72,7 @@ export const testResultsData = [
     value2: "<40 IU/L",
     badge: "주의",
   },
- 
+
 
   // 3번 환자: 이영희
   {
@@ -221,6 +221,7 @@ export const lifeReportData = [
     phone: '010-1234-5678',
     weight: '70kg',
     dummyData: [
+      // 혈당
       { date: '2025-12-10', fasting: 95, beforeBreakfast: 100, afterBreakfast: 120, beforeLunch: 105, afterLunch: 130, beforeDinner: 110, afterDinner: 140, beforeSleep: 100 },
       { date: '2025-12-11', fasting: 92, beforeBreakfast: 98, afterBreakfast: 115, beforeLunch: 102, afterLunch: 128, beforeDinner: 108, afterDinner: 135, beforeSleep: 97 },
       { date: '2025-12-12', fasting: 96, beforeBreakfast: 101, afterBreakfast: 118, beforeLunch: 106, afterLunch: 132, beforeDinner: 112, afterDinner: 138, beforeSleep: 99 },
@@ -239,6 +240,7 @@ export const lifeReportData = [
       { date: '2025-12-16', hours: 7.0 },
     ],
     bloodPressureData: [
+      // 혈압
       { date: '2025-12-10', systolic: 120, diastolic: 80 },
       { date: '2025-12-11', systolic: 125, diastolic: 82 },
       { date: '2025-12-12', systolic: 118, diastolic: 78 },

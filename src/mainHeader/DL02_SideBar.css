@@ -122,3 +122,10 @@
 .aside2_box:last-child svg {
     color: #ef4444;
 }
+
+/* [모바일] 768px 이하에서 사이드바 숨기기 */
+@media (max-width: 768px) {
+    .aside_Main {
+        display: none !important;
+    }
+}

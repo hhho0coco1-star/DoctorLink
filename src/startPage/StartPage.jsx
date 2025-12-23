@@ -30,7 +30,7 @@ export default function StartPage() {
                         <span class="btn_icon">👤</span>
                         환자로 시작하기
                     </button>
-                    <button class="btn btn_doctor" onClick={() => navigate("/login")}>
+                    <button class="btn btn_doctor" onClick={() => navigate("/login_doctor")}>
                         <span class="btn_icon">🩺</span>
                         의료진으로 시작하기
                     </button>

@@ -124,7 +124,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
             <div className="aside2">
                 <div className="aside1_box1 aside2_box" onClick={() => {
                         if (loginTry) {
-                            navigate("/dashboard");
+                            navigate("/dashboard_doctor");
                         } else {
                             alert("로그인이 필요한 서비스입니다.");
                             navigate("/login");

@@ -25,6 +25,11 @@ import ConsultationPage from './mobilemainpage/ConsultationPage';
 import DashBoard_Doctor from './doctorpage/DashBoard_Doctor';
 import Mypage_Doctor from "./doctorpage/MyPage_Doctor";
 import PatientDetail_Doctor from './doctorpage/PatientDetail_Doctor';
+import Login_Doctor from "./doctorpage/logIn/Login_Doctor";
+import FindId_Doctor from './doctorpage/logIn/FindId_Doctor';
+import FindPassword_Doctor from './doctorpage/logIn/FindPassword_Doctor';
+import Signup_Doctor from './doctorpage/logIn/Signup_Doctor';
+
 
 function MainPageWrapper() {
   if (isMobile()) {
@@ -65,10 +70,15 @@ export default function App() {
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/consultation" element={<ConsultationPage />} />
 
-        {/* test */}
+        {/* doctor test */}
         <Route path="/dashboard_doctor" element={<DashBoard_Doctor />} />
         <Route path="/mypage_doctor" element={<Mypage_Doctor />} />
         <Route path="/patient_doctor/:id" element={<PatientDetail_Doctor />} />
+        <Route path="/login_doctor" element={<Login_Doctor />} />
+        <Route path="/signup_doctor" element={<Signup_Doctor />} />
+        <Route path="/find-id_doctor" element={<FindId_Doctor />} />
+        <Route path="/find-password_doctor" element={<FindPassword_Doctor />} />
+
 
       </Routes>
     </BrowserRouter>

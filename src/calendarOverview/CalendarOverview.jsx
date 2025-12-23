@@ -57,6 +57,60 @@ function CalendarOverview() {
         }
     }, [events]);
 
+    // ✅ localStorage 변경사항 감지 (사이드바에서 약 복용체크 시 갱신)
+    useEffect(() => {
+        const handleCalendarEventsUpdated = (event) => {
+            // 사이드바에서 약 복용체크를 했을 때 events state 업데이트
+            const updatedEvents = event.detail?.events;
+            if (updatedEvents) {
+                setEvents(updatedEvents);
+            } else {
+                // CustomEvent가 없으면 localStorage에서 직접 읽기
+                try {
+                    const raw = localStorage.getItem(calendarStorageKey);
+                    if (raw) {
+                        const parsed = JSON.parse(raw);
+                        if (parsed && typeof parsed === "object") {
+                            setEvents(parsed);
+                        }
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+        };
+
+        // storage 이벤트는 다른 탭에서만 발생하므로 CustomEvent 사용
+        window.addEventListener('calendarEventsUpdated', handleCalendarEventsUpdated);
+
+        // 페이지 포커스 시에도 localStorage 확인 (폴백)
+        const handleFocus = () => {
+            try {
+                const raw = localStorage.getItem(calendarStorageKey);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed && typeof parsed === "object") {
+                        setEvents(prevEvents => {
+                            // 문자열 비교로 변경 여부 확인 (무한 루프 방지)
+                            const prevStr = JSON.stringify(prevEvents);
+                            const newStr = JSON.stringify(parsed);
+                            return prevStr !== newStr ? parsed : prevEvents;
+                        });
+                    }
+                }
+            } catch (e) {
+                // ignore
+            }
+        };
+
+        window.addEventListener('focus', handleFocus);
+
+        return () => {
+            window.removeEventListener('calendarEventsUpdated', handleCalendarEventsUpdated);
+            window.removeEventListener('focus', handleFocus);
+        };
+    }, [calendarStorageKey]);
+
     /* ================= 예약 모달 로직 (기존) ================= */
     const openAddModal = (day) => {
         setSelectedDay(day);

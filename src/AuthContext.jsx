@@ -1,19 +1,45 @@
 
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-// 1. 공용 저장소(Context) 생성
 const AuthContext = createContext();
 
-// 2. 저장소를 관리할 공급자(Provider) 만들기
-export const AuthProvider = ({ children }) => {
-    const [loginTry, setLoginTry] = useState(false); // 전역 로그인 상태
+export function AuthProvider({ children }) {
+    const [loginTry, setLoginTry] = useState(false);
+    const [userInfo, setUserInfo] = useState(null);
+
+    // ✅ 새로고침 시 로그인 복구
+    useEffect(() => {
+        const savedLogin = localStorage.getItem("doctorlink_login");
+
+        if (savedLogin) {
+            const parsed = JSON.parse(savedLogin);
+            setLoginTry(true);
+            setUserInfo(parsed);
+        }
+    }, []);
+
+    // ✅ 로그아웃 처리
+    const logout = () => {
+        localStorage.removeItem("doctorlink_login");
+        setLoginTry(false);
+        setUserInfo(null);
+    };
 
     return (
-        <AuthContext.Provider value={{ loginTry, setLoginTry }}>
+        <AuthContext.Provider
+            value={{
+                loginTry,
+                setLoginTry,
+                userInfo,
+                setUserInfo,
+                logout,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );
-};
+}
 
-// 3. 다른 파일에서 이 데이터를 꺼내 쓰는 함수(Hook)
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+    return useContext(AuthContext);
+}

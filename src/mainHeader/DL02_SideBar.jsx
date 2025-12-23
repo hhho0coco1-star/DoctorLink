@@ -32,11 +32,14 @@ export default function DL02_SideBar({ onOpenSurvey }) {
         navigate("/login");
     };
 
+    const { logout } = useAuth();
+
     const handleLogoutClick = () => {
-        setLoginTry(false);
+        logout();
         alert("로그아웃 되었습니다.");
         navigate("/");
     };
+
 
     const calendarStorageKey = "calendarEvents";
     const today = new Date().getDate();
@@ -64,7 +67,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
 
         // localStorage 변경 감지를 위한 인터벌 (더 정확한 방법은 CustomEvent 사용)
         const interval = setInterval(handleStorageChange, 500);
-        
+
         // 페이지 포커스 시에도 업데이트
         window.addEventListener('focus', handleStorageChange);
 
@@ -80,7 +83,7 @@ export default function DL02_SideBar({ onOpenSurvey }) {
             const raw = localStorage.getItem(calendarStorageKey);
             const events = raw ? JSON.parse(raw) : {};
             const todayEvents = events[today] || [];
-            
+
             // 오늘 날짜의 약이 있는지 확인
             const todayMedications = todayEvents.filter(e => e.type === "medication");
             if (todayMedications.length === 0) {
@@ -106,10 +109,10 @@ export default function DL02_SideBar({ onOpenSurvey }) {
 
             localStorage.setItem(calendarStorageKey, JSON.stringify(updatedEvents));
             setUnTakenCount(0);
-            
+
             // 캘린더 페이지에 변경사항 알림
             window.dispatchEvent(new CustomEvent('calendarEventsUpdated', { detail: { events: updatedEvents } }));
-            
+
             alert(`오늘의 약 ${unTakenMeds.length}개 복용 완료되었습니다.`);
         } catch (e) {
             console.error("약 복용 체크 오류:", e);
@@ -167,42 +170,42 @@ export default function DL02_SideBar({ onOpenSurvey }) {
                     <FaUserMd style={{ marginRight: '10px' }} />건강정보</div>
 
                 <div className="aside1_box2 aside2_box" onClick={() => {
-                        if (loginTry) {
-                            navigate("/hospitalSearch");
-                        } else {
-                            alert("로그인이 필요한 서비스입니다.");
-                            navigate("/login");
-                        }
-                    }}>
+                    if (loginTry) {
+                        navigate("/hospitalSearch");
+                    } else {
+                        alert("로그인이 필요한 서비스입니다.");
+                        navigate("/login");
+                    }
+                }}>
                     <FaHeartbeat style={{ marginRight: '10px' }} />병원예약</div>
 
-                <div className="aside1_box5 aside2_box"  onClick={() => {
-                        if (loginTry) {
-                            navigate("/community");
-                        } else {
-                            alert("로그인이 필요한 서비스입니다.");
-                            navigate("/login");
-                        }
-                    }}>
+                <div className="aside1_box5 aside2_box" onClick={() => {
+                    if (loginTry) {
+                        navigate("/community");
+                    } else {
+                        alert("로그인이 필요한 서비스입니다.");
+                        navigate("/login");
+                    }
+                }}>
                     <FaUsers style={{ marginRight: '10px' }} />커뮤니티</div>
                 <div className="aside1_box6 aside2_box" onClick={() => {
-                        if (loginTry) {
-                            navigate("/calendar");
-                        } else {
-                            alert("로그인이 필요한 서비스입니다.");
-                            navigate("/login");
-                        }
-                    }}>
+                    if (loginTry) {
+                        navigate("/calendar");
+                    } else {
+                        alert("로그인이 필요한 서비스입니다.");
+                        navigate("/login");
+                    }
+                }}>
                     <FaCalendarAlt style={{ marginRight: '10px' }} />캘린더</div>
-                    
+
                 <div className="aside1_box6 aside2_box" onClick={() => {
-                        if (loginTry) {
-                            navigate("/settings");
-                        } else {
-                            alert("로그인이 필요한 서비스입니다.");
-                            navigate("/login");
-                        }
-                    }}>
+                    if (loginTry) {
+                        navigate("/settings");
+                    } else {
+                        alert("로그인이 필요한 서비스입니다.");
+                        navigate("/login");
+                    }
+                }}>
                     <FaCog style={{ marginRight: '10px' }} />설정</div>
 
                 {loginTry ? (

@@ -58,14 +58,7 @@
 }
 
 /* 판정 뱃지 스타일 */
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: #fff;
-}
+
 
 .badge.normal {
   background-color: #4caf50; /* 초록색 */
